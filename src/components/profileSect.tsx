@@ -5,6 +5,9 @@ export default function profileSect() {
     return (
         <>
         <div className="w-full h-full relative overflow-y-scroll no-scrollbar">
+            <div className='w-full h-[7%] md:h-[10%] p-5 mb-2 flex items-center justify-between text-(--color-main) cursor-pointer bg-(--surface-dark)'>
+                <h4 className='font-semibold text-xl'>Accounts</h4>
+            </div>
             <img className="w-50 h-50 mx-auto mt-5 rounded-full" src="/public/profile.webp" alt="Profile" />
             <div className="w-full min-h-100  -mt-10 pt-10 px-2 bg-(--surface-dark) text-(--primary-text-dark) text-center">
                 <div className="mt-3">
