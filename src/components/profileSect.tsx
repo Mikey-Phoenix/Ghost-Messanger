@@ -5,8 +5,27 @@ import { MdPassword } from "react-icons/md";
 type Props = {
     isShowSect: boolean;
     setIsShowSect: (isShowSect: boolean) => void;
+    popUp: boolean;
+    setPopUp: (popUp: boolean) => void;
+    setTitle: (title: string) => void;
+    setDescription: (description: string) => void;
+    setPlaceholder: (placeholder: string) => void;
+    isPassword: boolean | false;
+    setIsPassword: (isPassword: boolean) => void;
 };
-export default function profileSect({ isShowSect, setIsShowSect }: Props) {
+export default function profileSect({ isShowSect, setIsShowSect, popUp, setPopUp, setTitle, setDescription, setPlaceholder, isPassword, setIsPassword }: Props) {
+    function openPopUp({title, description, placeholder}: {
+        title: string;
+        description: string;
+        placeholder: string;
+    }) {
+        setPopUp(true);
+        console.log(title, placeholder, description)
+        setTitle(title);
+        setDescription(description);
+        setPlaceholder(placeholder);
+        setIsPassword(title === "Password")
+    }
     return (
         <>
         <div className="w-full h-full relative overflow-y-scroll no-scrollbar">
@@ -22,15 +41,15 @@ export default function profileSect({ isShowSect, setIsShowSect }: Props) {
                 <div className="relative mt-5 py-5 border-t-2 border-(--surface-dark-hover)">
                     <span className="absolute top-0 left-0 text-sm opacity-60">Login Settings</span>
 
-                    <div className="w-full px-2 py-5 rounded-md flex items-center space-x-5 text-(--primary-text-dark) md:text-xl cursor-pointer hover:bg-(--surface-dark-hover)">
+                    <div className="w-full px-2 py-5 rounded-md flex items-center space-x-5 text-(--primary-text-dark) md:text-xl cursor-pointer hover:bg-(--surface-dark-hover)" onClick={()=> openPopUp({title:"Password", description:"Enter your current password to change it", placeholder:"Password"})}>
                         <MdPassword />
                         <p>Password</p>
                     </div>
-                    <div className="w-full px-2 py-5 rounded-md flex items-center space-x-5 text-(--primary-text-dark) md:text-xl cursor-pointer hover:bg-(--surface-dark-hover)">
+                    <div className="w-full px-2 py-5 rounded-md flex items-center space-x-5 text-(--primary-text-dark) md:text-xl cursor-pointer hover:bg-(--surface-dark-hover)" onClick={()=> openPopUp({title:"Email Address", description:"Enter your new email address", placeholder:"Email Address"})}>
                         <IoMailOutline />
                         <p>Email Address</p>
                     </div>
-                    <div className="w-full px-2 py-5 rounded-md flex items-center space-x-5 text-(--primary-text-dark) md:text-xl cursor-pointer hover:bg-(--surface-dark-hover)">
+                    <div className="w-full px-2 py-5 rounded-md flex items-center space-x-5 text-(--primary-text-dark) md:text-xl cursor-pointer hover:bg-(--surface-dark-hover)" onClick={()=> openPopUp({title:"Phone Number", description:"Enter your new phone number", placeholder:"Phone Number"})}>
                         <IoCallOutline />
                         <p>Phone Number</p>
                     </div>
@@ -38,7 +57,7 @@ export default function profileSect({ isShowSect, setIsShowSect }: Props) {
                         <IoLockClosedOutline />
                         <p>Two-Factor Authentication</p>
                     </div>
-                    <div className="w-full px-2 py-5 rounded-md flex items-center space-x-5 text-(--primary-text-dark) md:text-xl cursor-pointer hover:bg-(--surface-dark-hover)">
+                    <div className="w-full px-2 py-5 rounded-md flex items-center space-x-5 text-(--primary-text-dark) md:text-xl cursor-pointer hover:bg-(--surface-dark-hover)" onClick={()=> openPopUp({title:"Username", description:"Enter your new username", placeholder:"Username"})}>
                         <IoAtOutline />
                         <p>Username</p>
                     </div>
