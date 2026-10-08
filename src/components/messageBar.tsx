@@ -2,7 +2,13 @@ import React from 'react';
 import { IoSearch } from "react-icons/io5";
 import { IoAddOutline, IoArchiveOutline  } from "react-icons/io5";
 
-export default function messageBar() {
+
+type Props = {
+    changeSect: (sect: string) => void;
+    currentSect: string;
+    // action: () => void;
+};
+export default function messageBar({changeSect, currentSect}: Props) {
     return (
         <>
             <div className="w-full h-[10%] mt-2 flex items-center justify-between">
@@ -19,7 +25,7 @@ export default function messageBar() {
             </div>
             <div className='mt-5 h-[60%] overflow-y-scroll no-scrollbar'>
                 <div>
-                    <div className='w-full p-2 mb-3 rounded-md flex items-center justify-between text-(--primary-text-dark) cursor-pointer hover:bg-(--surface-dark-hover)'>
+                    <div className='w-full p-2 mb-3 rounded-md flex items-center justify-between text-(--primary-text-dark) cursor-pointer hover:bg-(--surface-dark-hover)' onClick={()=> changeSect("messages/show")}>
                         <img className='rounded-full' src="/profile.webp" alt="" width={"40px"} />
                         <div className=' flex-col w-[65%] md:w-[75%] lg:w-[60%] justify-between'>
                             <h4 className='font-semibold text-base'>Name</h4>
@@ -31,7 +37,7 @@ export default function messageBar() {
                         </div>
                     </div>
                     
-                    <div className='w-full p-2 mb-3 rounded-md flex items-center justify-between text-(--primary-text-dark) cursor-pointer hover:bg-(--surface-dark-hover)'>
+                    <div className='w-full p-2 mb-3 rounded-md flex items-center justify-between text-(--primary-text-dark) cursor-pointer hover:bg-(--surface-dark-hover)' onClick={()=> changeSect("messages/show")}>
                         <img className='rounded-full' src="/profile.webp" alt="" width={"40px"} />
                         <div className=' flex-col w-[65%] md:w-[75%] lg:w-[60%] justify-between'>
                             <h4 className='font-semibold text-base'>Name</h4>
@@ -43,7 +49,7 @@ export default function messageBar() {
                         </div>
                     </div>
                     
-                    <div className='w-full p-2 mb-3 rounded-md flex items-center justify-between text-(--primary-text-dark) cursor-pointer hover:bg-(--surface-dark-hover)'>
+                    <div className='w-full p-2 mb-3 rounded-md flex items-center justify-between text-(--primary-text-dark) cursor-pointer hover:bg-(--surface-dark-hover)' onClick={()=> changeSect("messages/show")}>
                         <img className='rounded-full' src="/profile.webp" alt="" width={"40px"} />
                         <div className=' flex-col w-[65%] md:w-[75%] lg:w-[60%] justify-between'>
                             <h4 className='font-semibold text-base'>Name</h4>
@@ -55,7 +61,7 @@ export default function messageBar() {
                         </div>
                     </div>
                     
-                    <div className='w-full p-2 mb-3 rounded-md flex items-center justify-between text-(--primary-text-dark) cursor-pointer hover:bg-(--surface-dark-hover)'>
+                    <div className='w-full p-2 mb-3 rounded-md flex items-center justify-between text-(--primary-text-dark) cursor-pointer hover:bg-(--surface-dark-hover)' onClick={()=> changeSect("messages/show")}>
                         <img className='rounded-full' src="/profile.webp" alt="" width={"40px"} />
                         <div className=' flex-col w-[65%] md:w-[75%] lg:w-[60%] justify-between'>
                             <h4 className='font-semibold text-base'>Name</h4>
@@ -67,7 +73,7 @@ export default function messageBar() {
                         </div>
                     </div>
                     
-                    <div className='w-full p-2 mb-3 rounded-md flex items-center justify-between text-(--primary-text-dark) cursor-pointer hover:bg-(--surface-dark-hover)'>
+                    <div className='w-full p-2 mb-3 rounded-md flex items-center justify-between text-(--primary-text-dark) cursor-pointer hover:bg-(--surface-dark-hover)' onClick={()=> changeSect("messages/show")}>
                         <img className='rounded-full' src="/profile.webp" alt="" width={"40px"} />
                         <div className=' flex-col w-[65%] md:w-[75%] lg:w-[60%] justify-between'>
                             <h4 className='font-semibold text-base'>Name</h4>
@@ -79,7 +85,7 @@ export default function messageBar() {
                         </div>
                     </div>
                     
-                    <div className='w-full p-2 mb-3 rounded-md flex items-center justify-between text-(--primary-text-dark) cursor-pointer hover:bg-(--surface-dark-hover)'>
+                    <div className='w-full p-2 mb-3 rounded-md flex items-center justify-between text-(--primary-text-dark) cursor-pointer hover:bg-(--surface-dark-hover)' onClick={()=> changeSect("messages/show")}>
                         <img className='rounded-full' src="/profile.webp" alt="" width={"40px"} />
                         <div className=' flex-col w-[65%] md:w-[75%] lg:w-[60%] justify-between'>
                             <h4 className='font-semibold text-base'>Name</h4>
@@ -91,7 +97,7 @@ export default function messageBar() {
                         </div>
                     </div>
                     
-                    <div className='w-full p-2 mb-3 rounded-md flex items-center justify-between text-(--primary-text-dark) cursor-pointer hover:bg-(--surface-dark-hover)'>
+                    <div className='w-full p-2 mb-3 rounded-md flex items-center justify-between text-(--primary-text-dark) cursor-pointer hover:bg-(--surface-dark-hover)' onClick={()=> changeSect("messages/show")}>
                         <img className='rounded-full' src="/profile.webp" alt="" width={"40px"} />
                         <div className=' flex-col w-[65%] md:w-[75%] lg:w-[60%] justify-between'>
                             <h4 className='font-semibold text-base'>Name</h4>

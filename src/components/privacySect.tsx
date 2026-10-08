@@ -1,10 +1,15 @@
+import { IoChevronBackOutline } from "react-icons/io5";
 
 
-export default function privacySect() {
+type Props = {
+    isShowSect: boolean;
+    setIsShowSect: (isShowSect: boolean) => void;
+};
+export default function privacySect({ isShowSect, setIsShowSect }: Props) {
     return (
         <div className="w-full h-full px-5 pt-2 bg-(--surface-dark) relative overflow-y-scroll no-scrollbar">
-            <div className='w-full h-[7%] md:h-[10%] p-5 mb-2 flex items-center justify-between text-(--color-main) cursor-pointer bg-(--surface-dark)'>
-                <h4 className='font-semibold text-xl'>Privacy</h4>
+            <div className='w-full h-[7%] md:h-[10%] md:p-5 mb-2 flex items-center justify-between text-(--color-main) cursor-pointer bg-(--surface-dark)'>
+                <div className='font-semibold text-xl flex items-center space-x-5'><span className="lg:hidden text-(--primary-text-dark) hover:text-(--surface-dark)" onClick={() => setIsShowSect(false)}><IoChevronBackOutline /></span><h4>Privacy</h4></div>
             </div>
             <div className="relative mt-5 pt-5 border-t-2 border-(--surface-dark-hover)">
                 {/* <span className="absolute top-0 left-0 text-sm text-(--primary-text-dark) opacity-60">Who sees your info</span> */}

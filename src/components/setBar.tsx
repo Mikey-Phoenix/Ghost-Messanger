@@ -5,6 +5,7 @@ import { IoPersonOutline, IoLockClosedOutline, IoNotificationsOutline, IoColorPa
 type Props = {
     changeSect: (sect: string) => void;
     currentSect: string;
+    // action: () => void;
 };
 export default function setBar({changeSect, currentSect}: Props) {
 
@@ -23,7 +24,7 @@ export default function setBar({changeSect, currentSect}: Props) {
     return(
         <div className='mt-5 h-full overflow-y-scroll no-scrollbar'>
             <div>
-                <div className='w-full p-2 mb-3 rounded-md flex items-center justify-between text-(--primary-text-dark) cursor-pointer hover:bg-(--surface-dark-hover)' onClick={()=> changeSect("settings")}>
+                <div className='w-full p-2 mb-3 rounded-md flex items-center justify-between text-(--primary-text-dark) cursor-pointer hover:bg-(--surface-dark-hover)' onClick={()=> changeSect("settings/profile")}>
                     <div className='flex-col justify-between w-full'>
                         <h4 className='font-semibold text-base flex items-center space-x-3'><IoPersonOutline /> <span>Accounts</span></h4>
                         <p className='text-sm opacity-60 max-w-[95%] overflow-hidden'>Security notifications, change number</p>

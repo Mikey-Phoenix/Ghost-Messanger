@@ -1,12 +1,18 @@
 import { FaArrowDownLong } from "react-icons/fa6";
 import { IoMdMore } from "react-icons/io";
-import { IoCheckmarkDone, IoCallOutline, IoSendSharp } from "react-icons/io5";
+import { IoCheckmarkDone, IoCallOutline, IoSendSharp, IoChevronBackOutline } from "react-icons/io5";
 
-export default function messageSect() {
+
+type Props = {
+    isShowSect: boolean;
+    setIsShowSect: (isShowSect: boolean) => void;
+};
+export default function messageSect({ isShowSect, setIsShowSect }: Props) {
     return (
         <>
             <div className='w-full h-[7%] md:h-[10%] p-5 mb-2 flex items-center justify-between text-(--primary-text-dark) cursor-pointer bg-(--surface-dark)'>
                 <div className='flex items-center space-x-4'>
+                    <IoChevronBackOutline className="lg:hidden text-(--primary-text-dark) hover:text-(--color-main) text-2xl mx-auto mr-5 cursor-pointer" onClick={() => setIsShowSect(false)} />
                     <img className='rounded-full' src="/profile.webp" alt="" width={"40px"} />
                     <h4 className='font-semibold text-xl'>Name</h4>
                 </div>
@@ -90,8 +96,8 @@ export default function messageSect() {
                 </div>
                 <FaArrowDownLong className='absolute bottom-5 right-5 p-1.5 w-7 h-7 rounded-full text-white text-xs md-text-base bg-(--color-accent)' />
             </div>
-            <div className=' mx-auto md:ml-5 w-[95%] max-h-14 bg-(--surface-dark) text-(--primary-text-dark) rounded-md flex items-center'>
-                <input className='p-3 w-full focus:outline-none focus:ring-0' type="text" placeholder='Type your message ...' />
+            <div className=' mx-auto md:ml-5 w-[95%] max-h-18 bg-(--surface-dark) text-(--primary-text-dark) rounded-md flex items-center'>
+                <textarea style={{resize: 'none'}} className='p-3 w-full focus:outline-none focus:ring-0' placeholder='Type your message ...' />
                 <IoSendSharp className=' w-[10%] md:w-[5%] h-full p-1 mr-3 text-(--color-main) rounded-md cursor-pointer' />
             </div>
         </>
