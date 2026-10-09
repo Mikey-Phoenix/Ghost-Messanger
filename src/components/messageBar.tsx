@@ -29,11 +29,11 @@ export default function messageBar({changeSect, currentSect}: Props) {
                         <img className='rounded-full' src="/profile.webp" alt="" width={"40px"} />
                         <div className=' flex-col w-[65%] md:w-[75%] lg:w-[60%] justify-between'>
                             <h4 className='font-semibold text-base'>Name</h4>
-                            <p className='text-sm opacity-60'>Message preview</p>
+                            <p className='text-xs md:text-sm opacity-60'>Message preview</p>
                         </div>
                         <div>
                             <p className='bg-(--color-main) rounded-full w-6 h-6 flex items-center justify-center font-black float-right'>5</p> <br />
-                            <p className='text-sm opacity-60'>11:05 PM</p>
+                            <p className='text-xs md:text-sm opacity-60'>11:05 PM</p>
                         </div>
                     </div>
                     
@@ -41,11 +41,11 @@ export default function messageBar({changeSect, currentSect}: Props) {
                         <img className='rounded-full' src="/profile.webp" alt="" width={"40px"} />
                         <div className=' flex-col w-[65%] md:w-[75%] lg:w-[60%] justify-between'>
                             <h4 className='font-semibold text-base'>Name</h4>
-                            <p className='text-sm opacity-60'>Message preview</p>
+                            <p className='text-xs md:text-sm opacity-60'>Message preview</p>
                         </div>
                         <div>
                             <p className='bg-(--color-main) rounded-full w-6 h-6 flex items-center justify-center font-black float-right'>5</p> <br />
-                            <p className='text-sm opacity-60'>11:05 PM</p>
+                            <p className='text-xs md:text-sm opacity-60'>11:05 PM</p>
                         </div>
                     </div>
                     
@@ -53,11 +53,11 @@ export default function messageBar({changeSect, currentSect}: Props) {
                         <img className='rounded-full' src="/profile.webp" alt="" width={"40px"} />
                         <div className=' flex-col w-[65%] md:w-[75%] lg:w-[60%] justify-between'>
                             <h4 className='font-semibold text-base'>Name</h4>
-                            <p className='text-sm opacity-60'>Message preview</p>
+                            <p className='text-xs md:text-sm opacity-60'>Message preview</p>
                         </div>
                         <div>
                             <p className='bg-(--color-main) rounded-full w-6 h-6 flex items-center justify-center font-black float-right'>5</p> <br />
-                            <p className='text-sm opacity-60'>11:05 PM</p>
+                            <p className='text-xs md:text-sm opacity-60'>11:05 PM</p>
                         </div>
                     </div>
                     
@@ -65,11 +65,11 @@ export default function messageBar({changeSect, currentSect}: Props) {
                         <img className='rounded-full' src="/profile.webp" alt="" width={"40px"} />
                         <div className=' flex-col w-[65%] md:w-[75%] lg:w-[60%] justify-between'>
                             <h4 className='font-semibold text-base'>Name</h4>
-                            <p className='text-sm opacity-60'>Message preview</p>
+                            <p className='text-xs md:text-sm opacity-60'>Message preview</p>
                         </div>
                         <div>
                             <p className='bg-(--color-main) rounded-full w-6 h-6 flex items-center justify-center font-black float-right'>5</p> <br />
-                            <p className='text-sm opacity-60'>11:05 PM</p>
+                            <p className='text-xs md:text-sm opacity-60'>11:05 PM</p>
                         </div>
                     </div>
                     
@@ -77,11 +77,11 @@ export default function messageBar({changeSect, currentSect}: Props) {
                         <img className='rounded-full' src="/profile.webp" alt="" width={"40px"} />
                         <div className=' flex-col w-[65%] md:w-[75%] lg:w-[60%] justify-between'>
                             <h4 className='font-semibold text-base'>Name</h4>
-                            <p className='text-sm opacity-60'>Message preview</p>
+                            <p className='text-xs md:text-sm opacity-60'>Message preview</p>
                         </div>
                         <div>
                             <p className='bg-(--color-main) rounded-full w-6 h-6 flex items-center justify-center font-black float-right'>5</p> <br />
-                            <p className='text-sm opacity-60'>11:05 PM</p>
+                            <p className='text-xs md:text-sm opacity-60'>11:05 PM</p>
                         </div>
                     </div>
                     
@@ -89,11 +89,11 @@ export default function messageBar({changeSect, currentSect}: Props) {
                         <img className='rounded-full' src="/profile.webp" alt="" width={"40px"} />
                         <div className=' flex-col w-[65%] md:w-[75%] lg:w-[60%] justify-between'>
                             <h4 className='font-semibold text-base'>Name</h4>
-                            <p className='text-sm opacity-60'>Message preview</p>
+                            <p className='text-xs md:text-sm opacity-60'>Message preview</p>
                         </div>
                         <div>
                             <p className='bg-(--color-main) rounded-full w-6 h-6 flex items-center justify-center font-black float-right'>5</p> <br />
-                            <p className='text-sm opacity-60'>11:05 PM</p>
+                            <p className='text-xs md:text-sm opacity-60'>11:05 PM</p>
                         </div>
                     </div>
                     
@@ -101,11 +101,11 @@ export default function messageBar({changeSect, currentSect}: Props) {
                         <img className='rounded-full' src="/profile.webp" alt="" width={"40px"} />
                         <div className=' flex-col w-[65%] md:w-[75%] lg:w-[60%] justify-between'>
                             <h4 className='font-semibold text-base'>Name</h4>
-                            <p className='text-sm opacity-60'>Message preview</p>
+                            <p className='text-xs md:text-sm opacity-60'>Message preview</p>
                         </div>
                         <div>
                             <p className='bg-(--color-main) rounded-full w-6 h-6 flex items-center justify-center font-black float-right'>5</p> <br />
-                            <p className='text-sm opacity-60'>11:05 PM</p>
+                            <p className='text-xs md:text-sm opacity-60'>11:05 PM</p>
                         </div>
                     </div>
                     

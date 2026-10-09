@@ -40,9 +40,9 @@ export default function themeSect({ isShowSect, setIsShowSect, radioPop, setRadi
         setActive(active);
     }
     return (
-        <div className="w-full h-full px-5 pt-5 relative bg-(--surface-dark) overflow-y-scroll no-scrollbar">
+        <div className="w-full h-full px-2 md:px-5 pt-5 relative bg-(--surface-dark) overflow-y-scroll no-scrollbar">
             <div className='w-full h-[7%] md:h-[10%] md:p-5 mb-2 flex items-center justify-between text-(--color-main) cursor-pointer bg-(--surface-dark)'>
-                <div className='font-semibold text-xl flex items-center space-x-5'><span className="lg:hidden text-(--primary-text-dark) hover:text-(--surface-dark)" onClick={() => setIsShowSect(false)}><IoChevronBackOutline /></span><h4>Appearance</h4></div>
+                <div className='font-semibold text-xl flex items-center space-x-5'><span className="lg:hidden text-(--primary-text-dark) hover:text-(--color-main)" onClick={() => setIsShowSect(false)}><IoChevronBackOutline /></span><h4>Appearance</h4></div>
             </div>
             <div className="w-full overflow-x-scroll no-scrollbar">
                 <div className="flex space-x-2">
@@ -79,31 +79,31 @@ export default function themeSect({ isShowSect, setIsShowSect, radioPop, setRadi
             </div>
 
             <div className="relative w-full text-(--primary-text-dark) my-5 pt-5 border-t-2 border-(--surface-dark-hover)">
-                <span className="absolute top-0 left-0 text-sm opacity-60">Theme</span>
+                <span className="absolute top-0 left-0 text-xs md:text-sm opacity-60">Theme</span>
 
                 <div className="w-full px-2 py-5 rounded-md flex items-center space-x-5 text-(--primary-text-dark) md:text-xl cursor-pointer hover:bg-(--surface-dark-hover)" onClick={() => openRadioPopUp({title:"Themes", items:["System", "Light", "Dark"], active:0})}>
                     <div>
                         <p>Theme</p>
-                        <p className="text-sm text-(--secondary-text-dark) opacity-60">Default</p>
+                        <p className="text-xs md:text-sm text-(--secondary-text-dark) opacity-60">Default</p>
                     </div>
                 </div>
             </div>
             <div className="relative w-full text-(--primary-text-dark) my-5 pt-5 border-t-2 border-(--surface-dark-hover) cursor-pointer hover:bg-(--surface-dark-hover)">
-                <span className="absolute top-0 left-0 text-sm opacity-60">Accessibility</span>
+                <span className="absolute top-0 left-0 text-xs md:text-sm opacity-60">Accessibility</span>
 
                 <div className="w-full px-2 py-5 rounded-md flex items-center justify-between text-(--primary-text-dark) md:text-xl" onClick={() => changeRadio({radioName:appearanceRadio, radioFunc:setAppearanceRadio})}>
                 <div>
                     <p>Animations</p>
-                    <p className="text-sm text-(--secondary-text-dark) opacity-60">Enable or disable animations</p>
+                    <p className="text-xs md:text-sm text-(--secondary-text-dark) opacity-60">Enable or disable animations</p>
                 </div>
                 {appearanceRadio ? (
-                    <div className="w-17 h-9 pr-1.5 mr-10 flex items-center justify-end rounded-full bg-(--color-main)">
+                    <div className="w-17 h-9 pr-1.5 ml-3 md:ml-0 md:mr-10 flex items-center justify-end rounded-full bg-(--color-main)">
                         <div className="w-7 h-7 rounded-full flex items-center justify-center bg-(--surface-dark)">
                             <IoCheckmarkOutline className="text-(--color-main)" />
                         </div>
                     </div>
                 ):(
-                    <div className="w-17 h-9 pl-1.5 mr-10 flex items-center rounded-full border-4 border-(--color-main) bg-(--surface-dark) opacity-60 hover:opacity-100">
+                    <div className="w-17 h-9 pl-1.5 ml-3 md:ml-0 md:mr-10 flex items-center rounded-full border-4 border-(--color-main) bg-(--surface-dark) opacity-60 hover:opacity-100">
                         <div className="w-7 h-7 rounded-full flex items-center justify-center bg-(--color-main)">
                             {/* <IoCheckmarkOutline className="text-(--color-main)" /> */}
                         </div>

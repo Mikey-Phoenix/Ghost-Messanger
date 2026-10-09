@@ -30,16 +30,16 @@ export default function profileSect({ isShowSect, setIsShowSect, popUp, setPopUp
         <>
         <div className="w-full h-full relative overflow-y-scroll no-scrollbar">
             <div className='w-full h-[7%] md:h-[10%] md:p-5 mb-2 flex items-center justify-between text-(--color-main) cursor-pointer bg-(--surface-dark)'>
-                <div className='font-semibold text-xl flex items-center space-x-5'><span className="lg:hidden text-(--primary-text-dark) hover:text-(--surface-dark)" onClick={() => setIsShowSect(false)}><IoChevronBackOutline /></span><h4>Accounts</h4></div>
+                <div className='font-semibold text-xl flex items-center space-x-5'><span className="lg:hidden text-(--primary-text-dark) hover:text-(--color-main)" onClick={() => setIsShowSect(false)}><IoChevronBackOutline /></span><h4>Accounts</h4></div>
             </div>
             <img className="w-50 h-50 mx-auto mt-5 rounded-full" src="/public/profile.webp" alt="Profile" />
             <div className="w-full min-h-100  -mt-10 pt-10 px-2 bg-(--surface-dark) text-(--primary-text-dark) text-center">
                 <div className="mt-3">
                     <h4 className="font-semibold text-xl">Name</h4>
-                    <p className="text-sm opacity-60">Username</p>
+                    <p className="text-xs md:text-sm opacity-60">Username</p>
                 </div>
                 <div className="relative mt-5 py-5 border-t-2 border-(--surface-dark-hover)">
-                    <span className="absolute top-0 left-0 text-sm opacity-60">Login Settings</span>
+                    <span className="absolute top-0 left-0 text-xs md:text-sm opacity-60">Login Settings</span>
 
                     <div className="w-full px-2 py-5 rounded-md flex items-center space-x-5 text-(--primary-text-dark) md:text-xl cursor-pointer hover:bg-(--surface-dark-hover)" onClick={()=> openPopUp({title:"Password", description:"Enter your current password to change it", placeholder:"Password"})}>
                         <MdPassword />
@@ -53,7 +53,7 @@ export default function profileSect({ isShowSect, setIsShowSect, popUp, setPopUp
                         <IoCallOutline />
                         <p>Phone Number</p>
                     </div>
-                    <div className="w-full px-2 py-5 rounded-md flex items-center space-x-5 text-(--primary-text-dark) md:text-xl cursor-pointer hover:bg-(--surface-dark-hover)">
+                    <div className="w-full px-2 py-5 rounded-md flex items-center space-x-5 text-(--primary-text-dark) md:text-xl opacity-60">
                         <IoLockClosedOutline />
                         <p>Two-Factor Authentication</p>
                     </div>
@@ -64,7 +64,7 @@ export default function profileSect({ isShowSect, setIsShowSect, popUp, setPopUp
                 </div>
 
                 <div className="relative mt-5 pt-5 border-t-2 border-(--surface-dark-hover)">
-                    <span className="absolute top-0 left-0 text-sm opacity-60">Log out/Delete Account</span>
+                    <span className="absolute top-0 left-0 text-xs md:text-sm opacity-60">Log out/Delete Account</span>
 
                     <div className="w-full px-2 py-5 rounded-md flex items-center space-x-5 text-(--color-main) md:text-xl cursor-pointer hover:bg-(--surface-dark-hover)">
                         <IoExitOutline />
