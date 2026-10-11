@@ -9,6 +9,7 @@ import ProfileSect from '../components/profileSect';
 import PrivacySect from '../components/privacySect';
 import NotifySect from '../components/notifySect';
 import ThemeSect from '../components/themeSect';
+import SearchSect from '../components/searchSect';
 
 function messages() {
     // #ff00ff
@@ -49,7 +50,7 @@ function messages() {
 
     function changeSect(sect: string) {
         setCurrentSect(sect);
-        if (sect === "settings/profile" || sect === "settings/privacy" || sect === "settings/notify" || sect === "settings/theme" || sect === "messages/show") {
+        if (sect === "settings/profile" || sect === "settings/privacy" || sect === "settings/notify" || sect === "settings/theme" || sect === "messages/show" || sect === "discover") {
             setIsShowSect(true);
         } else {
             setIsShowSect(false);
@@ -139,7 +140,7 @@ function messages() {
 
                 {isShowSect ? (
                     <section className="hidden lg:block w-full md:w-[80%] lg:w-[25%] h-full md:h-full px-4 rounded-md bg-(--surface-dark)">
-                        {currentSect == "messages" || currentSect == "messages/show" ? (
+                        {currentSect == "messages" || currentSect == "messages/show" || currentSect == "discover" ? (
                             <MessageBar changeSect={changeSect} currentSect={currentSect}/>
                         ): (
                             <SetBar changeSect={changeSect} currentSect={currentSect}/>
@@ -147,7 +148,7 @@ function messages() {
                     </section>
                 ):(
                     <section className="w-full md:w-[80%] lg:w-[25%] h-full md:h-full px-4 rounded-md bg-(--surface-dark)">
-                        {currentSect == "messages" || currentSect == "messages/show" ? (
+                        {currentSect == "messages" || currentSect == "messages/show" || currentSect == "discover" ? (
                             <MessageBar changeSect={changeSect} currentSect={currentSect}/>
                         ): (
                             <SetBar changeSect={changeSect} currentSect={currentSect}/>
@@ -166,6 +167,8 @@ function messages() {
                             <NotifySect isShowSect={isShowSect} setIsShowSect={setIsShowSect} radioPop={radioPop} setRadioPop={setRadioPop} setTitle={setTitle} items={items} setItems={setItems} active={active} setActive={setActive} />
                         ): currentSect == "settings/theme" ? (
                             <ThemeSect isShowSect={isShowSect} setIsShowSect={setIsShowSect} radioPop={radioPop} setRadioPop={setRadioPop} setTitle={setTitle} items={items} setItems={setItems} active={active} setActive={setActive} />
+                        ) : currentSect == "discover" ? (
+                            <SearchSect isShowSect={isShowSect} setIsShowSect={setIsShowSect} />
                         ) : (
                             <MessageSect isShowSect={isShowSect} setIsShowSect={setIsShowSect}/>
                         )}
@@ -180,6 +183,8 @@ function messages() {
                             <NotifySect isShowSect={isShowSect} setIsShowSect={setIsShowSect} radioPop={radioPop} setRadioPop={setRadioPop} setTitle={setTitle} items={items} setItems={setItems} active={active} setActive={setActive} />
                         ): currentSect == "settings/theme" ? (
                             <ThemeSect isShowSect={isShowSect} setIsShowSect={setIsShowSect} radioPop={radioPop} setRadioPop={setRadioPop} setTitle={setTitle} items={items} setItems={setItems} active={active} setActive={setActive} />
+                        ) : currentSect == "discover" ? (
+                            <SearchSect isShowSect={isShowSect} setIsShowSect={setIsShowSect} />
                         ) : (
                             <MessageSect isShowSect={isShowSect} setIsShowSect={setIsShowSect}/>
                         )}
