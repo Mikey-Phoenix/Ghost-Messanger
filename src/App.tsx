@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import {BrowserRouter, Routes, Route, Link} from 'react-router-dom'
+import {BrowserRouter, Routes, Route, Link, Navigate} from 'react-router-dom'
 import './App.css'
 import Header from './components/header'
 import Footer from './components/footer'
@@ -24,6 +24,9 @@ function App() {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/messages" element={<Messages />} />
+
+
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
     </BrowserRouter>
   )
