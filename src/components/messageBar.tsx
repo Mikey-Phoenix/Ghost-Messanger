@@ -1,5 +1,5 @@
 import React from 'react';
-import { IoAddOutline, IoArchiveOutline, IoSearchOutline  } from "react-icons/io5";
+import { IoAddOutline, IoArchiveOutline, IoSearchOutline, IoPersonAddOutline  } from "react-icons/io5";
 
 
 type Props = {
@@ -12,7 +12,7 @@ export default function messageBar({changeSect, currentSect}: Props) {
         <>
             <div className="w-full h-[10%] mt-2 flex items-center justify-between">
                 <img src="/logo.webp" alt="Ghost Logo" width="100px" />
-                <IoAddOutline className="text-(--primary-text-dark) hover:text-(--color-main) text-2xl md:text-3xl cursor-pointer" onClick={() => changeSect("discover")} />
+                <IoPersonAddOutline title='discover' className="text-(--primary-text-dark) hover:text-(--color-main) text-2xl md:text-3xl cursor-pointer" onClick={() => changeSect("discover")} />
             </div>
             <div className='bg-(--primary-text-dark) pl-2 mt-5 flex items-center space-x-2 rounded-md'>
                 <IoSearchOutline className="text-(--primary-dark) text-2xl md:text-3xl " />

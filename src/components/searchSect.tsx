@@ -10,7 +10,7 @@ export default function searchSearch({isShowSect, setIsShowSect}: Props) {
         <div className="h-full overflow-y-scroll no-scrollbar">
             
             <div className='w-full h-[7%] md:h-[10%] md:p-5 mb-7 flex items-center justify-between text-(--color-main) cursor-pointer bg-(--surface-dark)'>
-                <div className='font-semibold text-xl flex items-center space-x-5'><span className="lg:hidden text-(--primary-text-dark) hover:text-(--color-main)" onClick={() => setIsShowSect(false)}><IoChevronBackOutline /></span><h4>Discover</h4></div>
+                <div className='px-4 font-semibold text-xl flex items-center space-x-5'><span className="lg:hidden text-(--primary-text-dark) hover:text-(--color-main)" onClick={() => setIsShowSect(false)}><IoChevronBackOutline /></span><h4>Discover</h4></div>
             </div>
 
             <div className='w-[90%] pl-2 mx-auto my-5 bg-(--primary-text-dark) flex items-center space-x-2 rounded-md'>
@@ -30,9 +30,9 @@ export default function searchSearch({isShowSect, setIsShowSect}: Props) {
                 <div className="relative w-full px-5 py-3 mt-3 bg-(--surface-dark) flex items-center justify-evenly rounded-md">
                     <div className="w-full flex flex-wrap md:flex-nowrap items-center">
                         <img src="/dp1.png" alt="Profile Picture" className="w-[100px] md:w-[150px] h-[100px] md:h-[150px] rounded-full" />
-                        <div className="w-full pl-5 text-(--primary-text-dark)">
+                        <div className="w-full md:pl-5 text-(--primary-text-dark)">
                             <h1 className="text-lg md:text-2xl">John Doe</h1>
-                            <p className="text-xs md:text-sm"><span className="text-(--color-accent)">@username</span> | <span>24</span>.mutual ghosts</p>
+                            <p className="text-xs md:text-sm"><span className="text-(--color-accent)">@username</span> | <span>24</span> mutual ghosts</p>
                         </div>
                     </div>
                     <button className="absolute top-10 right-5 md:relative py-2 px-4 flex items-center space-x-2 bg-(--color-main) text-(--primary-text-dark) text-xs md:text-sm md:text-lg rounded-md cursor-pointer">
@@ -44,9 +44,9 @@ export default function searchSearch({isShowSect, setIsShowSect}: Props) {
                 <div className="relative w-full px-5 py-3 mt-3 bg-(--surface-dark) flex items-center justify-evenly rounded-md">
                     <div className="w-full flex flex-wrap md:flex-nowrap items-center">
                         <img src="/dp2.png" alt="Profile Picture" className="w-[100px] md:w-[150px] h-[100px] md:h-[150px] rounded-full" />
-                        <div className="w-full pl-5 text-(--primary-text-dark)">
+                        <div className="w-full md:pl-5 text-(--primary-text-dark)">
                             <h1 className="text-lg md:text-2xl">Jane Doe</h1>
-                            <p className="text-xs md:text-sm"><span className="text-(--color-accent)">@username</span> | <span>14</span>.mutual ghosts</p>
+                            <p className="text-xs md:text-sm"><span className="text-(--color-accent)">@username</span> | <span>14</span> mutual ghosts</p>
                         </div>
                     </div>
                     <button className="absolute top-10 right-5 md:relative py-2 px-4 flex items-center space-x-2 bg-(--color-accent)/60 hover:bg-(--color-accent)/80 text-(--primary-text-dark) text-xs md:text-sm md:text-lg rounded-md cursor-pointer">
@@ -58,9 +58,9 @@ export default function searchSearch({isShowSect, setIsShowSect}: Props) {
                 <div className="relative w-full px-5 py-3 mt-3 bg-(--surface-dark) flex items-center justify-evenly rounded-md">
                     <div className="w-full flex flex-wrap md:flex-nowrap items-center">
                         <img src="/dp3.png" alt="Profile Picture" className="w-[100px] md:w-[150px] h-[100px] md:h-[150px] rounded-full" />
-                        <div className="w-full pl-5 text-(--primary-text-dark)">
+                        <div className="w-full md:pl-5 text-(--primary-text-dark)">
                             <h1 className="text-lg md:text-2xl">Mike Pretchett</h1>
-                            <p className="text-xs md:text-sm"><span className="text-(--color-accent)">@username</span> | <span>37</span>.mutual ghosts</p>
+                            <p className="text-xs md:text-sm"><span className="text-(--color-accent)">@username</span> | <span>37</span> mutual ghosts</p>
                         </div>
                     </div>
                     <button className="absolute top-10 right-5 md:relative py-2 px-4 flex items-center space-x-2 bg-(--color-accent)/60 hover:bg-(--color-accent)/80 text-(--primary-text-dark) text-xs md:text-sm md:text-lg rounded-md cursor-pointer">
@@ -72,9 +72,9 @@ export default function searchSearch({isShowSect, setIsShowSect}: Props) {
                 <div className="relative w-full px-5 py-3 mt-3 bg-(--surface-dark) flex items-center justify-evenly rounded-md">
                     <div className="w-full flex flex-wrap md:flex-nowrap items-center">
                         <img src="/dp4.png" alt="Profile Picture" className="w-[100px] md:w-[150px] h-[100px] md:h-[150px] rounded-full" />
-                        <div className="w-full pl-5 text-(--primary-text-dark)">
+                        <div className="w-full md:pl-5 text-(--primary-text-dark)">
                             <h1 className="text-lg md:text-2xl">Alice Keya</h1>
-                            <p className="text-xs md:text-sm"><span className="text-(--color-accent)">@username</span> | <span>4</span>.mutual ghosts</p>
+                            <p className="text-xs md:text-sm"><span className="text-(--color-accent)">@username</span> | <span>4</span> mutual ghosts</p>
                         </div>
                     </div>
                     <button className="absolute top-10 right-5 md:relative py-2 px-4 flex items-center space-x-2 bg-(--color-main) text-(--primary-text-dark) text-xs md:text-sm md:text-lg rounded-md cursor-pointer">

@@ -1,19 +1,75 @@
 @import "tailwindcss";
+/* @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Michroma&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap'); */
 
-@theme {
+
+:root {
+  /* =========================================
+     1. MAIN & ACCENT PALETTE (Brand Colors)
+     ========================================= */
+  /* Main (Purple Tone) */
+  --color-main: #C084FC;              /* Light/Bright Purple */
+  --color-main-deep: #9333EA;         /* Rich Aesthetic Purple (Buttons / Key Highlights) */
+  --color-main-hover: #7E22CE;        /* Darker Purple (Hover State) */
+  --color-main-subtle: #F3E8FF;       /* Soft Light Purple Tint (Light Mode Badges/BGs) */
+  --color-main-subtle-dark: #2A173B;  /* Deep Purple Tint (Dark Mode Badges/BGs) */
+
+  /* Accent (Cyan Tone) */
+  --color-accent: #22D3EE;            /* Bright Cyan */
+  --color-accent-deep: #0891B2;       /* Deep Aesthetic Cyan (Buttons / Links) */
+  --color-accent-hover: #0E7490;      /* Darker Cyan (Hover State) */
+  --color-accent-subtle: #E0F2FE;     /* Soft Light Cyan Tint (Light Mode Badges/BGs) */
+  --color-accent-subtle-dark: #102A36;/* Deep Cyan Tint (Dark Mode Badges/BGs) */
+
+  /* =========================================
+     2. GREYSCALE / NEUTRAL SCALE (Cool Slate)
+     ========================================= */
+  --grey-50:  #F9FAFB;   /* App Canvas (Light Mode) */
+  --grey-100: #F3F4F6;   /* --primary-light: Cards & Input BGs */
+  --grey-200: #E5E7EB;   /* Borders, Dividers & Disabled Button BGs */
+  --grey-300: #D1D5DB;   /* Secondary Borders & Subtle Icons */
+  --grey-400: #9CA3AF;   /* Disabled Text & Placeholder Text */
+  --grey-500: #6B7280;   /* Secondary Text / Subtext */
+  --grey-600: #4B5563;   /* Muted Body Text */
+  --grey-700: #374151;   /* Primary Dark Text in Light Mode */
+  --grey-800: #1F2937;   /* Surface Dark Hover */
+  --grey-900: #111827;   /* Primary Dark Canvas / Background */
+
+  /* =========================================
+     3. LIGHT MODE SPECIFICS
+     ========================================= */
+  --primary-light: #F3F4F6;
+  --surface-light: #FFFFFF;
+  --surface-light-hover: #F9FAFB;
+  --primary-text-light: #1F2937;
+  --secondary-text-light: #6B7280;
+  --border-light: #E5E7EB;
+
+  /* =========================================
+     4. DARK MODE SPECIFICS (Your Original Palette)
+     ========================================= */
   --primary-dark: #121417;
   --surface-dark: #1C1F24;
+  --surface-dark-hover: #22262C;
   --primary-text-dark: #E5E7EB;
-  --surface-dark-hover: #22262c;
+  --secondary-text-dark: #9CA3AF;
+  --border-dark: #2A2E35;
 
+  /* =========================================
+     5. UTILITY & DISABLED STATES
+     ========================================= */
+  --btn-disabled-bg: var(--grey-200);
+  --btn-disabled-text: var(--grey-400);
+  --btn-disabled-bg-dark: #2A2E35;
+  --btn-disabled-text-dark: #4B5563;
+}
 
+@theme {
+  --animate-float: float 6s ease-in-out infinite;
 
-  --color-main: #C084FC;
-  --color-accent: #22D3EE;
-
-
-
-  --primary-light: #F3F4F6;
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-12px); }
+  }
 }
 
 @layer utilities {
@@ -31,6 +87,27 @@
 * {
   transition: all ease-in-out .3s;
 }
+
+
+.audiowide-regular {
+  font-family: "Audiowide", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.michroma-regular {
+  font-family: "Michroma", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.montserrat-100 {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+
 
 body {
   background-color: var(--primary-dark);

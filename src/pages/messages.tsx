@@ -67,7 +67,7 @@ function messages() {
 
     return (
         <>
-            <main className='relative md:p-5 w-full h-screen flex flex-col md:flex-row space-x-5'>
+            <main className='relative md:p-5 w-full h-screen flex flex-col md:flex-row space-x-2'>
                 {isShowSect ? (
                     <section className="hidden lg:block w-full md:w-[15%] h-[5%] min-h-12.5 md:h-full p-1 md:pt-4 rounded-md lg:w-[5%] fixed md:static bottom-0 bg-(--surface-dark) opacity-100 z-50 md:z-0">
 
