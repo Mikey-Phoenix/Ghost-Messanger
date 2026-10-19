@@ -4,30 +4,15 @@ import { ToastContainer, toast } from 'react-toastify';
 import { IoChatbubbleOutline, IoChatbubblesOutline, IoSettingsOutline, IoCallOutline  } from "react-icons/io5";
 import SetBar from "../components/setBar"
 import MessageBar from "../components/messageBar"
-import MessageSect from '../components/messageSect';
-import ProfileSect from '../components/profileSect';
-import PrivacySect from '../components/privacySect';
-import NotifySect from '../components/notifySect';
-import ThemeSect from '../components/themeSect';
-import SearchSect from '../components/searchSect';
+import MessageSect from '../components/sections/messageSect';
+import ProfileSect from '../components/sections/profileSect';
+import PrivacySect from '../components/sections/privacySect';
+import NotifySect from '../components/sections/notifySect';
+import ThemeSect from '../components/sections/themeSect';
+import SearchSect from '../components/sections/searchSect';
+import { isLight, primary, surfaceBg, surfaceBgHover, primaryText, accent, accentHover, main, mainHover, grey, pattern1 } from "../theme/themeVars";
 
 function messages() {
-    // #ff00ff
-    // #00ffff
-
-    // const [currentSect, setCurrentSect] = useState("messages");
-
-    // localStorage.setItem("currentSect", currentSect);
-    // console.log(localStorage.getItem("currentSect"))
-    
-    
-    // function changeSect (sect:string) {
-    //     setCurrentSect(sect);
-    //     localStorage.setItem("currentSect", sect);
-    //     console.log(currentSect)
-    // }
-    // localStorage.setItem("isPassword", "false");
-
     const [currentSect, setCurrentSect] = useState(
         () => localStorage.getItem("currentSect") || "messages"
     );
@@ -65,37 +50,39 @@ function messages() {
         toast.error(message)
     }
 
+    const pattern = pattern1
+
     return (
         <>
             <main className='relative md:p-5 w-full h-screen flex flex-col md:flex-row space-x-2'>
                 {isShowSect ? (
-                    <section className="hidden lg:block w-full md:w-[15%] h-[5%] min-h-12.5 md:h-full p-1 md:pt-4 rounded-md lg:w-[5%] fixed md:static bottom-0 bg-(--surface-dark) opacity-100 z-50 md:z-0">
+                    <section className={`hidden lg:block w-full md:w-[15%] h-[5%] min-h-12.5 md:h-full p-1 md:pt-4 rounded-md lg:w-[5%] fixed md:static bottom-0 bg-(${surfaceBg}) opacity-100 z-50 md:z-0`}>
 
                         <div className='w-full flex md:flex-col items-center justify-evenly md:space-y-5'>
                             {currentSect == "messages" ?(
-                                <div className="h-fit px-5 lg:px-0 lg:w-full py-2 rounded-md bg-(--color-main)" title='chats'>
-                                    <IoChatbubbleOutline className="text-(--primary-text-dark) text-2xl md:text-3xl mx-auto cursor-pointer" onClick={()=> changeSect("messages")}/>
+                                <div className={`h-fit px-5 lg:px-0 lg:w-full py-2 rounded-md bg-(${main})`} title='chats'>
+                                    <IoChatbubbleOutline className={`text-(${surfaceBg}) text-2xl md:text-3xl mx-auto cursor-pointer`} onClick={()=> changeSect("messages")}/>
                                 </div>
                             ):(
                                 <div className='h-fit px-5 md:px-0 lg:w-full py-2' title='chats'>
-                                    <IoChatbubbleOutline className="text-(--primary-text-dark) hover:text-(--color-main) text-2xl md:text-3xl mx-auto cursor-pointer" onClick={()=> changeSect("messages")}/>
+                                    <IoChatbubbleOutline className={`text-(${primaryText}) hover:text-(${main}) text-2xl md:text-3xl mx-auto cursor-pointer`} onClick={()=> changeSect("messages")}/>
                                 </div>
 
                             )}
                             <div className="h-fit px-5 md:px-0 lg:w-full py-2 opacity-50" title="disabled" onClick={() => notify("This feature is currently disabled.")}>
-                                <IoCallOutline className="text-(--primary-text-dark) hover:text-(--color-main) text-2xl md:text-3xl mx-auto cursor-pointer"/>
+                                <IoCallOutline className={`text-(${primaryText}) hover:text-(${main}) text-2xl md:text-3xl mx-auto cursor-pointer`}/>
                             </div>
                             <div className="h-fit px-5 md:px-0 lg:w-full py-2 opacity-50" title="disabled" onClick={() => notify("This feature is currently disabled.")}>
-                                <IoChatbubblesOutline className="text-(--primary-text-dark) hover:text-(--color-main) text-2xl md:text-3xl mx-auto cursor-pointer"/>
+                                <IoChatbubblesOutline className={`text-(${primaryText}) hover:text-(${main}) text-2xl md:text-3xl mx-auto cursor-pointer`}/>
                             </div>
                             {currentSect == "settings" || currentSect == "settings/privacy" || currentSect == "settings/notify" || currentSect == "settings/theme" ? (
-                                <div className="h-fit px-5 lg:px-0 lg:w-full py-2 rounded-md bg-(--color-main)" title='settings'>
-                                    <IoSettingsOutline className="text-(--primary-text-dark) text-2xl md:text-3xl mx-auto cursor-pointer" onClick={()=> changeSect("settings")}/>
+                                <div className={`h-fit px-5 lg:px-0 lg:w-full py-2 rounded-md bg-(${main})`} title='settings'>
+                                    <IoSettingsOutline className={`text-(${surfaceBg}) text-2xl md:text-3xl mx-auto cursor-pointer`} onClick={()=> changeSect("settings")}/>
                                 </div>
 
                             ):(
                                 <div className=" h-fit px-5 md:px-0 lg:w-full py-2" title='settings'>
-                                    <IoSettingsOutline className="text-(--primary-text-dark) hover:text-(--color-main) text-2xl md:text-3xl mx-auto cursor-pointer" onClick={()=> changeSect("settings")}/>
+                                    <IoSettingsOutline className={`text-(${primaryText}) hover:text-(${main}) text-2xl md:text-3xl mx-auto cursor-pointer`} onClick={()=> changeSect("settings")}/>
                                 </div>
 
                             )}
@@ -104,32 +91,32 @@ function messages() {
                     </section>
 
                 ): (
-                    <section className="w-full md:w-[15%] h-[5%] min-h-12.5 md:h-full p-1 md:pt-4 rounded-md lg:w-[5%] fixed md:static bottom-0 bg-(--surface-dark) opacity-100 z-50 md:z-0">
+                    <section className={`w-full md:w-[15%] h-[5%] min-h-12.5 md:h-full p-1 md:pt-4 rounded-md lg:w-[5%] fixed md:static bottom-0 bg-(${surfaceBg}) opacity-100 z-50 md:z-0`}>
                         <div className='w-full flex md:flex-col items-center justify-evenly md:space-y-5'>
                             {currentSect == "messages" ?(
-                                <div className="h-fit px-5 lg:px-0 lg:w-full py-2 rounded-md bg-(--color-main)" title='chats'>
-                                    <IoChatbubbleOutline className="text-(--primary-text-dark) text-2xl md:text-3xl mx-auto cursor-pointer" onClick={()=> changeSect("messages")}/>
+                                <div className={`h-fit px-5 lg:px-0 lg:w-full py-2 rounded-md bg-(${main})`} title='chats'>
+                                    <IoChatbubbleOutline className={`text-(${surfaceBg}) text-2xl md:text-3xl mx-auto cursor-pointer`} onClick={()=> changeSect("messages")}/>
                                 </div>
                             ):(
                                 <div className='h-fit px-5 md:px-0 lg:w-full py-2' title='chats'>
-                                    <IoChatbubbleOutline className="text-(--primary-text-dark) hover:text-(--color-main) text-2xl md:text-3xl mx-auto cursor-pointer" onClick={()=> changeSect("messages")}/>
+                                    <IoChatbubbleOutline className={`text-(${primaryText}) hover:text-(${main}) text-2xl md:text-3xl mx-auto cursor-pointer`} onClick={()=> changeSect("messages")}/>
                                 </div>
 
                             )}
                             <div className="h-fit px-5 md:px-0 lg:w-full py-2 opacity-50" title="disabled" onClick={() => notify("This feature is currently disabled.")}>
-                                <IoCallOutline className="text-(--primary-text-dark) hover:text-(--color-main) text-2xl md:text-3xl mx-auto cursor-pointer"/>
+                                <IoCallOutline className={`text-(${primaryText}) hover:text-(${main}) text-2xl md:text-3xl mx-auto cursor-pointer`}/>
                             </div>
                             <div className="h-fit px-5 md:px-0 lg:w-full py-2 opacity-50" title="disabled" onClick={() => notify("This feature is currently disabled.")}>
-                                <IoChatbubblesOutline className="text-(--primary-text-dark) hover:text-(--color-main) text-2xl md:text-3xl mx-auto cursor-pointer"/>
+                                <IoChatbubblesOutline className={`text-(${primaryText}) hover:text-(${main}) text-2xl md:text-3xl mx-auto cursor-pointer`}/>
                             </div>
                             {currentSect == "settings" || currentSect == "settings/privacy" || currentSect == "settings/notify" || currentSect == "settings/theme" ? (
-                                <div className="h-fit px-5 lg:px-0 lg:w-full py-2 rounded-md bg-(--color-main)" title='settings'>
-                                    <IoSettingsOutline className="text-(--primary-text-dark) text-2xl md:text-3xl mx-auto cursor-pointer" onClick={()=> changeSect("settings")}/>
+                                <div className={`h-fit px-5 lg:px-0 lg:w-full py-2 rounded-md bg-(${main})`} title='settings'>
+                                    <IoSettingsOutline className={`text-(${surfaceBg}) text-2xl md:text-3xl mx-auto cursor-pointer`} onClick={()=> changeSect("settings")}/>
                                 </div>
 
                             ):(
                                 <div className=" h-fit px-5 md:px-0 lg:w-full py-2" title='settings'>
-                                    <IoSettingsOutline className="text-(--primary-text-dark) hover:text-(--color-main) text-2xl md:text-3xl mx-auto cursor-pointer" onClick={()=> changeSect("settings")}/>
+                                    <IoSettingsOutline className={`text-(${primaryText}) hover:text-(${main}) text-2xl md:text-3xl mx-auto cursor-pointer`} onClick={()=> changeSect("settings")}/>
                                 </div>
 
                             )}
@@ -139,7 +126,7 @@ function messages() {
                 )}
 
                 {isShowSect ? (
-                    <section className="hidden lg:block w-full md:w-[80%] lg:w-[25%] h-full md:h-full px-4 rounded-md bg-(--surface-dark)">
+                    <section className={`hidden lg:block w-full md:w-[80%] lg:w-[25%] h-full md:h-full px-4 rounded-md bg-(${surfaceBg})`}>
                         {currentSect == "messages" || currentSect == "messages/show" || currentSect == "discover" ? (
                             <MessageBar changeSect={changeSect} currentSect={currentSect}/>
                         ): (
@@ -147,7 +134,7 @@ function messages() {
                         )}
                     </section>
                 ):(
-                    <section className="w-full md:w-[80%] lg:w-[25%] h-full md:h-full px-4 rounded-md bg-(--surface-dark)">
+                    <section className={`w-full md:w-[80%] lg:w-[25%] h-full md:h-full px-4 rounded-md bg-(${surfaceBg})`}>
                         {currentSect == "messages" || currentSect == "messages/show" || currentSect == "discover" ? (
                             <MessageBar changeSect={changeSect} currentSect={currentSect}/>
                         ): (
@@ -158,7 +145,7 @@ function messages() {
                 )}
 
                 {isShowSect ? (
-                    <section className="relative w-full lg:block lg:w-[70%] h-full rounded-md border border-(--surface-dark) bg-[url('/pattern_1.webp')]">
+                    <section className={`relative w-full lg:block lg:w-[70%] h-full rounded-md border border-(${surfaceBg}) bg-[${pattern}]`}>
                         {currentSect == "settings" || currentSect == "settings/profile" ? (
                             <ProfileSect isShowSect={isShowSect} setIsShowSect={setIsShowSect} popUp={popUp} setPopUp={setPopUp} setTitle={setTitle} setDescription={setDescription} setPlaceholder={setPlaceholder} isPassword={isPassword} setIsPassword={setIsPassword} />
                         ): currentSect == "settings/privacy" ? (
@@ -174,7 +161,7 @@ function messages() {
                         )}
                     </section>
                 ):(
-                    <section className="relative hidden w-full lg:block lg:w-[70%] h-full rounded-md border border-(--surface-dark) bg-[url('/pattern_1.webp')]">
+                    <section className={`relative hidden w-full lg:block lg:w-[70%] h-full rounded-md border border-(${surfaceBg}) bg-[${pattern}]`}>
                         {currentSect == "settings" || currentSect == "settings/profile" ? (
                             <ProfileSect isShowSect={isShowSect} setIsShowSect={setIsShowSect} popUp={popUp} setPopUp={setPopUp} setTitle={setTitle} setDescription={setDescription} setPlaceholder={setPlaceholder} isPassword={isPassword} setIsPassword={setIsPassword} />
                         ): currentSect == "settings/privacy" ? (

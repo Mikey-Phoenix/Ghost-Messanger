@@ -1,20 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-import { IoPlayCircleOutline } from "react-icons/io5";
+import { IoPlayCircleOutline, IoSunnyOutline, IoMoonOutline } from "react-icons/io5";
+// import { IoSunnyOutline } from "react-icons/io5";
+import { isLight, primary, surfaceBg, surfaceBgHover, primaryText, accent, accentHover, main, mainHover, grey } from "../theme/themeVars";
+import { useTheme } from "../theme/themeToggle";
 
 function home() {
+    const { isLight, toggle } = useTheme();
+
     return (
         <>
-            <nav className='fixed top-0 left-0 w-full h-20 p-2 md:px-25 flex items-center justify-between text-(--primary-text-dark) bg-(--primary-dark) z-100'>
+            <nav className={`fixed top-0 left-0 w-full h-20 p-2 md:px-25 flex items-center justify-between text-(${primaryText}) bg-(${primary}) z-100`}>
                 <img src="/icon.webp" alt="" className='w-[50px] md:w-[100px]' />
                 {/* <div className='w-[25%] flex items-center justify-evenly text-xl'>
                     <Link to={"/"}>Home</Link>
                     <Link to={"/messages"}>About</Link>
                 </div> */}
-                <div className="py-1 px-2 flex items-center space-x-2 rounded-md bg-(--surface-dark) shadow-lg">
-                    <button className="py-2 px-4 text-(--primary-text-dark) text-sm md:text-base rounded-md cursor-pointer" onClick={() => window.location.replace("/sign-in")}>Sign In</button>
-                    <button className="py-2 px-4 bg-(--color-main) text-(--primary-text-dark) text-xs md:text-sm md:text-lg font-bold rounded-md cursor-pointer" onClick={() => window.location.replace("/sign-up")}>Sign Up</button>
-                </div>
+                {/* <div className={`py-1 px-2 flex items-center space-x-2 rounded-md bg-(${surfaceBg}) shadow-lg`}>
+                    <button className={`py-2 px-4 text-(${primaryText}) text-sm md:text-base rounded-md cursor-pointer`} onClick={() => window.location.replace("/sign-in")}>Sign In</button>
+                    <button className={`py-2 px-4 bg-(${main}) text-(--primary-text-dark) text-xs md:text-sm md:text-lg font-bold rounded-md cursor-pointer`} onClick={() => window.location.replace("/sign-up")}>Sign Up</button>
+                </div> */}
+                {isLight ? (
+                    <div className={`py-1 px-2 flex items-center space-x-2 rounded-md bg-(${surfaceBg}) shadow-lg`} onClick={() => {toggle(), console.log(isLight)}}>
+                        <div className={`py-2 px-4 bg-(${main}) text-(${primaryText}) text-xs md:text-sm font-bold rounded-md cursor-pointer`}>
+                            <IoSunnyOutline />
+                        </div>
+                        <div className={`py-2 px-4 text-(${primaryText}) text-sm md:text-base rounded-md cursor-pointer`}>
+                            <IoMoonOutline />
+                        </div>
+                    </div>
+                ):(
+                    <div className={`py-1 px-2 flex items-center space-x-2 rounded-md bg-(${surfaceBg}) shadow-lg`} onClick={() => {toggle(), console.log(isLight)}}>
+                        <div className={`py-2 px-4 text-(${primaryText}) text-sm md:text-base rounded-md cursor-pointer`}>
+                            <IoSunnyOutline />
+                        </div>
+                        <div className={`py-2 px-4 bg-(${accent}) text-(${primaryText}) text-xs md:text-sm font-bold rounded-md cursor-pointer`}>
+                            <IoMoonOutline />
+                        </div>
+                    </div>
+
+                )}
             </nav>
 
             <main>
@@ -28,9 +53,9 @@ function home() {
                         <div className='w-full lg:translate-x-10 pt-20 text-center lg:text-left text-(--primary-text-dark) md:text-4xl z-20'>
                             <div className='relative w-fit h-50 md:mb-5 mx-auto lg:mx-0 flex items-center justify-center'>
                                 <img src="/logo.webp" alt="" className='w-50 md:w-100' />
-                                <p className='absolute bottom-10 md:bottom-0 left-5 md:left-0 tracking-[0.5em] text-(--color-main) michroma-regular'>Messe<span className='text-(--primary-dark)'>ng</span>er</p>
+                                <p className={`absolute bottom-10 md:bottom-0 left-5 md:left-0 tracking-[0.5em] text-(${main}) michroma-regular`}>Messe<span className={`text-(${primary})`}>ng</span>er</p>
                             </div>
-                            <p className='md:w-2/3 mx-auto lg:mx-0 px-2 text-(--primary-text-dark) text-sm text-center lg:text-left md:text-lg motserrat-100'>Send messages, photos and voice notes that stay between you and the people you choose. Fast, private and simple enough for the whole family.</p>
+                            <p className={`md:w-2/3 mx-auto lg:mx-0 px-2 text-(${primaryText}) text-sm text-center lg:text-left md:text-lg motserrat-100`}>Send messages, photos and voice notes that stay between you and the people you choose. Fast, private and simple enough for the whole family.</p>
                             <button className="w-1/4 mt-5 py-2 px-4 bg-(--color-accent-deep) hover:bg-(--color-accent-hover) text-(--primary-text-dark) text-sm md:text-base rounded-md cursor-pointer" onClick={() => window.location.replace("/sign-up")}>Get App</button>
                         </div>
 
@@ -41,12 +66,12 @@ function home() {
 
 
                 <h1 className='w-[90vw] mx-auto mt-5 michroma-regular text-xl md:text-3xl text-(--primary-text-dark)'>Features</h1>
-                <div className='w-full md:w-[90vw] h-screen mx-auto p-5 py-10 text-(--primary-text-dark)' >
+                <div className={`w-full md:w-[90vw] h-screen mx-auto p-5 py-10 text-(primaryText)`} >
                     <div className='h-2/3 md:h-fit grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5'>
                         <div className='relative'>
                             <div className='absolute w-full h-full -translate-1 hover:translate-2 bg-(--color-accent)/60 -z-5'></div>
                             <div className='absolute w-full h-full translate-1 hover:-translate-2 bg-(--color-main)/60 -z-5'></div>
-                            <div className='h-fit bg-(--surface-dark) rounded-md flex-col'>
+                            <div className={`h-fit bg-(${surfaceBg}) rounded-md flex-co`}>
                                 <div className='w-full overflow-hidden'>
                                     <img src="/placeholder.png" alt="" className="w-50 mx-auto"/>
                                 </div>
@@ -61,7 +86,7 @@ function home() {
                         <div className='relative'>
                             <div className='absolute w-full h-full -translate-1 hover:translate-2 bg-(--color-accent)/60 -z-5'></div>
                             <div className='absolute w-full h-full translate-1 hover:-translate-2 bg-(--color-main)/60 -z-5'></div>
-                            <div className='h-fit bg-(--surface-dark) rounded-md flex-col'>
+                            <div className={`h-fit bg-(${surfaceBg}) rounded-md flex-co`}>
                                 <div className='w-full overflow-hidden'>
                                     <img src="/placeholder.png" alt="" className="w-50 mx-auto"/>
                                 </div>
@@ -75,7 +100,7 @@ function home() {
                         <div className='relative'>
                             <div className='absolute w-full h-full -translate-1 hover:translate-2 bg-(--color-accent)/60 -z-5'></div>
                             <div className='absolute w-full h-full translate-1 hover:-translate-2 bg-(--color-main)/60 -z-5'></div>
-                            <div className='h-fit bg-(--surface-dark) rounded-md flex-col'>
+                            <div className={`h-fit bg-(${surfaceBg}) rounded-md flex-co`}>
                                 <div className='w-full overflow-hidden'>
                                     <img src="/placeholder.png" alt="" className="w-50 mx-auto"/>
                                 </div>
@@ -89,7 +114,7 @@ function home() {
                         <div className='relative'>
                             <div className='absolute w-full h-full -translate-1 hover:translate-2 bg-(--color-accent)/60 -z-5'></div>
                             <div className='absolute w-full h-full translate-1 hover:-translate-2 bg-(--color-main)/60 -z-5'></div>
-                            <div className='h-fit bg-(--surface-dark) rounded-md flex-col'>
+                            <div className={`h-fit bg-(${surfaceBg}) rounded-md flex-co`}>
                                 <div className='w-full overflow-hidden'>
                                     <img src="/placeholder.png" alt="" className="w-50 mx-auto"/>
                                 </div>
