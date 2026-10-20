@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import { IoPlayCircleOutline, IoSunnyOutline, IoMoonOutline } from "react-icons/io5";
 // import { IoSunnyOutline } from "react-icons/io5";
 import { isLight, primary, surfaceBg, surfaceBgHover, primaryText, accent, accentHover, main, mainHover, grey } from "../theme/themeVars";
-import { useTheme } from "../theme/themeToggle";
+import { useTheme } from "../context/themeContext";
+
 
 function home() {
-    const { isLight, toggle } = useTheme();
+    const { theme, toggleTheme } = useTheme();
 
     return (
         <>
@@ -20,8 +21,8 @@ function home() {
                     <button className={`py-2 px-4 text-(${primaryText}) text-sm md:text-base rounded-md cursor-pointer`} onClick={() => window.location.replace("/sign-in")}>Sign In</button>
                     <button className={`py-2 px-4 bg-(${main}) text-(--primary-text-dark) text-xs md:text-sm md:text-lg font-bold rounded-md cursor-pointer`} onClick={() => window.location.replace("/sign-up")}>Sign Up</button>
                 </div> */}
-                {isLight ? (
-                    <div className={`py-1 px-2 flex items-center space-x-2 rounded-md bg-(${surfaceBg}) shadow-lg`} onClick={() => {toggle(), console.log(isLight)}}>
+                {theme == "light" ? (
+                    <div className={`py-1 px-2 flex items-center space-x-2 rounded-md bg-(${surfaceBg}) shadow-lg`} onClick={toggleTheme}>
                         <div className={`py-2 px-4 bg-(${main}) text-(${primaryText}) text-xs md:text-sm font-bold rounded-md cursor-pointer`}>
                             <IoSunnyOutline />
                         </div>
@@ -30,7 +31,7 @@ function home() {
                         </div>
                     </div>
                 ):(
-                    <div className={`py-1 px-2 flex items-center space-x-2 rounded-md bg-(${surfaceBg}) shadow-lg`} onClick={() => {toggle(), console.log(isLight)}}>
+                    <div className={`py-1 px-2 flex items-center space-x-2 rounded-md bg-(${surfaceBg}) shadow-lg`} onClick={toggleTheme}>
                         <div className={`py-2 px-4 text-(${primaryText}) text-sm md:text-base rounded-md cursor-pointer`}>
                             <IoSunnyOutline />
                         </div>
@@ -71,7 +72,7 @@ function home() {
                         <div className='relative'>
                             <div className='absolute w-full h-full -translate-1 hover:translate-2 bg-(--color-accent)/60 -z-5'></div>
                             <div className='absolute w-full h-full translate-1 hover:-translate-2 bg-(--color-main)/60 -z-5'></div>
-                            <div className={`h-fit bg-(${surfaceBg}) rounded-md flex-co`}>
+                            <div className={`h-fit bg-(${surfaceBg}) rounded-md flex-col`}>
                                 <div className='w-full overflow-hidden'>
                                     <img src="/placeholder.png" alt="" className="w-50 mx-auto"/>
                                 </div>
@@ -86,7 +87,7 @@ function home() {
                         <div className='relative'>
                             <div className='absolute w-full h-full -translate-1 hover:translate-2 bg-(--color-accent)/60 -z-5'></div>
                             <div className='absolute w-full h-full translate-1 hover:-translate-2 bg-(--color-main)/60 -z-5'></div>
-                            <div className={`h-fit bg-(${surfaceBg}) rounded-md flex-co`}>
+                            <div className={`h-fit bg-(${surfaceBg}) rounded-md flex-col`}>
                                 <div className='w-full overflow-hidden'>
                                     <img src="/placeholder.png" alt="" className="w-50 mx-auto"/>
                                 </div>
@@ -100,7 +101,7 @@ function home() {
                         <div className='relative'>
                             <div className='absolute w-full h-full -translate-1 hover:translate-2 bg-(--color-accent)/60 -z-5'></div>
                             <div className='absolute w-full h-full translate-1 hover:-translate-2 bg-(--color-main)/60 -z-5'></div>
-                            <div className={`h-fit bg-(${surfaceBg}) rounded-md flex-co`}>
+                            <div className={`h-fit bg-(${surfaceBg}) rounded-md flex-col`}>
                                 <div className='w-full overflow-hidden'>
                                     <img src="/placeholder.png" alt="" className="w-50 mx-auto"/>
                                 </div>
@@ -114,7 +115,7 @@ function home() {
                         <div className='relative'>
                             <div className='absolute w-full h-full -translate-1 hover:translate-2 bg-(--color-accent)/60 -z-5'></div>
                             <div className='absolute w-full h-full translate-1 hover:-translate-2 bg-(--color-main)/60 -z-5'></div>
-                            <div className={`h-fit bg-(${surfaceBg}) rounded-md flex-co`}>
+                            <div className={`h-fit bg-(${surfaceBg}) rounded-md flex-col`}>
                                 <div className='w-full overflow-hidden'>
                                     <img src="/placeholder.png" alt="" className="w-50 mx-auto"/>
                                 </div>

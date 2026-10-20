@@ -21,7 +21,7 @@ type Props = {
 export default function popUp({ popUp, setPopUp, title, description, placeholder, isPassword, setIsPassword }: Props) {
     const [showPassword, setShowPassword] = useState(false);
 
-    const pattern = "url('/pattern1_light.webp')"
+    const pattern = pattern1
 
     useEffect(()=>{
         setShowPassword(showPassword);
@@ -88,7 +88,7 @@ export function RadioPop({radioPop, setRadioPop, title, items, active}: Props){
                     <IoCloseOutline className={`absolute top-[50%] right-5 -translate-y-1/2 text-(${primaryText}) hover:text-(${main}) text-2xl md:text-3xl mx-auto cursor-pointer"`} onClick={closePopUp} />
                 </div>
                 <div className="w-full lg:w-[70%] p-5 mt-5 absolute top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 text-center">
-                    <div className={`w-full md:w-[70%] mt-3 md:mt-5 mx-auto relative bg-(${surfaceBg}) rounded-md text-(${primaryText}) overflow-y-scroll no-scrollbar"`}>
+                    <div className={`w-full md:w-[70%] mt-3 md:mt-5 mx-auto relative bg-(${surfaceBg}) rounded-md text-(${primaryText}) overflow-y-scroll no-scrollbar`}>
                         {items.map((item:string, index:number) => (
                             <div className={`p-3 md:p-5 border-b border-(${surfaceBgHover}) flex items-center justify-between cursor-pointer hover:bg-(${surfaceBgHover})`} onClick={() => setSelected(index)}>
                                 <p>{item}</p>

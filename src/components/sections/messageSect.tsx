@@ -26,7 +26,7 @@ export default function messageSect({ isShowSect, setIsShowSect }: Props) {
             </div>
             <div className='w-full h-[77%] relative'>
                 <div className='w-full h-fit max-h-full px-3 pb-3 sticky top-full overflow-y-scroll no-scrollbar'>
-                    <div className={`rounded-md w-fit mx-auto my-2 px-3 py-1 font-semibold bg-(--color-main) text-(--primary-text-dark) text-xs md:text-sm md:text-base`}>Today</div>
+                    <div className={`rounded-md w-fit mx-auto my-2 px-3 py-1 font-semibold bg-(--color-main) text-white text-xs md:text-sm`}>Today</div>
                     <div className='relative rounded-md w-fit mb-1 px-3 py-1 bg-(--color-main) text-white text-sm md:text-base'>Heyyyy <span className='absolute top-full right-0 text-(--color-accent) cursor-pointer' title="Delivered"><IoCheckmarkDone className='' /></span> <span className=' absolute top-full left-0 text-xs opacity-60'>11:00 PM</span></div>
                     <div className="w-full relative">
                         <div className={`rounded-md sticky left-full w-fit mb-1 px-3 py-1 bg-(${surfaceBg}) text-(${primaryText}) text-sm md:text-base`}>Suuuuup <span className='absolute top-full right-0 text-(--color-accent) cursor-pointer' title="Delivered"><IoCheckmarkDone className='' /></span> <span className=' absolute top-full left-0 text-xs opacity-60'>11:00 PM</span></div>
@@ -40,7 +40,7 @@ export default function messageSect({ isShowSect, setIsShowSect }: Props) {
                     </div>
                     <div className='relative rounded-md w-fit mb-1 px-3 py-1 bg-(--color-main) text-white text-sm md:text-base'>😂 <span className='absolute top-full right-0 text-(--color-accent) cursor-pointer' title="Delivered"><IoCheckmarkDone className='' /></span> <span className=' absolute top-full left-0 text-xs opacity-60'>11:00 PM</span></div>
                     
-                    <div className={`rounded-md w-fit mx-auto my-2 px-3 py-1 font-semibold bg-(--color-main) text-(--primary-text-dark) text-xs md:text-sm md:text-base`}>Today</div>
+                    <div className={`rounded-md w-fit mx-auto my-2 px-3 py-1 font-semibold bg-(--color-main) text-white text-xs md:text-sm`}>Today</div>
                     <div className='relative rounded-md w-fit mb-1 px-3 py-1 bg-(--color-main) text-white text-sm md:text-base'>Heyyyy <span className='absolute top-full right-0 text-(--color-accent) cursor-pointer' title="Delivered"><IoCheckmarkDone className='' /></span> <span className=' absolute top-full left-0 text-xs opacity-60'>11:00 PM</span></div>
                     <div className="w-full relative">
                         <div className={`rounded-md sticky left-full w-fit mb-1 px-3 py-1 bg-(${surfaceBg}) text-(${primaryText}) text-sm md:text-base`}>Suuuuup <span className='absolute top-full right-0 text-(--color-accent) cursor-pointer' title="Delivered"><IoCheckmarkDone className='' /></span> <span className=' absolute top-full left-0 text-xs opacity-60'>11:00 PM</span></div>
@@ -54,7 +54,7 @@ export default function messageSect({ isShowSect, setIsShowSect }: Props) {
                     </div>
                     <div className='relative rounded-md w-fit mb-1 px-3 py-1 bg-(--color-main) text-white text-sm md:text-base'>😂 <span className='absolute top-full right-0 text-(--color-accent) cursor-pointer' title="Delivered"><IoCheckmarkDone className='' /></span> <span className=' absolute top-full left-0 text-xs opacity-60'>11:00 PM</span></div>
                     
-                    <div className={`rounded-md w-fit mx-auto my-2 px-3 py-1 font-semibold bg-(--color-main) text-(--primary-text-dark) text-xs md:text-sm md:text-base`}>Today</div>
+                    <div className={`rounded-md w-fit mx-auto my-2 px-3 py-1 font-semibold bg-(--color-main) text-white text-xs md:text-sm`}>Today</div>
                     <div className='relative rounded-md w-fit mb-1 px-3 py-1 bg-(--color-main) text-white text-sm md:text-base'>Heyyyy <span className='absolute top-full right-0 text-(--color-accent) cursor-pointer' title="Delivered"><IoCheckmarkDone className='' /></span> <span className=' absolute top-full left-0 text-xs opacity-60'>11:00 PM</span></div>
                     <div className="w-full relative">
                         <div className={`rounded-md sticky left-full w-fit mb-1 px-3 py-1 bg-(${surfaceBg}) text-(${primaryText}) text-sm md:text-base`}>Suuuuup <span className='absolute top-full right-0 text-(--color-accent) cursor-pointer' title="Delivered"><IoCheckmarkDone className='' /></span> <span className=' absolute top-full left-0 text-xs opacity-60'>11:00 PM</span></div>
@@ -68,7 +68,7 @@ export default function messageSect({ isShowSect, setIsShowSect }: Props) {
                     </div>
                     <div className='relative rounded-md w-fit mb-1 px-3 py-1 bg-(--color-main) text-white text-sm md:text-base'>😂 <span className='absolute top-full right-0 text-(--color-accent) cursor-pointer' title="Delivered"><IoCheckmarkDone className='' /></span> <span className=' absolute top-full left-0 text-xs opacity-60'>11:00 PM</span></div>
                     
-                    <div className={`rounded-md w-fit mx-auto my-2 px-3 py-1 font-semibold bg-(--color-main) text-(--primary-text-dark) text-xs md:text-sm md:text-base`}>Today</div>
+                    <div className={`rounded-md w-fit mx-auto my-2 px-3 py-1 font-semibold bg-(--color-main) text-white text-xs md:text-sm`}>Today</div>
                     <div className='relative rounded-md w-fit mb-1 px-3 py-1 bg-(--color-main) text-white text-sm md:text-base'>Heyyyy <span className='absolute top-full right-0 text-(--color-accent) cursor-pointer' title="Delivered"><IoCheckmarkDone className='' /></span> <span className=' absolute top-full left-0 text-xs opacity-60'>11:00 PM</span></div>
                     <div className="w-full relative">
                         <div className={`rounded-md sticky left-full w-fit mb-1 px-3 py-1 bg-(${surfaceBg}) text-(${primaryText}) text-sm md:text-base`}>Suuuuup <span className='absolute top-full right-0 text-(--color-accent) cursor-pointer' title="Delivered"><IoCheckmarkDone className='' /></span> <span className=' absolute top-full left-0 text-xs opacity-60'>11:00 PM</span></div>
@@ -82,7 +82,7 @@ export default function messageSect({ isShowSect, setIsShowSect }: Props) {
                     </div>
                     <div className='relative rounded-md w-fit mb-1 px-3 py-1 bg-(--color-main) text-white text-sm md:text-base'>😂 <span className='absolute top-full right-0 text-(--color-accent) cursor-pointer' title="Delivered"><IoCheckmarkDone className='' /></span> <span className=' absolute top-full left-0 text-xs opacity-60'>11:00 PM</span></div>
                     
-                    <div className={`rounded-md w-fit mx-auto my-2 px-3 py-1 font-semibold bg-(--color-main) text-(--primary-text-dark) text-xs md:text-sm md:text-base`}>Today</div>
+                    <div className={`rounded-md w-fit mx-auto my-2 px-3 py-1 font-semibold bg-(--color-main) text-white text-xs md:text-sm`}>Today</div>
                     <div className='relative rounded-md w-fit mb-1 px-3 py-1 bg-(--color-main) text-white text-sm md:text-base'>Heyyyy <span className='absolute top-full right-0 text-(--color-accent) cursor-pointer' title="Delivered"><IoCheckmarkDone className='' /></span> <span className=' absolute top-full left-0 text-xs opacity-60'>11:00 PM</span></div>
                     <div className="w-full relative">
                         <div className={`rounded-md sticky left-full w-fit mb-1 px-3 py-1 bg-(${surfaceBg}) text-(${primaryText}) text-sm md:text-base`}>Suuuuup <span className='absolute top-full right-0 text-(--color-accent) cursor-pointer' title="Delivered"><IoCheckmarkDone className='' /></span> <span className=' absolute top-full left-0 text-xs opacity-60'>11:00 PM</span></div>

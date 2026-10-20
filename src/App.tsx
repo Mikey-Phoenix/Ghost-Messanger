@@ -8,8 +8,8 @@ import SignIn from './pages/signIn'
 import SignUp from './pages/signUp'
 import Profile from './pages/profilePage'
 import Messages from './pages/messages'
-import { initTheme } from "./theme/themeToggle";
-initTheme();
+// import { initTheme } from "./theme/themeToggle";
+// initTheme();
 
 function App() {
   // const [count, setCount] = useState(0)

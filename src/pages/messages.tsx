@@ -10,7 +10,8 @@ import PrivacySect from '../components/sections/privacySect';
 import NotifySect from '../components/sections/notifySect';
 import ThemeSect from '../components/sections/themeSect';
 import SearchSect from '../components/sections/searchSect';
-import { isLight, primary, surfaceBg, surfaceBgHover, primaryText, accent, accentHover, main, mainHover, grey, pattern1 } from "../theme/themeVars";
+import { isLight, primary, surfaceBg, surfaceBgHover, primaryText, accent, accentHover, main, mainHover, grey, pattern1, pattern1_dark } from "../theme/themeVars";
+import { useTheme } from "../context/themeContext";
 
 function messages() {
     const [currentSect, setCurrentSect] = useState(
@@ -26,6 +27,8 @@ function messages() {
     const [radioPop, setRadioPop] = useState(false);
     const [items, setItems] = useState(null);
     const [active, setActive] = useState(0)
+
+    const { theme } = useTheme();
     
     
     useEffect(() => {
@@ -51,6 +54,7 @@ function messages() {
     }
 
     const pattern = pattern1
+    const patternDark = pattern1_dark
 
     return (
         <>
@@ -145,7 +149,7 @@ function messages() {
                 )}
 
                 {isShowSect ? (
-                    <section className={`relative w-full lg:block lg:w-[70%] h-full rounded-md border border-(${surfaceBg}) bg-[${pattern}]`}>
+                    <section className={`relative w-full lg:block lg:w-[70%] h-full rounded-md border border-(${surfaceBg}) bg-[${pattern}]`} style={{ backgroundImage: theme === "light" ? pattern : patternDark }}>
                         {currentSect == "settings" || currentSect == "settings/profile" ? (
                             <ProfileSect isShowSect={isShowSect} setIsShowSect={setIsShowSect} popUp={popUp} setPopUp={setPopUp} setTitle={setTitle} setDescription={setDescription} setPlaceholder={setPlaceholder} isPassword={isPassword} setIsPassword={setIsPassword} />
                         ): currentSect == "settings/privacy" ? (

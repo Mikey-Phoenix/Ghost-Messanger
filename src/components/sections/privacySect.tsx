@@ -66,7 +66,7 @@ export default function privacySect({ isShowSect, setIsShowSect, radioPop, setRa
                             </div>
                         </div>
                     ):(
-                        <div className={`w-17 h-9 pl-1.5 ml-3 md:ml-0 md:mr-10 flex items-center rounded-full border-4 border-(${main}) bg-(${surfaceBg}) opacity-60 hover:opacity-100`}>
+                        <div className={`w-17 h-9 pl-1.5 ml-3 md:ml-0 md:mr-10 flex items-center rounded-full border-4 border-(${main}) bg-(${surfaceBg})`}>
                             <div className={`w-7 h-7 rounded-full flex items-center justify-center bg-(${main})`}>
                                 {/* <IoCheckmarkOutline className="text-(--color-main)" /> */}
                             </div>
@@ -85,7 +85,7 @@ export default function privacySect({ isShowSect, setIsShowSect, radioPop, setRa
                             </div>
                         </div>
                     ):(
-                        <div className={`w-17 h-9 pl-1.5 ml-3 md:ml-0 md:mr-10 flex items-center rounded-full border-4 border-(${main}) bg-(${surfaceBg}) opacity-60 hover:opacity-100`}>
+                        <div className={`w-17 h-9 pl-1.5 ml-3 md:ml-0 md:mr-10 flex items-center rounded-full border-4 border-(${main}) bg-(${surfaceBg})`}>
                             <div className={`w-7 h-7 rounded-full flex items-center justify-center bg-(${main})`}>
                                 {/* <IoCheckmarkOutline className="text-(--color-main)" /> */}
                             </div>

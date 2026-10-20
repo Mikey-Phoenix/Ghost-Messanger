@@ -12,14 +12,14 @@
   --color-main-hover: #7E22CE;        /* Darker Purple (Hover State) */
   --color-main-subtle: #F3E8FF;       /* Soft Light Purple Tint (Light Mode Badges/BGs) */
   --color-main-subtle-dark: #2A173B;  /* Deep Purple Tint (Dark Mode Badges/BGs) */
-
+  
   /* Accent (Cyan Tone) */
   --color-accent: #22D3EE;            /* Bright Cyan */
   --color-accent-deep: #0891B2;       /* Deep Aesthetic Cyan (Buttons / Links) */
   --color-accent-hover: #0E7490;      /* Darker Cyan (Hover State) */
   --color-accent-subtle: #E0F2FE;     /* Soft Light Cyan Tint (Light Mode Badges/BGs) */
   --color-accent-subtle-dark: #102A36;/* Deep Cyan Tint (Dark Mode Badges/BGs) */
-
+  
   /* =========================================
      2. GREYSCALE / NEUTRAL SCALE (Cool Slate)
      ========================================= */
@@ -33,34 +33,50 @@
   --grey-700: #374151;   /* Primary Dark Text in Light Mode */
   --grey-800: #1F2937;   /* Surface Dark Hover */
   --grey-900: #111827;   /* Primary Dark Canvas / Background */
-
+  
   /* =========================================
-     3. LIGHT MODE SPECIFICS
-     ========================================= */
-  --primary-light: #F3F4F6;
-  --surface-light: #FFFFFF;
-  --surface-light-hover: #F9FAFB;
-  --primary-text-light: #1F2937;
-  --secondary-text-light: #6B7280;
-  --border-light: #E5E7EB;
-
-  /* =========================================
-     4. DARK MODE SPECIFICS (Your Original Palette)
-     ========================================= */
-  --primary-dark: #121417;
-  --surface-dark: #1C1F24;
-  --surface-dark-hover: #22262C;
-  --primary-text-dark: #E5E7EB;
-  --secondary-text-dark: #9CA3AF;
-  --border-dark: #2A2E35;
-
-  /* =========================================
-     5. UTILITY & DISABLED STATES
+  5. UTILITY & DISABLED STATES
      ========================================= */
   --btn-disabled-bg: var(--grey-200);
   --btn-disabled-text: var(--grey-400);
   --btn-disabled-bg-dark: #2A2E35;
   --btn-disabled-text-dark: #4B5563;
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  /* =========================================
+     3. LIGHT MODE SPECIFICS
+     ========================================= */
+  --primary: #F3F4F6;
+  --surface-bg: #FFFFFF;
+  --surface-bg-hover: #F9FAFB;
+  --primary-text: #1F2937;
+  --secondary-text: #6B7280;
+  --border-light: #E5E7EB;
+
+  --pattern-1: url('/patterns/light/pattern1_light.webp');
+  --pattern-2: url('/patterns/light/pattern2_light.webp');
+  --pattern-3: url('/patterns/light/pattern3_light.webp');
+  --pattern-4: url('/patterns/light/pattern4_light.webp');
+  
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  /* =========================================
+     4. DARK MODE SPECIFICS (Your Original Palette)
+     ========================================= */
+  --primary: #121417;
+  --surface-bg: #1C1F24;
+  --surface-bg-hover: #22262C;
+  --primary-text: #E5E7EB;
+  --secondary-text: #9CA3AF;
+  --border-dark: #2A2E35;
+
+  --pattern-1: url('/patterns/dark/pattern_1.webp');
+  --pattern-2: url('/patterns/dark/pattern_2.webp');
+  --pattern-3: url('/patterns/dark/pattern_3.webp');
+  --pattern-4: url('/patterns/dark/pattern_4.webp');
+
 }
 
 @theme {
@@ -109,6 +125,6 @@
 }
 
 
-/* body {
-  background-color: var(--primary-light);
-} */
+body {
+  background-color: var(--primary);
+}

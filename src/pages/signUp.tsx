@@ -134,7 +134,7 @@ function signUp() {
                             </form>
         
                             <div className={`relative w-full mt-10 border-t border-(${surfaceBgHover})`}>
-                                <p className={`absolute top-0 right-1/2 -translate-y-1/2 translate-x-1/2 px-3 pb-1 bg-(${surfaceBgHover}) text-xs md:text-sm`}>Or register with</p>
+                                <p className={`absolute top-0 right-1/2 -translate-y-1/2 translate-x-1/2 px-3 pb-1 bg-(${surfaceBg}) text-xs md:text-sm`}>Or register with</p>
                                 <button className={`w-full mt-5 md:mt-7 py-2 px-4 border text-(${primaryText}) text-sm md:text-base rounded-md cursor-pointer`}>Continue with Google</button>
                             </div>
                         </div>

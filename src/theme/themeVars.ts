@@ -23,15 +23,14 @@ const detectIsLight = (): boolean => {
 };
 
 export const isLight: boolean = detectIsLight();
+console.log(isLight)
 
 // Theme-dependent variables (the dark names are assumed; adjust to match your CSS)
-export const primary = isLight ? "--primary-light" : "--primary-dark";
-export const surfaceBg = isLight ? "--surface-light" : "--surface-dark";
-export const surfaceBgHover = isLight ? "--surface-light-hover" : "--surface-dark-hover";
-export const primaryText = isLight ? "--primary-text-light" : "--primary-text-dark";
-export const secondaryText = isLight ? "--secondary-text-light" : "--secondary-text-dark";
-
-// Theme-independent variables
+export const primary = "--primary";
+export const surfaceBg = "--surface-bg";
+export const surfaceBgHover = "--surface-bg-hover";
+export const primaryText = "--primary-text";
+export const secondaryText = "--secondary-text";
 export const accent = "--color-accent-deep";
 export const accentHover = "--color-accent-hover";
 export const main = "--color-main";
@@ -42,9 +41,13 @@ export const grey = "--grey-400";
 //     const pattern2 = "url('/pattern2_light.webp')"
 //     const pattern3 = "url('/pattern3_light.webp')"
 //     const pattern4 = "url('/pattern4_light.webp')"
-export const pattern1 = isLight ? "url('/pattern1_light.webp')" : "url('/pattern_1.webp')"
-export const pattern2 = isLight ? "url('/pattern2_light.webp')" : "url('/pattern_2.webp')"
-export const pattern3 = isLight ? "url('/pattern3_light.webp')" : "url('/pattern_3.webp')"
-export const pattern4 = isLight ? "url('/pattern4_light.webp')" : "url('/pattern_4.webp')"
+export const pattern1 ="url('/patterns/light/pattern1_light.webp')";
+export const pattern1_dark = "url('/patterns/dark/pattern_1.webp')";
+export const pattern2 ="url('/patterns/light/pattern2_light.webp')";
+export const pattern2_dark = "url('/patterns/dark/pattern_2.webp')";
+export const pattern3 ="url('/patterns/light/pattern3_light.webp')";
+export const pattern3_dark = "url('/patterns/dark/pattern_3.webp')";
+export const pattern4 ="url('/patterns/light/pattern4_light.webp')";
+export const pattern4_dark = "url('/patterns/dark/pattern_4.webp')";
 
-document.body.style.backgroundColor = `var(${primary})`;
+// document.body.style.backgroundColor = `var(${primary})`;

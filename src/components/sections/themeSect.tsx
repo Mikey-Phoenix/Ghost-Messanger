@@ -1,7 +1,7 @@
 import {useState, useEffect} from "react";
 import { IoCheckmarkOutline, IoChevronBackOutline } from "react-icons/io5";
-import { isLight, primary, surfaceBg, surfaceBgHover, primaryText, secondaryText, accent, accentHover, main, mainHover, grey, pattern1, pattern2, pattern3, pattern4 } from "../../theme/themeVars";
-
+import { isLight, primary, surfaceBg, surfaceBgHover, primaryText, secondaryText, accent, accentHover, main, mainHover, grey, pattern1, pattern2, pattern3, pattern4, pattern1_dark, pattern2_dark, pattern3_dark, pattern4_dark } from "../../theme/themeVars";
+import { useTheme } from "../../context/themeContext"
 
 type Props = {
     isShowSect: boolean;
@@ -17,6 +17,8 @@ type Props = {
 };
 export default function themeSect({ isShowSect, setIsShowSect, radioPop, setRadioPop, setTitle, items, setItems, active, setActive }: Props) { 
     const [appearanceRadio, setAppearanceRadio] = useState(true);
+
+    const { theme } = useTheme()
 
     // const primary = "--primary-light"
     // const surfaceBg = "--surface-light"
@@ -63,28 +65,28 @@ export default function themeSect({ isShowSect, setIsShowSect, radioPop, setRadi
             <div className="w-full overflow-x-scroll no-scrollbar">
                 <div className="flex space-x-2">
                     <div className={`text-(${primaryText}) hover:bg-(${surfaceBgHover}) rounded-md cursor-pointer p-2`}>
-                        <div className={`w-[200px] h-[400px] rounded-md border-4 border-(${surfaceBgHover}) bg-[${pattern1}]`}></div>
+                        <div className={`w-[200px] h-[400px] rounded-md border-4 border-(${surfaceBgHover}) bg-[${pattern1}]`} style={{ backgroundImage: theme === "light" ? pattern1 : pattern1_dark }}></div>
                         <div className="flex items-center space-x-3 w-fit mx-auto mt-2">
                             <p className="text-center">Pattern 1</p>
                             <p className={`w-7 h-7 flex items-center justify-center text-xl rounded-full bg-(${main}) text-(${surfaceBg})`}><IoCheckmarkOutline /></p>
                         </div>
                     </div>
                     <div className={`text-(${primaryText}) hover:bg-(${surfaceBgHover}) rounded-md cursor-pointer p-2`}>
-                        <div className={`w-[200px] h-[400px] rounded-md border-4 border-(${surfaceBgHover}) bg-[${pattern2}]`}></div>
+                        <div className={`w-[200px] h-[400px] rounded-md border-4 border-(${surfaceBgHover}) bg-[${pattern2}]`} style={{ backgroundImage: theme === "light" ? pattern2 : pattern2_dark }}></div>
                         <div className="flex items-center space-x-3 w-fit mx-auto mt-2">
                             <p className="text-center">Pattern 2</p>
                             <p className={`hidden w-7 h-7 flex items-center justify-center text-xl rounded-full bg-(${main}) text-(${surfaceBg})`}><IoCheckmarkOutline /></p>
                         </div>
                     </div>
                     <div className={`text-(${primaryText}) hover:bg-(${surfaceBgHover}) rounded-md cursor-pointer p-2`}>
-                        <div className={`w-[200px] h-[400px] rounded-md border-4 border-(${surfaceBgHover}) bg-[${pattern3}]`}></div>
+                        <div className={`w-[200px] h-[400px] rounded-md border-4 border-(${surfaceBgHover}) bg-[${pattern3}]`} style={{ backgroundImage: theme === "light" ? pattern3 : pattern3_dark }}></div>
                         <div className="flex items-center space-x-3 w-fit mx-auto mt-2">
                             <p className="text-center">Pattern 3</p>
                             <p className={`hidden w-7 h-7 flex items-center justify-center text-xl rounded-full bg-(${main}) text-(${surfaceBg})`}><IoCheckmarkOutline /></p>
                         </div>
                     </div>
                     <div className={`text-(${primaryText}) hover:bg-(${surfaceBgHover}) rounded-md cursor-pointer p-2`}>
-                        <div className={`w-[200px] h-[400px] rounded-md border-4 border-(${surfaceBgHover}) bg-[${pattern4}]`}></div>
+                        <div className={`w-[200px] h-[400px] rounded-md border-4 border-(${surfaceBgHover}) bg-[${pattern4}]`} style={{ backgroundImage: theme === "light" ? pattern4 : pattern4_dark }}></div>
                         <div className="flex items-center space-x-3 w-fit mx-auto mt-2">
                             <p className="text-center">Pattern 4</p>
                             <p className={`hidden w-7 h-7 flex items-center justify-center text-xl rounded-full bg-(${main}) text-(${surfaceBg})`}><IoCheckmarkOutline /></p>
