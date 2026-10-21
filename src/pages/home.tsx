@@ -86,7 +86,7 @@ function home() {
                 </div>
 
 
-                <h1 className='w-[90vw] mx-auto mt-5 michroma-regular text-xl md:text-3xl text-white'>Features</h1>
+                <h1 className='w-[90vw] mx-auto mt-5 michroma-regular text-xl md:text-3xl text-(--primary-text)'>Features</h1>
                 <div className={`w-full md:w-[90vw] h-screen mx-auto p-5 py-10 text-(primaryText)`} >
                     <div className='h-2/3 md:h-fit grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5'>
                         <div className='relative' onMouseOver={() => hoverGlitch({a: glitchBlue1, b: glitchMagenta1})} onMouseOut={() => hoverGlitchOut({a: glitchBlue1, b: glitchMagenta1})}>
