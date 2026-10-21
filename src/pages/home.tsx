@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from "react-router-dom";
 import { IoPlayCircleOutline, IoSunnyOutline, IoMoonOutline } from "react-icons/io5";
 // import { IoSunnyOutline } from "react-icons/io5";
@@ -8,10 +8,37 @@ import { useTheme } from "../context/themeContext";
 
 function home() {
     const { theme, toggleTheme } = useTheme();
+    const glitchBlue1 = useRef<HTMLDivElement>(null);
+    const glitchBlue2 = useRef<HTMLDivElement>(null);
+    const glitchBlue3 = useRef<HTMLDivElement>(null);
+    const glitchBlue4 = useRef<HTMLDivElement>(null);
+    const glitchMagenta1 = useRef<HTMLDivElement>(null);
+    const glitchMagenta2 = useRef<HTMLDivElement>(null);
+    const glitchMagenta3 = useRef<HTMLDivElement>(null);
+    const glitchMagenta4 = useRef<HTMLDivElement>(null);
+
+    function hoverGlitch({a, b}:{
+        a: any
+        b: any
+    }) {
+        a.current.classList.remove("-translate-1")
+        b.current.classList.remove("translate-1")
+        a.current.classList.add("translate-2")
+        b.current.classList.add("-translate-2")
+    }
+    function hoverGlitchOut({a, b}:{
+        a: any
+        b: any
+    }) {
+        a.current.classList.remove("translate-2")
+        b.current.classList.remove("-translate-2")
+        a.current.classList.add("-translate-1")
+        b.current.classList.add("translate-1")
+    }
 
     return (
         <>
-            <nav className={`fixed top-0 left-0 w-full h-20 p-2 md:px-25 flex items-center justify-between text-(${primaryText}) bg-(${primary}) z-100`}>
+            <nav className={`fixed top-0 left-0 w-screen h-20 p-2 md:px-25 flex items-center justify-between text-(${primaryText}) bg-(${primary}) z-100`}>
                 <img src="/icon.webp" alt="" className='w-[50px] md:w-[100px]' />
                 {/* <div className='w-[25%] flex items-center justify-evenly text-xl'>
                     <Link to={"/"}>Home</Link>
@@ -43,7 +70,7 @@ function home() {
                 )}
             </nav>
 
-            <main>
+            <main className=' overflow-x-hidden'>
                 <div className='relative h-screen w-screen md:p-5 overflow-hidden'>
                     <div className='absolute left-[50%] animate-[spin_20s_linear_infinite] -z-20'>
                         <div className='w-[1000px] h-[1000px] rounded-full bg-(--color-main) opacity-3 shadow-2xl shadow-main'></div>
@@ -69,9 +96,9 @@ function home() {
                 <h1 className='w-[90vw] mx-auto mt-5 michroma-regular text-xl md:text-3xl text-(--primary-text-dark)'>Features</h1>
                 <div className={`w-full md:w-[90vw] h-screen mx-auto p-5 py-10 text-(primaryText)`} >
                     <div className='h-2/3 md:h-fit grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5'>
-                        <div className='relative'>
-                            <div className='absolute w-full h-full -translate-1 hover:translate-2 bg-(--color-accent)/60 -z-5'></div>
-                            <div className='absolute w-full h-full translate-1 hover:-translate-2 bg-(--color-main)/60 -z-5'></div>
+                        <div className='relative' onMouseOver={() => hoverGlitch({a: glitchBlue1, b: glitchMagenta1})} onMouseOut={() => hoverGlitchOut({a: glitchBlue1, b: glitchMagenta1})}>
+                            <div ref={glitchBlue1} className='absolute w-full h-full -translate-1 hover:translate-2 bg-(--color-accent)/60 -z-5'></div>
+                            <div ref={glitchMagenta1} className='absolute w-full h-full translate-1 hover:-translate-2 bg-(--color-main)/60 -z-5'></div>
                             <div className={`h-fit bg-(${surfaceBg}) rounded-md flex-col`}>
                                 <div className='w-full overflow-hidden'>
                                     <img src="/placeholder.png" alt="" className="w-50 mx-auto"/>
@@ -84,9 +111,9 @@ function home() {
 
                         </div>
                                 
-                        <div className='relative'>
-                            <div className='absolute w-full h-full -translate-1 hover:translate-2 bg-(--color-accent)/60 -z-5'></div>
-                            <div className='absolute w-full h-full translate-1 hover:-translate-2 bg-(--color-main)/60 -z-5'></div>
+                        <div className='relative' onMouseOver={() => hoverGlitch({a: glitchBlue2, b: glitchMagenta2})} onMouseOut={() => hoverGlitchOut({a: glitchBlue2, b: glitchMagenta2})}>
+                            <div ref={glitchBlue2} className='absolute w-full h-full -translate-1 hover:translate-2 bg-(--color-accent)/60 -z-5'></div>
+                            <div ref={glitchMagenta2} className='absolute w-full h-full translate-1 hover:-translate-2 bg-(--color-main)/60 -z-5'></div>
                             <div className={`h-fit bg-(${surfaceBg}) rounded-md flex-col`}>
                                 <div className='w-full overflow-hidden'>
                                     <img src="/placeholder.png" alt="" className="w-50 mx-auto"/>
@@ -98,9 +125,9 @@ function home() {
                             </div>
 
                         </div>
-                        <div className='relative'>
-                            <div className='absolute w-full h-full -translate-1 hover:translate-2 bg-(--color-accent)/60 -z-5'></div>
-                            <div className='absolute w-full h-full translate-1 hover:-translate-2 bg-(--color-main)/60 -z-5'></div>
+                        <div className='relative' onMouseOver={() => hoverGlitch({a: glitchBlue3, b: glitchMagenta3})} onMouseOut={() => hoverGlitchOut({a: glitchBlue3, b: glitchMagenta3})}>
+                            <div ref={glitchBlue3} className='absolute w-full h-full -translate-1 hover:translate-2 bg-(--color-accent)/60 -z-5'></div>
+                            <div ref={glitchMagenta3} className='absolute w-full h-full translate-1 hover:-translate-2 bg-(--color-main)/60 -z-5'></div>
                             <div className={`h-fit bg-(${surfaceBg}) rounded-md flex-col`}>
                                 <div className='w-full overflow-hidden'>
                                     <img src="/placeholder.png" alt="" className="w-50 mx-auto"/>
@@ -112,9 +139,9 @@ function home() {
                             </div>
 
                         </div>
-                        <div className='relative'>
-                            <div className='absolute w-full h-full -translate-1 hover:translate-2 bg-(--color-accent)/60 -z-5'></div>
-                            <div className='absolute w-full h-full translate-1 hover:-translate-2 bg-(--color-main)/60 -z-5'></div>
+                        <div className='relative' onMouseOver={() => hoverGlitch({a: glitchBlue4, b: glitchMagenta4})} onMouseOut={() => hoverGlitchOut({a: glitchBlue4, b: glitchMagenta4})}>
+                            <div ref={glitchBlue4} className='absolute w-full h-full -translate-1 hover:translate-2 bg-(--color-accent)/60 -z-5'></div>
+                            <div ref={glitchMagenta4} className='absolute w-full h-full translate-1 hover:-translate-2 bg-(--color-main)/60 -z-5'></div>
                             <div className={`h-fit bg-(${surfaceBg}) rounded-md flex-col`}>
                                 <div className='w-full overflow-hidden'>
                                     <img src="/placeholder.png" alt="" className="w-50 mx-auto"/>

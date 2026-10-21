@@ -20,21 +20,6 @@ export default function themeSect({ isShowSect, setIsShowSect, radioPop, setRadi
 
     const { theme } = useTheme()
 
-    // const primary = "--primary-light"
-    // const surfaceBg = "--surface-light"
-    // const surfaceBgHover = "--surface-light-hover"
-    // const primaryText = "--primary-text-light"
-    // const secondaryText = "--secondary-text-light"
-    // const accent = "--color-accent-deep"
-    // const accentHover = "--color-accent-hover"
-    // const main = "--color-main-deep"
-    // const mainHover = "--color-main-hover"
-    // const grey = "--grey-400"
-
-    // const pattern1 = "url('/pattern1_light.webp')"
-    // const pattern2 = "url('/pattern2_light.webp')"
-    // const pattern3 = "url('/pattern3_light.webp')"
-    // const pattern4 = "url('/pattern4_light.webp')"
 
     useEffect(()=>{
         setAppearanceRadio(appearanceRadio);
@@ -65,7 +50,7 @@ export default function themeSect({ isShowSect, setIsShowSect, radioPop, setRadi
             <div className="w-full overflow-x-scroll no-scrollbar">
                 <div className="flex space-x-2">
                     <div className={`text-(${primaryText}) hover:bg-(${surfaceBgHover}) rounded-md cursor-pointer p-2`}>
-                        <div className={`w-[200px] h-[400px] rounded-md border-4 border-(${surfaceBgHover}) bg-[${pattern1}]`} style={{ backgroundImage: theme === "light" ? pattern1 : pattern1_dark }}></div>
+                        <div className={`w-[200px] h-[400px] rounded-md border-4 border-(${main}) bg-[${pattern1}]`} style={{ backgroundImage: theme === "light" ? pattern1 : pattern1_dark }}></div>
                         <div className="flex items-center space-x-3 w-fit mx-auto mt-2">
                             <p className="text-center">Pattern 1</p>
                             <p className={`w-7 h-7 flex items-center justify-center text-xl rounded-full bg-(${main}) text-(${surfaceBg})`}><IoCheckmarkOutline /></p>

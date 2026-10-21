@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
+import { Link } from'react-router-dom';
 import { IoRadioButtonOffOutline, IoRadioButtonOnOutline, IoEyeOffOutline, IoEyeOutline, IoCloseOutline, IoCheckmarkOutline } from "react-icons/io5";
 import { isLight, primary, surfaceBg, surfaceBgHover, primaryText, accent, accentHover, main, mainHover, grey } from "../theme/themeVars";
 
@@ -129,13 +130,13 @@ function signUp() {
                                     )}
                                 </div>
                                 <p className='mt-2 text-xs md:text-sm flex items-center' onClick={() => setReadTerms(prev => !prev)}>{readTerms ? <IoRadioButtonOnOutline className={`inline mr-2 cursor-pointer hover:text-(${accentHover})`} /> : <IoRadioButtonOffOutline className={`inline mr-2 cursor-pointer hover:text-(${accentHover})`} />} I agree to the <span className={`ml-1 text-(${accent}) underline cursor-pointer hover:text-(${accentHover})`}> terms & conditions</span></p>
-                                <button className={`w-full mt-5 md:mt-7 py-2 px-4 bg-(${main}) text-(--primary-text-dark) text-sm md:text-base rounded-md cursor-pointer`}>Create Account</button>
+                                <button className={`w-full mt-5 md:mt-7 py-2 px-4 bg-(${main}) text-white text-sm md:text-base rounded-md cursor-pointer`} onClick={() => setOtp(!otp)}>Create Account</button>
                                 
                             </form>
         
                             <div className={`relative w-full mt-10 border-t border-(${surfaceBgHover})`}>
                                 <p className={`absolute top-0 right-1/2 -translate-y-1/2 translate-x-1/2 px-3 pb-1 bg-(${surfaceBg}) text-xs md:text-sm`}>Or register with</p>
-                                <button className={`w-full mt-5 md:mt-7 py-2 px-4 border text-(${primaryText}) text-sm md:text-base rounded-md cursor-pointer`}>Continue with Google</button>
+                                <button className={`w-full mt-5 md:mt-7 py-2 px-4 border text-(${primaryText}) text-sm md:text-base rounded-md cursor-pointer`} onClick={() => setOtp(!otp)}>Continue with Google</button>
                             </div>
                         </div>
                     </section> 
@@ -229,7 +230,7 @@ function OtpWindow() {
     }
 
     return (
-        <main className={`absolute w-[70%] md:w-[50%] lg:w-[30%] lg:min-w-[400px] h-[70vh] md:min-h-[30vh] max-h-[300px] px-5 top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 flex items-center bg-[var(${surfaceBg})] rounded-2xl md:rounded-4xl text-(--primary-text-dark)`}>
+        <main className={`absolute w-[70%] md:w-[50%] lg:w-[30%] lg:min-w-[400px] h-[70vh] md:min-h-[30vh] max-h-[300px] px-5 top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 flex items-center bg-(${surfaceBg}) rounded-2xl md:rounded-4xl text-(--primary-text-dark)`}>
             <form action="" className='w-full '>
                 <div className='w-full flex items-center justify-center space-x-3 md:space-x-7'>
                     <input ref={inputRef} type='text' className={`w-[3rem] md:w-[4rem] p-3 md:p-5 bg-[var(${surfaceBgHover})] rounded-md text-lg md:text-2xl text-center font-bold text-(${primaryText}) ring-2 ring-(--primary-text-dark) focus:outline-0 focus:ring-2 focus:ring-(${main})`} value={value} onInput={(e) => checkValue(e.currentTarget.value, 0)} onKeyDown={(e) => backTick(e, e.currentTarget.value, 0)}/>
@@ -242,7 +243,10 @@ function OtpWindow() {
 
                 </div>
                 <p className={`mt-5 italic text-xs md:text-sm text-(${grey})`}><span className={`text-(${accent}) cursor-pointer`}>Resend OTP?</span> Wait <span>30</span> seconds</p>
-                <button className={`w-full mt-5 md:mt-7 py-2 px-4 bg-(${main}) hover:bg-(${mainHover}) text-(--primary-text-dark) text-sm md:text-base rounded-md cursor-pointer`}>Create Account</button>
+                <div className='flex items-center justify-center'>
+                    <Link to={"/messages"} className={`w-full mx-auto mt-5 md:mt-7 py-2 px-4 bg-(${main}) hover:bg-(${mainHover}) text-white text-center text-sm md:text-base rounded-md cursor-pointer`} >Create Account</Link>
+
+                </div>
             </form>
         </main>
     )

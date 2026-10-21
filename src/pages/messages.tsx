@@ -149,7 +149,7 @@ function messages() {
                 )}
 
                 {isShowSect ? (
-                    <section className={`relative w-full lg:block lg:w-[70%] h-full rounded-md border border-(${surfaceBg}) bg-[${pattern}]`} style={{ backgroundImage: theme === "light" ? pattern : patternDark }}>
+                    <section className={`relative w-full lg:block lg:w-[70%] h-full rounded-md border border-(${surfaceBg}) bg-[${pattern}]')]`} style={{ backgroundImage: theme === "light" ? pattern : patternDark }}>
                         {currentSect == "settings" || currentSect == "settings/profile" ? (
                             <ProfileSect isShowSect={isShowSect} setIsShowSect={setIsShowSect} popUp={popUp} setPopUp={setPopUp} setTitle={setTitle} setDescription={setDescription} setPlaceholder={setPlaceholder} isPassword={isPassword} setIsPassword={setIsPassword} />
                         ): currentSect == "settings/privacy" ? (
@@ -186,7 +186,7 @@ function messages() {
             {popUp && <PopUp popUp={popUp} setPopUp={setPopUp} title={title} description={description} placeholder={placeholder} isPassword={localStorage.getItem("isPassword") === "true"} setIsPassword={setIsPassword}  />}
             {radioPop && <RadioPop radioPop={radioPop} setRadioPop={setRadioPop} title={title} items={items} active={active} description='' placeholder='' isPassword={false} setIsPassword={setIsPassword} popUp={false} setPopUp={setPopUp} />}
             {/* <PopUp /> */}
-            <ToastContainer theme='dark' />
+            <ToastContainer theme={theme} />
         </>
     );
 }
