@@ -31,10 +31,10 @@ export const surfaceBg = "--surface-bg";
 export const surfaceBgHover = "--surface-bg-hover";
 export const primaryText = "--primary-text";
 export const secondaryText = "--secondary-text";
-export const accent = "--color-accent-deep";
-export const accentHover = "--color-accent-hover";
-export const main = "--color-main";
-export const mainHover = "--color-main-hover";
+export const accent = "--accent-deep";
+export const accentHover = "--accent-hover";
+export const main = "--main";
+export const mainHover = "--main-hover";
 export const grey = "--grey-400";
 
 // const pattern1 = "url('/pattern1_light.webp')"
@@ -50,4 +50,4 @@ export const pattern3_dark = "url('/patterns/dark/pattern_3.webp')";
 export const pattern4 ="url('/patterns/light/pattern4_light.webp')";
 export const pattern4_dark = "url('/patterns/dark/pattern_4.webp')";
 
-// document.body.style.backgroundColor = `var(${primary})`;
+// document.body.style.backgroundColor = `var(--primary)`;

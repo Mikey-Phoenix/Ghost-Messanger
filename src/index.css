@@ -7,18 +7,18 @@
      1. MAIN & ACCENT PALETTE (Brand Colors)
      ========================================= */
   /* Main (Purple Tone) */
-  --color-main: #C084FC;              /* Light/Bright Purple */
-  --color-main-deep: #9333EA;         /* Rich Aesthetic Purple (Buttons / Key Highlights) */
-  --color-main-hover: #7E22CE;        /* Darker Purple (Hover State) */
-  --color-main-subtle: #F3E8FF;       /* Soft Light Purple Tint (Light Mode Badges/BGs) */
-  --color-main-subtle-dark: #2A173B;  /* Deep Purple Tint (Dark Mode Badges/BGs) */
+  --main: #C084FC;              /* Light/Bright Purple */
+  --main-deep: #9333EA;         /* Rich Aesthetic Purple (Buttons / Key Highlights) */
+  --main-hover: #7E22CE;        /* Darker Purple (Hover State) */
+  --main-subtle: #F3E8FF;       /* Soft Light Purple Tint (Light Mode Badges/BGs) */
+  --main-subtle-dark: #2A173B;  /* Deep Purple Tint (Dark Mode Badges/BGs) */
   
   /* Accent (Cyan Tone) */
-  --color-accent: #22D3EE;            /* Bright Cyan */
-  --color-accent-deep: #0891B2;       /* Deep Aesthetic Cyan (Buttons / Links) */
-  --color-accent-hover: #0E7490;      /* Darker Cyan (Hover State) */
-  --color-accent-subtle: #E0F2FE;     /* Soft Light Cyan Tint (Light Mode Badges/BGs) */
-  --color-accent-subtle-dark: #102A36;/* Deep Cyan Tint (Dark Mode Badges/BGs) */
+  --accent: #22D3EE;            /* Bright Cyan */
+  --accent-deep: #0891B2;       /* Deep Aesthetic Cyan (Buttons / Links) */
+  --accent-hover: #0E7490;      /* Darker Cyan (Hover State) */
+  --accent-subtle: #E0F2FE;     /* Soft Light Cyan Tint (Light Mode Badges/BGs) */
+  --accent-subtle-dark: #102A36;/* Deep Cyan Tint (Dark Mode Badges/BGs) */
   
   /* =========================================
      2. GREYSCALE / NEUTRAL SCALE (Cool Slate)

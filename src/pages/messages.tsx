@@ -10,7 +10,7 @@ import PrivacySect from '../components/sections/privacySect';
 import NotifySect from '../components/sections/notifySect';
 import ThemeSect from '../components/sections/themeSect';
 import SearchSect from '../components/sections/searchSect';
-import { surfaceBg, primaryText, main, pattern1, pattern1_dark } from "../theme/themeVars";
+import { pattern1, pattern1_dark } from "../theme/themeVars";
 import { useTheme } from "../context/themeContext";
 
 function messages() {
@@ -60,33 +60,33 @@ function messages() {
         <>
             <main className='relative md:p-5 w-full h-screen flex flex-col md:flex-row space-x-2'>
                 {isShowSect ? (
-                    <section className={`hidden lg:block w-full md:w-[15%] h-[5%] min-h-12.5 md:h-full p-1 md:pt-4 rounded-md lg:w-[5%] fixed md:static bottom-0 bg-(${surfaceBg}) opacity-100 z-50 md:z-0`}>
+                    <section className={`hidden lg:block w-full md:w-[15%] h-[5%] min-h-12.5 md:h-full p-1 md:pt-4 rounded-md lg:w-[5%] fixed md:static bottom-0 bg-(--surface-bg) opacity-100 z-50 md:z-0`}>
 
                         <div className='w-full flex md:flex-col items-center justify-evenly md:space-y-5'>
                             {currentSect == "messages" ?(
-                                <div className={`h-fit px-5 lg:px-0 lg:w-full py-2 rounded-md bg-(${main})`} title='chats'>
-                                    <IoChatbubbleOutline className={`text-(${surfaceBg}) text-2xl md:text-3xl mx-auto cursor-pointer`} onClick={()=> changeSect("messages")}/>
+                                <div className={`h-fit px-5 lg:px-0 lg:w-full py-2 rounded-md bg-(--main)`} title='chats'>
+                                    <IoChatbubbleOutline className={`text-(--surface-bg) text-2xl md:text-3xl mx-auto cursor-pointer`} onClick={()=> changeSect("messages")}/>
                                 </div>
                             ):(
                                 <div className='h-fit px-5 md:px-0 lg:w-full py-2' title='chats'>
-                                    <IoChatbubbleOutline className={`text-(${primaryText}) hover:text-(${main}) text-2xl md:text-3xl mx-auto cursor-pointer`} onClick={()=> changeSect("messages")}/>
+                                    <IoChatbubbleOutline className={`text-(--primary-text) hover:text-(--main) text-2xl md:text-3xl mx-auto cursor-pointer`} onClick={()=> changeSect("messages")}/>
                                 </div>
 
                             )}
                             <div className="h-fit px-5 md:px-0 lg:w-full py-2 opacity-50" title="disabled" onClick={() => notify("This feature is currently disabled.")}>
-                                <IoCallOutline className={`text-(${primaryText}) hover:text-(${main}) text-2xl md:text-3xl mx-auto cursor-pointer`}/>
+                                <IoCallOutline className={`text-(--primary-text) hover:text-(--main) text-2xl md:text-3xl mx-auto cursor-pointer`}/>
                             </div>
                             <div className="h-fit px-5 md:px-0 lg:w-full py-2 opacity-50" title="disabled" onClick={() => notify("This feature is currently disabled.")}>
-                                <IoChatbubblesOutline className={`text-(${primaryText}) hover:text-(${main}) text-2xl md:text-3xl mx-auto cursor-pointer`}/>
+                                <IoChatbubblesOutline className={`text-(--primary-text) hover:text-(--main) text-2xl md:text-3xl mx-auto cursor-pointer`}/>
                             </div>
                             {currentSect == "settings" || currentSect == "settings/privacy" || currentSect == "settings/notify" || currentSect == "settings/theme" ? (
-                                <div className={`h-fit px-5 lg:px-0 lg:w-full py-2 rounded-md bg-(${main})`} title='settings'>
-                                    <IoSettingsOutline className={`text-(${surfaceBg}) text-2xl md:text-3xl mx-auto cursor-pointer`} onClick={()=> changeSect("settings")}/>
+                                <div className={`h-fit px-5 lg:px-0 lg:w-full py-2 rounded-md bg-(--main)`} title='settings'>
+                                    <IoSettingsOutline className={`text-(--surface-bg) text-2xl md:text-3xl mx-auto cursor-pointer`} onClick={()=> changeSect("settings")}/>
                                 </div>
 
                             ):(
                                 <div className=" h-fit px-5 md:px-0 lg:w-full py-2" title='settings'>
-                                    <IoSettingsOutline className={`text-(${primaryText}) hover:text-(${main}) text-2xl md:text-3xl mx-auto cursor-pointer`} onClick={()=> changeSect("settings")}/>
+                                    <IoSettingsOutline className={`text-(--primary-text) hover:text-(--main) text-2xl md:text-3xl mx-auto cursor-pointer`} onClick={()=> changeSect("settings")}/>
                                 </div>
 
                             )}
@@ -95,32 +95,32 @@ function messages() {
                     </section>
 
                 ): (
-                    <section className={`w-full md:w-[15%] h-[5%] min-h-12.5 md:h-full p-1 md:pt-4 rounded-md lg:w-[5%] fixed md:static bottom-0 bg-(${surfaceBg}) opacity-100 z-50 md:z-0`}>
+                    <section className={`w-full md:w-[15%] h-[5%] min-h-12.5 md:h-full p-1 md:pt-4 rounded-md lg:w-[5%] fixed md:static bottom-0 bg-(--surface-bg) opacity-100 z-50 md:z-0`}>
                         <div className='w-full flex md:flex-col items-center justify-evenly md:space-y-5'>
                             {currentSect == "messages" ?(
-                                <div className={`h-fit px-5 lg:px-0 lg:w-full py-2 rounded-md bg-(${main})`} title='chats'>
-                                    <IoChatbubbleOutline className={`text-(${surfaceBg}) text-2xl md:text-3xl mx-auto cursor-pointer`} onClick={()=> changeSect("messages")}/>
+                                <div className={`h-fit px-5 lg:px-0 lg:w-full py-2 rounded-md bg-(--main)`} title='chats'>
+                                    <IoChatbubbleOutline className={`text-(--surface-bg) text-2xl md:text-3xl mx-auto cursor-pointer`} onClick={()=> changeSect("messages")}/>
                                 </div>
                             ):(
                                 <div className='h-fit px-5 md:px-0 lg:w-full py-2' title='chats'>
-                                    <IoChatbubbleOutline className={`text-(${primaryText}) hover:text-(${main}) text-2xl md:text-3xl mx-auto cursor-pointer`} onClick={()=> changeSect("messages")}/>
+                                    <IoChatbubbleOutline className={`text-(--primary-text) hover:text-(--main) text-2xl md:text-3xl mx-auto cursor-pointer`} onClick={()=> changeSect("messages")}/>
                                 </div>
 
                             )}
                             <div className="h-fit px-5 md:px-0 lg:w-full py-2 opacity-50" title="disabled" onClick={() => notify("This feature is currently disabled.")}>
-                                <IoCallOutline className={`text-(${primaryText}) hover:text-(${main}) text-2xl md:text-3xl mx-auto cursor-pointer`}/>
+                                <IoCallOutline className={`text-(--primary-text) hover:text-(--main) text-2xl md:text-3xl mx-auto cursor-pointer`}/>
                             </div>
                             <div className="h-fit px-5 md:px-0 lg:w-full py-2 opacity-50" title="disabled" onClick={() => notify("This feature is currently disabled.")}>
-                                <IoChatbubblesOutline className={`text-(${primaryText}) hover:text-(${main}) text-2xl md:text-3xl mx-auto cursor-pointer`}/>
+                                <IoChatbubblesOutline className={`text-(--primary-text) hover:text-(--main) text-2xl md:text-3xl mx-auto cursor-pointer`}/>
                             </div>
                             {currentSect == "settings" || currentSect == "settings/privacy" || currentSect == "settings/notify" || currentSect == "settings/theme" ? (
-                                <div className={`h-fit px-5 lg:px-0 lg:w-full py-2 rounded-md bg-(${main})`} title='settings'>
-                                    <IoSettingsOutline className={`text-(${surfaceBg}) text-2xl md:text-3xl mx-auto cursor-pointer`} onClick={()=> changeSect("settings")}/>
+                                <div className={`h-fit px-5 lg:px-0 lg:w-full py-2 rounded-md bg-(--main)`} title='settings'>
+                                    <IoSettingsOutline className={`text-(--surface-bg) text-2xl md:text-3xl mx-auto cursor-pointer`} onClick={()=> changeSect("settings")}/>
                                 </div>
 
                             ):(
                                 <div className=" h-fit px-5 md:px-0 lg:w-full py-2" title='settings'>
-                                    <IoSettingsOutline className={`text-(${primaryText}) hover:text-(${main}) text-2xl md:text-3xl mx-auto cursor-pointer`} onClick={()=> changeSect("settings")}/>
+                                    <IoSettingsOutline className={`text-(--primary-text) hover:text-(--main) text-2xl md:text-3xl mx-auto cursor-pointer`} onClick={()=> changeSect("settings")}/>
                                 </div>
 
                             )}
@@ -130,7 +130,7 @@ function messages() {
                 )}
 
                 {isShowSect ? (
-                    <section className={`hidden lg:block w-full md:w-[80%] lg:w-[25%] h-full md:h-full px-4 rounded-md bg-(${surfaceBg})`}>
+                    <section className={`hidden lg:block w-full md:w-[80%] lg:w-[25%] h-full md:h-full px-4 rounded-md bg-(--surface-bg)`}>
                         {currentSect == "messages" || currentSect == "messages/show" || currentSect == "discover" ? (
                             <MessageBar changeSect={changeSect} currentSect={currentSect}/>
                         ): (
@@ -138,7 +138,7 @@ function messages() {
                         )}
                     </section>
                 ):(
-                    <section className={`w-full md:w-[80%] lg:w-[25%] h-full md:h-full px-4 rounded-md bg-(${surfaceBg})`}>
+                    <section className={`w-full md:w-[80%] lg:w-[25%] h-full md:h-full px-4 rounded-md bg-(--surface-bg)`}>
                         {currentSect == "messages" || currentSect == "messages/show" || currentSect == "discover" ? (
                             <MessageBar changeSect={changeSect} currentSect={currentSect}/>
                         ): (
@@ -149,7 +149,7 @@ function messages() {
                 )}
 
                 {isShowSect ? (
-                    <section className={`relative w-full lg:block lg:w-[70%] h-full rounded-md border border-(${surfaceBg}) bg-[${pattern}]')]`} style={{ backgroundImage: theme === "light" ? pattern : patternDark }}>
+                    <section className={`relative w-full lg:block lg:w-[70%] h-full rounded-md border border-(--surface-bg) bg-[${pattern}]')]`} style={{ backgroundImage: theme === "light" ? pattern : patternDark }}>
                         {currentSect == "settings" || currentSect == "settings/profile" ? (
                             <ProfileSect isShowSect={isShowSect} setIsShowSect={setIsShowSect} popUp={popUp} setPopUp={setPopUp} setTitle={setTitle} setDescription={setDescription} setPlaceholder={setPlaceholder} isPassword={isPassword} setIsPassword={setIsPassword} />
                         ): currentSect == "settings/privacy" ? (
@@ -165,7 +165,7 @@ function messages() {
                         )}
                     </section>
                 ):(
-                    <section className={`relative hidden w-full lg:block lg:w-[70%] h-full rounded-md border border-(${surfaceBg}) bg-[${pattern}]`}>
+                    <section className={`relative hidden w-full lg:block lg:w-[70%] h-full rounded-md border border-(--surface-bg) bg-[${pattern}]`}>
                         {currentSect == "settings" || currentSect == "settings/profile" ? (
                             <ProfileSect isShowSect={isShowSect} setIsShowSect={setIsShowSect} popUp={popUp} setPopUp={setPopUp} setTitle={setTitle} setDescription={setDescription} setPlaceholder={setPlaceholder} isPassword={isPassword} setIsPassword={setIsPassword} />
                         ): currentSect == "settings/privacy" ? (
