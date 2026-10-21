@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { IoCloseOutline, IoEyeOutline, IoEyeOffOutline, IoRadioButtonOffOutline, IoRadioButtonOnOutline } from "react-icons/io5";
-import { isLight, primary, surfaceBg, surfaceBgHover, primaryText, secondaryText, accent, accentHover, main, mainHover, grey, pattern1 } from "../theme/themeVars";
+import { surfaceBg, surfaceBgHover, primaryText, main, pattern1 } from "../theme/themeVars";
 
 
 type Props = {

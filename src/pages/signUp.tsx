@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 import { Link } from'react-router-dom';
 import { IoRadioButtonOffOutline, IoRadioButtonOnOutline, IoEyeOffOutline, IoEyeOutline, IoCloseOutline, IoCheckmarkOutline } from "react-icons/io5";
-import { isLight, primary, surfaceBg, surfaceBgHover, primaryText, accent, accentHover, main, mainHover, grey } from "../theme/themeVars";
+import { primary, surfaceBg, surfaceBgHover, primaryText, accent, accentHover, main, mainHover, grey } from "../theme/themeVars";
 
 function signUp() {
 

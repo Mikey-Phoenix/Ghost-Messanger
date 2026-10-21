@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { IoCheckmarkOutline, IoChevronBackOutline } from "react-icons/io5";
-import { isLight, primary, surfaceBg, surfaceBgHover, primaryText, secondaryText, accent, accentHover, main, mainHover, grey } from "../../theme/themeVars";
+import { surfaceBg, surfaceBgHover, primaryText, secondaryText, main, grey } from "../../theme/themeVars";
 
 type Props = {
     isShowSect: boolean;

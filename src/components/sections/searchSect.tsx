@@ -1,5 +1,5 @@
 import { IoPersonAddOutline, IoChatbubbleOutline, IoSearchOutline, IoFilterOutline, IoChevronBackOutline } from "react-icons/io5";
-import { isLight, primary, surfaceBg, surfaceBgHover, primaryText, secondaryText, accent, accentHover, main, mainHover, grey } from "../../theme/themeVars";
+import { surfaceBg, surfaceBgHover, primaryText, accent, accentHover, main } from "../../theme/themeVars";
 
 
 type Props = {

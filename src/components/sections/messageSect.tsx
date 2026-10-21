@@ -1,7 +1,7 @@
 import { FaArrowDownLong } from "react-icons/fa6";
 import { IoMdMore } from "react-icons/io";
 import { IoCheckmarkDone, IoCallOutline, IoSendSharp, IoChevronBackOutline } from "react-icons/io5";
-import { isLight, primary, surfaceBg, surfaceBgHover, primaryText, secondaryText, accent, accentHover, main, mainHover, grey } from "../../theme/themeVars";
+import { surfaceBg, primaryText, accent, main } from "../../theme/themeVars";
 
 
 type Props = {

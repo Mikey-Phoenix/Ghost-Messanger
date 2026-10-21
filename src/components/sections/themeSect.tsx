@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react";
 import { IoCheckmarkOutline, IoChevronBackOutline } from "react-icons/io5";
-import { isLight, primary, surfaceBg, surfaceBgHover, primaryText, secondaryText, accent, accentHover, main, mainHover, grey, pattern1, pattern2, pattern3, pattern4, pattern1_dark, pattern2_dark, pattern3_dark, pattern4_dark } from "../../theme/themeVars";
+import { surfaceBg, surfaceBgHover, primaryText, secondaryText, main, grey, pattern1, pattern2, pattern3, pattern4, pattern1_dark, pattern2_dark, pattern3_dark, pattern4_dark } from "../../theme/themeVars";
 import { useTheme } from "../../context/themeContext"
 
 type Props = {

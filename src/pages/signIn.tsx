@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import { IoRadioButtonOffOutline, IoRadioButtonOnOutline, IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
-import { isLight, primary, surfaceBg, surfaceBgHover, primaryText, accent, accentHover, main, mainHover, grey } from "../theme/themeVars";
+import {useState, useEffect} from 'react';
+import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
+import { primary, surfaceBg, surfaceBgHover, primaryText, main, mainHover, grey } from "../theme/themeVars";
 
 function signIn() {
     const [showPassword, setShowPassword] = useState(false);

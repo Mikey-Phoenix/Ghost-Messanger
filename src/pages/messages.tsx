@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import PopUp, {RadioPop} from '../components/popUp';
 import { ToastContainer, toast } from 'react-toastify';
 import { IoChatbubbleOutline, IoChatbubblesOutline, IoSettingsOutline, IoCallOutline  } from "react-icons/io5";
@@ -10,7 +10,7 @@ import PrivacySect from '../components/sections/privacySect';
 import NotifySect from '../components/sections/notifySect';
 import ThemeSect from '../components/sections/themeSect';
 import SearchSect from '../components/sections/searchSect';
-import { isLight, primary, surfaceBg, surfaceBgHover, primaryText, accent, accentHover, main, mainHover, grey, pattern1, pattern1_dark } from "../theme/themeVars";
+import { surfaceBg, primaryText, main, pattern1, pattern1_dark } from "../theme/themeVars";
 import { useTheme } from "../context/themeContext";
 
 function messages() {

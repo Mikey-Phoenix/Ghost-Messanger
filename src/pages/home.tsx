@@ -1,8 +1,8 @@
-import React, { useState, useRef } from 'react';
-import { Link } from "react-router-dom";
-import { IoPlayCircleOutline, IoSunnyOutline, IoMoonOutline } from "react-icons/io5";
+import { useRef } from 'react';
+// import { Link } from "react-router-dom";
+import { IoSunnyOutline, IoMoonOutline } from "react-icons/io5";
 // import { IoSunnyOutline } from "react-icons/io5";
-import { isLight, primary, surfaceBg, surfaceBgHover, primaryText, accent, accentHover, main, mainHover, grey } from "../theme/themeVars";
+import { primary, surfaceBg, primaryText, accent, main, } from "../theme/themeVars";
 import { useTheme } from "../context/themeContext";
 
 

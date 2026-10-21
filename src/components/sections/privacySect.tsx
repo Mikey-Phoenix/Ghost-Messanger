@@ -1,6 +1,6 @@
-import react, {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import { IoChevronBackOutline, IoCheckmarkOutline } from "react-icons/io5";
-import { isLight, primary, surfaceBg, surfaceBgHover, primaryText, secondaryText, accent, accentHover, main, mainHover, grey } from "../../theme/themeVars";
+import { surfaceBg, surfaceBgHover, primaryText, secondaryText, main, } from "../../theme/themeVars";
 
 
 type Props = {

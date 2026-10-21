@@ -1,6 +1,6 @@
 import { IoLockClosedOutline, IoExitOutline, IoTrashOutline, IoCallOutline, IoMailOutline, IoAtOutline, IoChevronBackOutline } from "react-icons/io5";
 import { MdPassword } from "react-icons/md";
-import { isLight, primary, surfaceBg, surfaceBgHover, primaryText, secondaryText, accent, accentHover, main, mainHover, grey } from "../../theme/themeVars";
+import { surfaceBg, surfaceBgHover, primaryText, main, grey } from "../../theme/themeVars";
 
 
 type Props = {
