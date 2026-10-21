@@ -76,7 +76,7 @@ function home() {
                                 <img src="/logo.webp" alt="" className='w-50 md:w-100' />
                                 <p className={`absolute bottom-10 md:bottom-0 left-5 md:left-0 tracking-[0.5em] text-(--main) michroma-regular`}>Messe<span className={`text-(--primary)`}>ng</span>er</p>
                             </div>
-                            <p className={`md:w-2/3 mx-auto lg:mx-0 px-2 text-(--primary-text}) text-sm text-center lg:text-left md:text-lg motserrat-100`}>Send messages, photos and voice notes that stay between you and the people you choose. Fast, private and simple enough for the whole family.</p>
+                            <p className={`md:w-2/3 mx-auto lg:mx-0 px-2 text-(--primary-text) text-sm text-center lg:text-left md:text-lg motserrat-100`}>Send messages, photos and voice notes that stay between you and the people you choose. Fast, private and simple enough for the whole family.</p>
                             <button className="w-1/4 mt-5 py-2 px-4 bg-(--accent-deep) hover:bg-(--accent-hover) text-white text-sm md:text-base rounded-md cursor-pointer" onClick={() => window.location.replace("/sign-up")}>Get App</button>
                         </div>
 
