@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { IoCloseOutline, IoEyeOutline, IoEyeOffOutline, IoRadioButtonOffOutline, IoRadioButtonOnOutline } from "react-icons/io5";
-import { surfaceBg, surfaceBgHover, primaryText, main, pattern1 } from "../theme/themeVars";
+import { surfaceBg, surfaceBgHover, primaryText, main, pattern1, pattern1_dark } from "../theme/themeVars";
+import { useTheme } from "../context/themeContext";
 
 
 type Props = {
@@ -21,7 +22,10 @@ type Props = {
 export default function popUp({ popUp, setPopUp, title, description, placeholder, isPassword, setIsPassword }: Props) {
     const [showPassword, setShowPassword] = useState(false);
 
-    const pattern = pattern1
+    const { theme } = useTheme();
+
+    const pattern = pattern1;
+    const patternDark = pattern1_dark;
 
     useEffect(()=>{
         setShowPassword(showPassword);
@@ -47,7 +51,7 @@ export default function popUp({ popUp, setPopUp, title, description, placeholder
     }
     return(
         <div className="fixed top-0 left-0 w-full h-full bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-md p-6">
-            <div className={`md:w-[80%] lg:w-[60%] h-[50%] md:h-[50%] lg:h-[80%] relative top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 bg-[${pattern}] rounded-md`}>
+            <div className={`md:w-[80%] lg:w-[60%] h-[50%] md:h-[50%] lg:h-[80%] relative top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 bg-[${pattern}] rounded-md`} style={{ backgroundImage: theme === "light" ? pattern : patternDark }}>
                 <div className={`relative w-full p-5 rounded-md bg-(--surface-bg) text-(--primary-text)`}>
                     <h1 className={`text-xl font-bold text-(--primary-text)`}>{title}</h1>
                     <IoCloseOutline className={`absolute top-[50%] right-5 -translate-y-1/2 text-(--primary-text) hover:text-(--main) text-2xl md:text-3xl mx-auto cursor-pointer`} onClick={closePopUp} />
@@ -70,6 +74,8 @@ export default function popUp({ popUp, setPopUp, title, description, placeholder
 export function RadioPop({radioPop, setRadioPop, title, items, active}: Props){
     const [selected, setSelected] = useState(active ?? 0);
 
+    const { theme } = useTheme();
+
     useEffect(() => {
         setSelected(active ?? 0);
     }, [active]);
@@ -78,11 +84,12 @@ export function RadioPop({radioPop, setRadioPop, title, items, active}: Props){
         setRadioPop?.(false);
     }
 
-    const pattern = pattern1
+    const pattern = pattern1;
+    const patternDark = pattern1_dark;
 
     return(
         <div className="fixed top-0 left-0 w-full h-full bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-md p-6">
-            <div className={`md:w-[80%] lg:w-[60%] h-[50%] md:h-[50%] lg:h-[80%] relative top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 bg-[${pattern}] rounded-md`}>
+            <div className={`md:w-[80%] lg:w-[60%] h-[50%] md:h-[50%] lg:h-[80%] relative top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 bg-[${pattern}] rounded-md`} style={{ backgroundImage: theme === "light" ? pattern : patternDark }}>
                 <div className={`relative w-full p-5 rounded-md bg-(--surface-bg) text-(--primary-text)`}>
                     <h1 className={`text-xl font-bold text-(--primary-text)`}>{title}</h1>
                     <IoCloseOutline className={`absolute top-[50%] right-5 -translate-y-1/2 text-(--primary-text) hover:text-(--main) text-2xl md:text-3xl mx-auto cursor-pointer"`} onClick={closePopUp} />
