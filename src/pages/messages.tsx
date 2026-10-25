@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import PopUp, {RadioPop} from '../components/popUp';
 import { ToastContainer, toast } from 'react-toastify';
 import { IoChatbubbleOutline, IoChatbubblesOutline, IoSettingsOutline, IoCallOutline  } from "react-icons/io5";
-import SetBar from "../components/setBar"
-import MessageBar from "../components/messageBar"
+import SetBar from "../components/sideBars/setBar"
+import MessageBar from "../components/sideBars/messageBar"
 import MessageSect from '../components/sections/messageSect';
 import ProfileSect from '../components/sections/profileSect';
 import PrivacySect from '../components/sections/privacySect';

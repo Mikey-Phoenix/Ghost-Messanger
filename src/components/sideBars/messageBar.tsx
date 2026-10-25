@@ -1,5 +1,5 @@
 import { IoArchiveOutline, IoSearchOutline, IoPersonAddOutline  } from "react-icons/io5";
-import { surfaceBgHover, primaryText, main, grey } from "../theme/themeVars";
+import { surfaceBgHover, primaryText, main, grey } from "../../theme/themeVars";
 
 type Props = {
     changeSect: (sect: string) => void;

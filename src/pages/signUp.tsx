@@ -60,6 +60,7 @@ function signUp() {
 
         const response = await fetch("http://localhost:5000/api/signup", {
             method: "POST",
+            credentials: "include",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, password }),
         });
@@ -185,6 +186,7 @@ function OtpWindow({ email }:{ email: string }) {
 
         const response = await fetch("http://localhost:5000/api/verify-otp", {
             method: "POST",
+            credentials: "include",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, code }),
         });
@@ -202,6 +204,7 @@ function OtpWindow({ email }:{ email: string }) {
 
         const response = await fetch("http://localhost:5000/api/resend-otp", {
             method: "POST",
+            credentials: "include",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email }),
         });

@@ -5,6 +5,7 @@ import SignIn from './pages/signIn'
 import SignUp from './pages/signUp'
 import Profile from './pages/profilePage'
 import Messages from './pages/messages'
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 // import { initTheme } from "./theme/themeToggle";
 // initTheme();
 
@@ -22,7 +23,9 @@ function App() {
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/messages" element={<Messages />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path="/messages" element={<Messages />} />
+          </Route>
 
 
           <Route path="*" element={<Navigate to="/" replace />} />

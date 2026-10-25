@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { IoPersonOutline, IoLockClosedOutline, IoNotificationsOutline, IoColorPaletteOutline, IoBodyOutline, IoServerOutline, IoListOutline } from "react-icons/io5";
-import { surfaceBgHover, primaryText, secondaryText } from "../theme/themeVars";
+import { surfaceBgHover, primaryText, secondaryText } from "../../theme/themeVars";
 
 
 type Props = {
