@@ -1,10 +1,15 @@
 import "./config"; // must stay first
+import http from "http";
 import app from "./app";
 import { connectDb } from "./db";
+import { setupSocket } from "./socket";
+
+const server = http.createServer(app);
+setupSocket(server);
 
 async function start() {
     await connectDb();
-    app.listen(5000, () => console.log("Server running on port 5000"));
+    server.listen(5000, () => console.log("Server running on port 5000"));
 }
 
 start();

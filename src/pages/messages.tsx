@@ -12,6 +12,7 @@ import ThemeSect from '../components/sections/themeSect';
 import SearchSect from '../components/sections/searchSect';
 import { pattern1, pattern1_dark } from "../theme/themeVars";
 import { useTheme } from "../context/themeContext";
+import { sileo } from "sileo"
 
 function messages() {
     const [currentSect, setCurrentSect] = useState(
@@ -73,10 +74,13 @@ function messages() {
                                 </div>
 
                             )}
-                            <div className="h-fit px-5 md:px-0 lg:w-full py-2 opacity-50" title="disabled" onClick={() => notify("This feature is currently disabled.")}>
+                            {/* <div className="h-fit px-5 md:px-0 lg:w-full py-2 opacity-50" title="disabled" onClick={() => notify("This feature is currently disabled.")}>
+                                <IoCallOutline className={`text-(--primary-text) hover:text-(--main) text-2xl md:text-3xl mx-auto cursor-pointer`}/>
+                            </div> */}
+                            <div className="h-fit px-5 md:px-0 lg:w-full py-2 opacity-50" title="disabled" onClick={() => sileo.error({ title: "Disabled", description: "This feature is currently unavailable"})}>
                                 <IoCallOutline className={`text-(--primary-text) hover:text-(--main) text-2xl md:text-3xl mx-auto cursor-pointer`}/>
                             </div>
-                            <div className="h-fit px-5 md:px-0 lg:w-full py-2 opacity-50" title="disabled" onClick={() => notify("This feature is currently disabled.")}>
+                            <div className="h-fit px-5 md:px-0 lg:w-full py-2 opacity-50" title="disabled" onClick={() => sileo.error({ title: "Disabled", description: "This feature is currently unavailable"})}>
                                 <IoChatbubblesOutline className={`text-(--primary-text) hover:text-(--main) text-2xl md:text-3xl mx-auto cursor-pointer`}/>
                             </div>
                             {currentSect == "settings" || currentSect == "settings/privacy" || currentSect == "settings/notify" || currentSect == "settings/theme" ? (
@@ -107,10 +111,13 @@ function messages() {
                                 </div>
 
                             )}
-                            <div className="h-fit px-5 md:px-0 lg:w-full py-2 opacity-50" title="disabled" onClick={() => notify("This feature is currently disabled.")}>
+                            {/* <div className="h-fit px-5 md:px-0 lg:w-full py-2 opacity-50" title="disabled" onClick={() => notify("This feature is currently disabled.")}>
+                                <IoCallOutline className={`text-(--primary-text) hover:text-(--main) text-2xl md:text-3xl mx-auto cursor-pointer`}/>
+                            </div> */}
+                            <div className="h-fit px-5 md:px-0 lg:w-full py-2 opacity-50" title="disabled" onClick={() => sileo.error({ title: "Disabled", description: "This feature is currently unavailable"})}>
                                 <IoCallOutline className={`text-(--primary-text) hover:text-(--main) text-2xl md:text-3xl mx-auto cursor-pointer`}/>
                             </div>
-                            <div className="h-fit px-5 md:px-0 lg:w-full py-2 opacity-50" title="disabled" onClick={() => notify("This feature is currently disabled.")}>
+                            <div className="h-fit px-5 md:px-0 lg:w-full py-2 opacity-50" title="disabled" onClick={() => sileo.error({ title: "Disabled", description: "This feature is currently unavailable"})}>
                                 <IoChatbubblesOutline className={`text-(--primary-text) hover:text-(--main) text-2xl md:text-3xl mx-auto cursor-pointer`}/>
                             </div>
                             {currentSect == "settings" || currentSect == "settings/privacy" || currentSect == "settings/notify" || currentSect == "settings/theme" ? (

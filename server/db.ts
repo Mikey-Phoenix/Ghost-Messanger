@@ -5,6 +5,7 @@ const db = client.db("messanger-app");
 
 export const users = db.collection("users");
 export const otps = db.collection("otps");
+export const messages = db.collection("messages");
 
 export async function connectDb() {
     await client.connect();

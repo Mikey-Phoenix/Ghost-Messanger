@@ -1,7 +1,7 @@
 import { ObjectId } from "mongodb";
 import { Router } from "express";
 import bcrypt from "bcrypt";
-import { users } from "../db";
+import { users, otps } from "../db";
 import { generateUsername } from "../utils/username";
 import { sendOtp } from "../utils/otp";
 import { setAuthCookie, clearAuthCookie } from "../utils/token";
@@ -107,9 +107,40 @@ router.get("/me", requireAuth, async (req, res) => {
     }
 });
 
-router.post("/logout", (req, res) => {
+router.post("/logout", (___, res) => {
     clearAuthCookie(res);
     return res.json({ message: "Logged out" });
+});
+
+router.delete("/account", requireAuth, async (req, res) => {
+    const { password } = req.body;
+
+    if (!password) {
+        return res.status(400).json({ error: "Password is required to delete your account" });
+    }
+
+    try {
+        const user = await users.findOne({ _id: new ObjectId(res.locals.userId) });
+
+        if (!user) {
+            clearAuthCookie(res);
+            return res.status(404).json({ error: "Account not found" });
+        }
+
+        const passwordMatches = await bcrypt.compare(password, user.passwordHash);
+        if (!passwordMatches) {
+            return res.status(403).json({ error: "Incorrect password" });
+        }
+
+        await users.deleteOne({ _id: user._id });
+        await otps.deleteMany({ email: user.email }); // remove any leftover codes
+
+        clearAuthCookie(res); // log them out at the same time
+        return res.json({ message: "Account deleted" });
+    } catch (e) {
+        console.error(e);
+        return res.status(500).json({ error: "Something went wrong" });
+    }
 });
 
 export default router;

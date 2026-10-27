@@ -1,6 +1,9 @@
 import { IoLockClosedOutline, IoExitOutline, IoTrashOutline, IoCallOutline, IoMailOutline, IoAtOutline, IoChevronBackOutline } from "react-icons/io5";
 import { MdPassword } from "react-icons/md";
 import { surfaceBg, surfaceBgHover, primaryText, main, grey } from "../../theme/themeVars";
+import { useNavigate } from "react-router-dom";
+
+
 
 
 type Props = {
@@ -29,6 +32,50 @@ export default function profileSect({ isShowSect, setIsShowSect, popUp, setPopUp
         setPlaceholder(placeholder);
         setIsPassword(title === "Password")
     }
+
+    const navigate = useNavigate();
+
+    async function handleLogout() {
+        try {
+            await fetch("http://localhost:5000/api/logout", {
+                method: "POST",
+                credentials: "include",
+            });
+        } catch (error) {
+            console.error("Logout request failed", error);
+        } finally {
+            navigate("/sign-in", { replace: true });
+        }
+    }
+
+    async function handleDeleteAccount() {
+        const confirmed = window.confirm(
+            "This permanently deletes your account and cannot be undone. Continue?"
+        );
+        if (!confirmed) return;
+
+        const password = window.prompt("Enter your password to confirm:");
+        if (!password) return;
+
+        try {
+            const response = await fetch("http://localhost:5000/api/account", {
+                method: "DELETE",
+                credentials: "include",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ password }),
+            });
+            const data = await response.json();
+
+            if (response.ok) {
+                navigate("/signup", { replace: true });
+            } else {
+                alert(data.error);
+            }
+        } catch (error) {
+            alert("Could not reach the server. Is it running?");
+        }
+    }
+
     return (
         <>
         <div className="w-full h-full relative overflow-y-scroll no-scrollbar">
@@ -69,11 +116,11 @@ export default function profileSect({ isShowSect, setIsShowSect, popUp, setPopUp
                 <div className={`relative mt-5 pt-5 border-t-2 border-(--surface-bg-hover)`}>
                     <span className="absolute top-0 left-0 text-xs md:text-sm opacity-60">Log out/Delete Account</span>
 
-                    <div className={`"w-full px-2 py-5 rounded-md flex items-center space-x-5 text-(--main) md:text-xl cursor-pointer hover:bg-(--surface-bg-hover)`}>
+                    <div className={`"w-full px-2 py-5 rounded-md flex items-center space-x-5 text-(--main) md:text-xl cursor-pointer hover:bg-(--surface-bg-hover)`} onClick={handleLogout}>
                         <IoExitOutline />
                         <p>Log Out</p>
                     </div>
-                    <div className={`"w-full px-2 py-5 rounded-md flex items-center space-x-5 text-(--main) md:text-xl cursor-pointer hover:bg-(--surface-bg-hover)`}>
+                    <div className={`"w-full px-2 py-5 rounded-md flex items-center space-x-5 text-(--main) md:text-xl cursor-pointer hover:bg-(--surface-bg-hover)`} onClick={handleDeleteAccount}>
                         <IoTrashOutline />
                         <p>Delete Account</p>
                     </div>
