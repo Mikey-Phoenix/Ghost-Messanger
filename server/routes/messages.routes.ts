@@ -6,9 +6,21 @@ import { ObjectId } from "mongodb";
 const router = Router();
 
 router.get("/messages", requireAuth, async (req, res) => {
-    const userId = res.locals.userId;
-    // fetch this user's messages
-    return res.json([]); // placeholder until you build the messages collection
+    try {
+        const user = await users.findOne(
+            { _id: new ObjectId(res.locals.userId) },
+            { projection: { username: 1, email: 1 } } // only these fields leave the database
+        );
+
+        if (!user) {
+            return res.status(401).json({ error: "Account not found" });
+        }
+
+        return res.json({ username: user.username, email: user.email });
+    } catch (e) {
+        console.error(e);
+        return res.status(500).json({ error: "Something went wrong" });
+    }
 });
 
 // Past messages between me and one other person

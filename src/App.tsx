@@ -18,7 +18,7 @@ function App() {
 
   return (
     <BrowserRouter>
-          <Toaster position="top-center" options={{fill: "var(--surface-bg-hover)", styles:{description: "text-(--primary-text) montserrat-100 font-bold"}}} />
+          <Toaster position="top-center" options={{fill: "var(--surface-bg-hover)", styles:{description: "text-(--grey-400) montserrat-100 font-bold"}}} />
         {/* {theme == "light" ? (
           
         ) : (

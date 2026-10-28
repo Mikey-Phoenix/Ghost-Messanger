@@ -1,9 +1,13 @@
 import {useState, useEffect, useRef} from 'react';
 // import { Navigate } from "react-router-dom";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
+import { GoogleLogin } from "@react-oauth/google";
+import { useNavigate } from "react-router-dom";
+
 // import { primary, surfaceBg, surfaceBgHover, primaryText, main, mainHover, grey } from "../theme/themeVars";
 
 function signIn() {
+    const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -67,8 +71,33 @@ function signIn() {
                     </form>
 
                     <div className={`relative w-full mt-10 border-t border-(--surface-bg-hover)`}>
-                        <p className={`absolute top-0 right-1/2 -translate-y-1/2 translate-x-1/2 px-3 pb-1 bg-(--surface-bg-hover) text-xs md:text-sm`}>Or login with</p>
-                        <button className={`w-full mt-5 md:mt-7 py-2 px-4 border text-(--primary-text) text-sm md:text-base rounded-md cursor-pointer`}>Continue with Google</button>
+                        <p className={`absolute top-0 right-1/2 -translate-y-1/2 translate-x-1/2 px-3 pb-1 bg-(--surface-bg) text-xs md:text-sm`}>Or login with</p>
+                        <div className={`w-full mt-5 md:mt-7 `}>
+
+                            <GoogleLogin
+                                shape='rectangular'
+                                onSuccess={async (credentialResponse) => {
+                                    try {
+                                        const res = await fetch("http://localhost:5000/api/google", {
+                                            method: "POST",
+                                            credentials: "include",
+                                            headers: { "Content-Type": "application/json" },
+                                            body: JSON.stringify({ credential: credentialResponse.credential }),
+                                        });
+                                        const data = await res.json();
+
+                                        if (res.ok) {
+                                            navigate("/messages");
+                                        } else {
+                                            alert(data.error);
+                                        }
+                                    } catch {
+                                        alert("Could not reach the server. Is it running?");
+                                    }
+                                }}
+                                onError={() => alert("Google sign-in failed")}
+                            />
+                        </div>
                     </div>
                 </div>
             </section>

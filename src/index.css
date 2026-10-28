@@ -7,8 +7,6 @@
      1. MAIN & ACCENT PALETTE (Brand Colors)
      ========================================= */
   /* Main (Purple Tone) */
-  --main: #C084FC;              /* Light/Bright Purple */
-  --main-deep: #9333EA;         /* Rich Aesthetic Purple (Buttons / Key Highlights) */
   --main-hover: #7E22CE;        /* Darker Purple (Hover State) */
   --main-subtle: #F3E8FF;       /* Soft Light Purple Tint (Light Mode Badges/BGs) */
   --main-subtle-dark: #2A173B;  /* Deep Purple Tint (Dark Mode Badges/BGs) */
@@ -54,6 +52,8 @@
   --secondary-text: #6B7280;
   --border-light: #E5E7EB;
 
+  --main: #9333EA;         /* Rich Aesthetic Purple (Buttons / Key Highlights) */
+  
   --pattern-1: url('/patterns/light/pattern1_light.webp');
   --pattern-2: url('/patterns/light/pattern2_light.webp');
   --pattern-3: url('/patterns/light/pattern3_light.webp');
@@ -71,6 +71,8 @@
   --primary-text: #E5E7EB;
   --secondary-text: #9CA3AF;
   --border-dark: #2A2E35;
+  
+  --main: #C084FC;              /* Light/Bright Purple */
 
   --pattern-1: url('/patterns/dark/pattern_1.webp');
   --pattern-2: url('/patterns/dark/pattern_2.webp');

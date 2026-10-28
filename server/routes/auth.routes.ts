@@ -67,7 +67,7 @@ router.post("/login", async (req, res) => {
 
         // Same message for "no such email" and "wrong password",
         // so nobody can use this route to discover which emails have accounts
-        if (!user) {
+        if (!user || !user.passwordHash) {
             return res.status(401).json({ error: "Incorrect email or password" });
         }
 
@@ -127,9 +127,11 @@ router.delete("/account", requireAuth, async (req, res) => {
             return res.status(404).json({ error: "Account not found" });
         }
 
-        const passwordMatches = await bcrypt.compare(password, user.passwordHash);
-        if (!passwordMatches) {
-            return res.status(403).json({ error: "Incorrect password" });
+        if (user.passwordHash) {
+            const passwordMatches = await bcrypt.compare(password, user.passwordHash);
+            if (!passwordMatches) {
+                return res.status(403).json({ error: "Incorrect password" });
+            }
         }
 
         await users.deleteOne({ _id: user._id });
