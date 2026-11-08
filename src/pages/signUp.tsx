@@ -266,6 +266,7 @@ function OtpWindow({ email }:{ email: string }) {
 
 
     function backTick(event: React.KeyboardEvent<HTMLInputElement>, value: string, index: number) {
+        setErr(["(--surface-bg-hover)", ""])
         if (value === "") {
             if(event.key === "Backspace") {
                 switch (index) {
@@ -286,7 +287,6 @@ function OtpWindow({ email }:{ email: string }) {
     }
 
     function checkValue(value: string, index: number) {
-        setErr(["(--surface-bg-hover)", ""])
         if(!hasNumber(value)) {
             value = "";
         }
