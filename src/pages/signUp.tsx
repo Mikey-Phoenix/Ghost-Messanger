@@ -240,8 +240,8 @@ function OtpWindow({ email }:{ email: string }) {
         if (response.ok) {
             navigate("/messages");
         } else {
-            setError(data.error);
             setErr(["red-500", "animate-[shake_0.35s_ease-in-out]" ]);
+            setError(data.error);
         }
     }
 
