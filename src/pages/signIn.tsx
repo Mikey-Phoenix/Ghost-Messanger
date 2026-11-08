@@ -1,10 +1,39 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
+// import { Navigate } from "react-router-dom";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
+import { GoogleLogin } from "@react-oauth/google";
+import { useNavigate } from "react-router-dom";
+
 // import { primary, surfaceBg, surfaceBgHover, primaryText, main, mainHover, grey } from "../theme/themeVars";
 
 function signIn() {
+    const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
+    async function handleLogin(e: React.FormEvent) {
+    e.preventDefault();
+
+    try {
+        const response = await fetch("http://localhost:5000/api/login", {
+            method: "POST",
+            credentials: "include",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password }),
+        });
+        const data = await response.json();
+
+        if (response.ok) {
+            // Navigate("/messages");
+            window.location.replace("/messages")
+        } else {
+            alert(data.error);
+        }
+    } catch (error) {
+        alert("Could not reach the server. Is it running?");
+    }
+}
     
 
     useEffect(()=>{
@@ -28,10 +57,10 @@ function signIn() {
                     <h1 className='text-2xl'>Welcome back</h1>
                     <p className={`mt-1 text-(--grey-400) text-xs md:text-base`}>Don't have an account? <span className={`cursor-pointer text-(--main)`} onClick={()=> window.location.replace("/sign-up")}>Sign up</span></p>
 
-                    <form action="" className='mt-5'>
-                        <input type="text" className={`w-full mt-3 p-3 bg-(--surface-bg-hover) rounded-md text-(--primary-text) text-sm md:text-base focus:outline-0 focus:ring-2 focus:ring-(--main)`} placeholder='Email or Username' required />
+                    <form action="" className='mt-5' onSubmit={handleLogin}>
+                        <input type="text" className={`w-full mt-3 p-3 bg-(--surface-bg-hover) rounded-md text-(--primary-text) text-sm md:text-base focus:outline-0 focus:ring-2 focus:ring-(--main)`} placeholder='Email or Username' onChange={(e) => setEmail(e.target.value)} required />
                         <span className='relative'>
-                            <input type={showPassword ? "text" : "password"} className={`w-full mt-3 p-3 bg-(--surface-bg-hover) rounded-md text-(--primary-text) text-sm md:text-base focus:outline-0 focus:ring-2 focus:ring-(--main)`} placeholder='Create a password' required />
+                            <input type={showPassword ? "text" : "password"} className={`w-full mt-3 p-3 bg-(--surface-bg-hover) rounded-md text-(--primary-text) text-sm md:text-base focus:outline-0 focus:ring-2 focus:ring-(--main)`} placeholder='Create a password' onChange={(e) => setPassword(e.target.value)} required />
                             {showPassword ? (
                                 <IoEyeOffOutline className={`absolute top-[50%] right-5 -translate-y-1/2 text-(--primary-text) hover:text-(--main-hover) text-2xl md:text-3xl mx-auto cursor-pointer`} onClick={() => setShowPassword(false)}/>
                             ):(
@@ -42,8 +71,33 @@ function signIn() {
                     </form>
 
                     <div className={`relative w-full mt-10 border-t border-(--surface-bg-hover)`}>
-                        <p className={`absolute top-0 right-1/2 -translate-y-1/2 translate-x-1/2 px-3 pb-1 bg-(--surface-bg-hover) text-xs md:text-sm`}>Or login with</p>
-                        <button className={`w-full mt-5 md:mt-7 py-2 px-4 border text-(--primary-text) text-sm md:text-base rounded-md cursor-pointer`}>Continue with Google</button>
+                        <p className={`absolute top-0 right-1/2 -translate-y-1/2 translate-x-1/2 px-3 pb-1 bg-(--surface-bg) text-xs md:text-sm`}>Or login with</p>
+                        <div className={`w-full mt-5 md:mt-7 `}>
+
+                            <GoogleLogin
+                                shape='rectangular'
+                                onSuccess={async (credentialResponse) => {
+                                    try {
+                                        const res = await fetch("http://localhost:5000/api/google", {
+                                            method: "POST",
+                                            credentials: "include",
+                                            headers: { "Content-Type": "application/json" },
+                                            body: JSON.stringify({ credential: credentialResponse.credential }),
+                                        });
+                                        const data = await res.json();
+
+                                        if (res.ok) {
+                                            navigate("/messages");
+                                        } else {
+                                            alert(data.error);
+                                        }
+                                    } catch {
+                                        alert("Could not reach the server. Is it running?");
+                                    }
+                                }}
+                                onError={() => alert("Google sign-in failed")}
+                            />
+                        </div>
                     </div>
                 </div>
             </section>

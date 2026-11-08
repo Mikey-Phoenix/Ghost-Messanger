@@ -1,0 +1,17 @@
+import { MongoClient } from "mongodb";
+
+const client = new MongoClient(process.env.ATLAS_URI!);
+const db = client.db("messanger-app");
+
+export const users = db.collection("users");
+export const otps = db.collection("otps");
+export const messages = db.collection("messages");
+
+export async function connectDb() {
+    await client.connect();
+    await users.createIndex({ email: 1 }, { unique: true });
+    await users.createIndex({ username: 1 }, { unique: true });
+    await otps.createIndex({ expiresAt: 1 }, { expireAfterSeconds: 0 });
+    await messages.createIndex({ senderId: 1, createdAt: -1 });
+    await messages.createIndex({ receiverId: 1, createdAt: -1 });
+}

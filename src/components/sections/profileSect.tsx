@@ -1,6 +1,13 @@
+import { useState, useEffect } from 'react';
 import { IoLockClosedOutline, IoExitOutline, IoTrashOutline, IoCallOutline, IoMailOutline, IoAtOutline, IoChevronBackOutline } from "react-icons/io5";
 import { MdPassword } from "react-icons/md";
-import { surfaceBg, surfaceBgHover, primaryText, main, grey } from "../../theme/themeVars";
+import { Blobatar } from "@blobatar/react";
+import { useGaze } from "@blobatar/react/gaze";
+import "blobatar/motion.css";
+import "blobatar/gaze.css";
+import { useNavigate } from "react-router-dom";
+
+
 
 
 type Props = {
@@ -14,6 +21,8 @@ type Props = {
     isPassword: boolean | false;
     setIsPassword: (isPassword: boolean) => void;
 };
+
+type Profile = { username: string; email: string };
 export default function profileSect({ isShowSect, setIsShowSect, popUp, setPopUp, setTitle, setDescription, setPlaceholder, isPassword, setIsPassword }: Props) {
     
 
@@ -29,17 +38,95 @@ export default function profileSect({ isShowSect, setIsShowSect, popUp, setPopUp
         setPlaceholder(placeholder);
         setIsPassword(title === "Password")
     }
+
+    const navigate = useNavigate();
+
+    const { ref, lookAt } = useGaze({ travel: 4, lookAt: "pointer" });
+
+    const [profile, setProfile] = useState<Profile | null>(null);
+    const [error, setError] = useState("");
+
+    useEffect(() => {
+        let cancelled = false;
+
+        async function loadProfile() {
+            try {
+                const res = await fetch("http://localhost:5000/api/messages", {
+                    credentials: "include",
+                });
+                const data = await res.json();
+
+                if (!res.ok) throw new Error(data.error || "Could not load your details");
+                if (!cancelled) setProfile(data);
+            } catch (e) {
+                if (!cancelled) setError(e instanceof Error ? e.message : "Something went wrong");
+            }
+        }
+
+        loadProfile();
+        return () => {
+            cancelled = true;
+        };
+    }, []);
+
+    if (error) return <p>{error}</p>;
+    if (!profile) return <p>Loading...</p>;
+
+    async function handleLogout() {
+        try {
+            await fetch("http://localhost:5000/api/logout", {
+                method: "POST",
+                credentials: "include",
+            });
+        } catch (error) {
+            console.error("Logout request failed", error);
+        } finally {
+            navigate("/sign-in", { replace: true });
+        }
+    }
+
+    async function handleDeleteAccount() {
+        const confirmed = window.confirm(
+            "This permanently deletes your account and cannot be undone. Continue?"
+        );
+        if (!confirmed) return;
+
+        const password = window.prompt("Enter your password to confirm:");
+        if (!password) return;
+
+        try {
+            const response = await fetch("http://localhost:5000/api/account", {
+                method: "DELETE",
+                credentials: "include",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ password }),
+            });
+            const data = await response.json();
+
+            if (response.ok) {
+                navigate("/signup", { replace: true });
+            } else {
+                alert(data.error);
+            }
+        } catch (error) {
+            alert("Could not reach the server. Is it running?");
+        }
+    }
+
     return (
         <>
         <div className="w-full h-full relative overflow-y-scroll no-scrollbar">
             <div className={`w-full h-[7%] md:h-[10%] md:p-5 mb-2 flex items-center justify-between text-(--main) cursor-pointer bg-(--surface-bg)`}>
                 <div className='font-semibold text-xl flex items-center space-x-5'><span className={`"lg:hidden text-(--primary-text) hover:text-(--main)`} onClick={() => setIsShowSect(false)}><IoChevronBackOutline /></span><h4>Accounts</h4></div>
             </div>
-            <img className="w-50 h-50 mx-auto mt-5 rounded-full" src="/public/profile.webp" alt="Profile" />
+            <div className="w-50 h-50 mx-auto mt-5 rounded-full">
+                <Blobatar ref={ref} name={profile.username} animate="always" />
+            </div>
+            {/* <img className="w-50 h-50 mx-auto mt-5 rounded-full" src="/public/profile.webp" alt="Profile" /> */}
             <div className={`"w-full min-h-100  -mt-10 pt-10 px-2 bg-(--surface-bg) text-(--primary-text) text-center`}>
                 <div className="mt-3">
-                    <h4 className="font-semibold text-xl">Name</h4>
-                    <p className={`text-xs md:text-sm text-(--grey-400)`}>Username</p>
+                    <h4 className="font-semibold text-xl">{profile.username}</h4>
+                    <p className={`text-xs md:text-sm text-(--grey-400)`}>{profile.email}</p>
                 </div>
                 <div className={`relative mt-5 py-5 border-t-2 border-(--surface-bg-hover)`}>
                     <span className={`absolute top-0 left-0 text-xs md:text-sm text-(--grey-400)`}>Login Settings</span>
@@ -69,11 +156,11 @@ export default function profileSect({ isShowSect, setIsShowSect, popUp, setPopUp
                 <div className={`relative mt-5 pt-5 border-t-2 border-(--surface-bg-hover)`}>
                     <span className="absolute top-0 left-0 text-xs md:text-sm opacity-60">Log out/Delete Account</span>
 
-                    <div className={`"w-full px-2 py-5 rounded-md flex items-center space-x-5 text-(--main) md:text-xl cursor-pointer hover:bg-(--surface-bg-hover)`}>
+                    <div className={`"w-full px-2 py-5 rounded-md flex items-center space-x-5 text-(--main) md:text-xl cursor-pointer hover:bg-(--surface-bg-hover)`} onClick={handleLogout}>
                         <IoExitOutline />
                         <p>Log Out</p>
                     </div>
-                    <div className={`"w-full px-2 py-5 rounded-md flex items-center space-x-5 text-(--main) md:text-xl cursor-pointer hover:bg-(--surface-bg-hover)`}>
+                    <div className={`"w-full px-2 py-5 rounded-md flex items-center space-x-5 text-(--main) md:text-xl cursor-pointer hover:bg-(--surface-bg-hover)`} onClick={handleDeleteAccount}>
                         <IoTrashOutline />
                         <p>Delete Account</p>
                     </div>

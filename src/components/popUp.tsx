@@ -51,6 +51,7 @@ export default function popUp({ popUp, setPopUp, title, description, placeholder
     }
     return(
         <div className="fixed top-0 left-0 w-full h-full bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-md p-6">
+        {/* // <div className="fixed top-0 left-0 w-full h-full bg-(--primary)/70 shadow-lg rounded-md p-6"> */}
             <div className={`md:w-[80%] lg:w-[60%] h-[50%] md:h-[50%] lg:h-[80%] relative top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 bg-[${pattern}] rounded-md`} style={{ backgroundImage: theme === "light" ? pattern : patternDark }}>
                 <div className={`relative w-full p-5 rounded-md bg-(--surface-bg) text-(--primary-text)`}>
                     <h1 className={`text-xl font-bold text-(--primary-text)`}>{title}</h1>

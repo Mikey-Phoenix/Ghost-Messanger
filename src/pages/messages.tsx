@@ -1,17 +1,22 @@
 import { useState, useEffect } from 'react';
+import { socket } from "../socket";
 import PopUp, {RadioPop} from '../components/popUp';
+import { sileo } from "sileo"
+import { useTheme } from "../context/themeContext";
+import { pattern1, pattern1_dark } from "../theme/themeVars";
 import { ToastContainer, toast } from 'react-toastify';
 import { IoChatbubbleOutline, IoChatbubblesOutline, IoSettingsOutline, IoCallOutline  } from "react-icons/io5";
-import SetBar from "../components/setBar"
-import MessageBar from "../components/messageBar"
+import SetBar from "../components/sideBars/setBar"
+import MessageBar from "../components/sideBars/messageBar"
 import MessageSect from '../components/sections/messageSect';
 import ProfileSect from '../components/sections/profileSect';
 import PrivacySect from '../components/sections/privacySect';
 import NotifySect from '../components/sections/notifySect';
 import ThemeSect from '../components/sections/themeSect';
 import SearchSect from '../components/sections/searchSect';
-import { pattern1, pattern1_dark } from "../theme/themeVars";
-import { useTheme } from "../context/themeContext";
+
+
+type Selected = { id: string; username: string };
 
 function messages() {
     const [currentSect, setCurrentSect] = useState(
@@ -29,12 +34,23 @@ function messages() {
     const [active, setActive] = useState(0)
 
     const { theme } = useTheme();
+
+    const [selected, setSelected] = useState<Selected | null>(null);
     
     
     useEffect(() => {
         localStorage.setItem("currentSect", currentSect);
         setIsPassword(title === "Password");
+        socket.connect();
+        return () => {
+            socket.disconnect();
+        };
     }, [currentSect, isPassword]);
+
+    function handleSelect(id: string, username: string) {
+        setSelected({ id, username });
+        console.log(id, username)
+    }
 
     function changeSect(sect: string) {
         setCurrentSect(sect);
@@ -73,10 +89,13 @@ function messages() {
                                 </div>
 
                             )}
-                            <div className="h-fit px-5 md:px-0 lg:w-full py-2 opacity-50" title="disabled" onClick={() => notify("This feature is currently disabled.")}>
+                            {/* <div className="h-fit px-5 md:px-0 lg:w-full py-2 opacity-50" title="disabled" onClick={() => notify("This feature is currently disabled.")}>
+                                <IoCallOutline className={`text-(--primary-text) hover:text-(--main) text-2xl md:text-3xl mx-auto cursor-pointer`}/>
+                            </div> */}
+                            <div className="h-fit px-5 md:px-0 lg:w-full py-2 opacity-50" title="disabled" onClick={() => sileo.error({ title: "Disabled", description: "This feature is currently unavailable"})}>
                                 <IoCallOutline className={`text-(--primary-text) hover:text-(--main) text-2xl md:text-3xl mx-auto cursor-pointer`}/>
                             </div>
-                            <div className="h-fit px-5 md:px-0 lg:w-full py-2 opacity-50" title="disabled" onClick={() => notify("This feature is currently disabled.")}>
+                            <div className="h-fit px-5 md:px-0 lg:w-full py-2 opacity-50" title="disabled" onClick={() => sileo.error({ title: "Disabled", description: "This feature is currently unavailable"})}>
                                 <IoChatbubblesOutline className={`text-(--primary-text) hover:text-(--main) text-2xl md:text-3xl mx-auto cursor-pointer`}/>
                             </div>
                             {currentSect == "settings" || currentSect == "settings/privacy" || currentSect == "settings/notify" || currentSect == "settings/theme" ? (
@@ -107,10 +126,13 @@ function messages() {
                                 </div>
 
                             )}
-                            <div className="h-fit px-5 md:px-0 lg:w-full py-2 opacity-50" title="disabled" onClick={() => notify("This feature is currently disabled.")}>
+                            {/* <div className="h-fit px-5 md:px-0 lg:w-full py-2 opacity-50" title="disabled" onClick={() => notify("This feature is currently disabled.")}>
+                                <IoCallOutline className={`text-(--primary-text) hover:text-(--main) text-2xl md:text-3xl mx-auto cursor-pointer`}/>
+                            </div> */}
+                            <div className="h-fit px-5 md:px-0 lg:w-full py-2 opacity-50" title="disabled" onClick={() => sileo.error({ title: "Disabled", description: "This feature is currently unavailable"})}>
                                 <IoCallOutline className={`text-(--primary-text) hover:text-(--main) text-2xl md:text-3xl mx-auto cursor-pointer`}/>
                             </div>
-                            <div className="h-fit px-5 md:px-0 lg:w-full py-2 opacity-50" title="disabled" onClick={() => notify("This feature is currently disabled.")}>
+                            <div className="h-fit px-5 md:px-0 lg:w-full py-2 opacity-50" title="disabled" onClick={() => sileo.error({ title: "Disabled", description: "This feature is currently unavailable"})}>
                                 <IoChatbubblesOutline className={`text-(--primary-text) hover:text-(--main) text-2xl md:text-3xl mx-auto cursor-pointer`}/>
                             </div>
                             {currentSect == "settings" || currentSect == "settings/privacy" || currentSect == "settings/notify" || currentSect == "settings/theme" ? (
@@ -132,7 +154,7 @@ function messages() {
                 {isShowSect ? (
                     <section className={`hidden lg:block w-full md:w-[80%] lg:w-[25%] h-full md:h-full px-4 rounded-md bg-(--surface-bg)`}>
                         {currentSect == "messages" || currentSect == "messages/show" || currentSect == "discover" ? (
-                            <MessageBar changeSect={changeSect} currentSect={currentSect}/>
+                            <MessageBar changeSect={changeSect} currentSect={currentSect} onSelect={handleSelect} selectedId={selected?.id ?? null}/>
                         ): (
                             <SetBar changeSect={changeSect} currentSect={currentSect}/>
                         )}
@@ -140,7 +162,7 @@ function messages() {
                 ):(
                     <section className={`w-full md:w-[80%] lg:w-[25%] h-full md:h-full px-4 rounded-md bg-(--surface-bg)`}>
                         {currentSect == "messages" || currentSect == "messages/show" || currentSect == "discover" ? (
-                            <MessageBar changeSect={changeSect} currentSect={currentSect}/>
+                            <MessageBar changeSect={changeSect} currentSect={currentSect} onSelect={handleSelect} selectedId={selected?.id ?? null}/>
                         ): (
                             <SetBar changeSect={changeSect} currentSect={currentSect}/>
                         )}
@@ -159,9 +181,21 @@ function messages() {
                         ): currentSect == "settings/theme" ? (
                             <ThemeSect isShowSect={isShowSect} setIsShowSect={setIsShowSect} radioPop={radioPop} setRadioPop={setRadioPop} setTitle={setTitle} items={items} setItems={setItems} active={active} setActive={setActive} />
                         ) : currentSect == "discover" ? (
-                            <SearchSect isShowSect={isShowSect} setIsShowSect={setIsShowSect} />
+                            <SearchSect isShowSect={isShowSect} setIsShowSect={setIsShowSect} changeSect={changeSect} setSelected={setSelected}  />
                         ) : (
-                            <MessageSect isShowSect={isShowSect} setIsShowSect={setIsShowSect}/>
+                            <>
+                            {selected ? (
+                                <MessageSect key={selected.id} otherId={selected.id} otherName={selected.username} isShowSect={isShowSect} setIsShowSect={setIsShowSect}/>
+                            ) :(
+                                <div className='w-full h-full flex items-center justify-center' style={{ backgroundImage: theme === "light" ? pattern : patternDark }}>
+                                    <div className='w-max text-center'>
+                                        <img src="/logo.webp" alt="Ghost Messenger" className='w-[45%] mx-auto'/>
+                                        <h2 className="text-3xl text-(--primary-text) michroma-regular">Welcome to Ghost Messenger!</h2>
+                                        <p className="text-xl text-(--grey-400) mt-3"><span className='cursor-pointer text-(--accent) hover:text-(--accent-hover)'>Start a conversation</span> or <span className='cursor-pointer text-(--main) hover:text-(--main-hover)'>Invite someone</span></p>
+                                    </div>
+                                </div>
+                            )}
+                            </>
                         )}
                     </section>
                 ):(
@@ -175,9 +209,21 @@ function messages() {
                         ): currentSect == "settings/theme" ? (
                             <ThemeSect isShowSect={isShowSect} setIsShowSect={setIsShowSect} radioPop={radioPop} setRadioPop={setRadioPop} setTitle={setTitle} items={items} setItems={setItems} active={active} setActive={setActive} />
                         ) : currentSect == "discover" ? (
-                            <SearchSect isShowSect={isShowSect} setIsShowSect={setIsShowSect} />
+                            <SearchSect isShowSect={isShowSect} setIsShowSect={setIsShowSect} changeSect={changeSect} setSelected={setSelected} />
                         ) : (
-                            <MessageSect isShowSect={isShowSect} setIsShowSect={setIsShowSect}/>
+                            <>
+                            {selected ? (
+                                <MessageSect key={selected.id} otherId={selected.id} otherName={selected.username} isShowSect={isShowSect} setIsShowSect={setIsShowSect}/>
+                            ) :(
+                                <div className='w-full h-full flex items-center justify-center' style={{ backgroundImage: theme === "light" ? pattern : patternDark }}>
+                                    <div className='w-max text-center'>
+                                        <img src="/logo.webp" alt="Ghost Messenger" className='w-[45%] mx-auto'/>
+                                        <h2 className="text-3xl text-(--primary-text) michroma-regular">Welcome to Ghost Messenger!</h2>
+                                        <p className="text-xl text-(--grey-400) mt-3"><span className='cursor-pointer text-(--accent) hover:text-(--accent-hover)'>Start a conversation</span> or <span className='cursor-pointer text-(--main) hover:text-(--main-hover)'>Invite someone</span></p>
+                                    </div>
+                                </div>
+                            )}
+                            </>
                         )}
                     </section>
 
