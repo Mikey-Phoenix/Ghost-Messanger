@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { socket } from "../socket";
 import { getJson } from "../api";
 import { Blobatar } from "@blobatar/react";
+import { API_URL } from "../config";
 import UserCard from "./sections/searchSect";
 
 type Person = { id: string; username: string };
@@ -19,8 +20,8 @@ export default function OnlineUsers({ onPick }: OnlineUsersProps) {
         let timer: ReturnType<typeof setTimeout> | undefined;
 
         async function load() {
-            try {
-                const data = await getJson("http://import.meta.env.VITE_API_URL ?? "http://localhost:5000"/api/online");
+                try {
+                    const data = await getJson(`${API_URL}/api/online`);
                 if (!cancelled) setOnline(data);
             } catch {
                 if (!cancelled) setOnline([]);

@@ -2,6 +2,7 @@ import React, {useState, useEffect, useRef} from 'react';
 import { Link, useNavigate } from'react-router-dom';
 import { IoRadioButtonOffOutline, IoRadioButtonOnOutline, IoEyeOffOutline, IoEyeOutline, IoCloseOutline, IoCheckmarkOutline } from "react-icons/io5";
 import { GoogleLogin } from "@react-oauth/google";
+import { API_URL } from "../config";
 // import { primary, surfaceBg, surfaceBgHover, primaryText, accent, accentHover, main, mainHover, grey } from "../theme/themeVars";
 
 
@@ -61,7 +62,7 @@ function signUp() {
             return;
         }
 
-        const response = await fetch("http://import.meta.env.VITE_API_URL ?? "http://localhost:5000"/api/signup", {
+        const response = await fetch(`${API_URL}/api/signup`, {
             method: "POST",
             credentials: "include",
             headers: { "Content-Type": "application/json" },
@@ -137,7 +138,7 @@ function signUp() {
                                         shape='rectangular'
                                         onSuccess={async (credentialResponse) => {
                                             try {
-                                                const res = await fetch("http://import.meta.env.VITE_API_URL ?? "http://localhost:5000"/api/google", {
+                                                const res = await fetch(`${API_URL}/api/google`, {
                                                     method: "POST",
                                                     credentials: "include",
                                                     headers: { "Content-Type": "application/json" },
@@ -212,7 +213,7 @@ function OtpWindow({ email }:{ email: string }) {
             return;
         }
 
-        const response = await fetch("http://import.meta.env.VITE_API_URL ?? "http://localhost:5000"/api/verify-otp", {
+        const response = await fetch(`${API_URL}/api/verify-otp`, {
             method: "POST",
             credentials: "include",
             headers: { "Content-Type": "application/json" },
@@ -230,7 +231,7 @@ function OtpWindow({ email }:{ email: string }) {
     async function handleResend() {
         if (seconds > 0) return;
 
-        const response = await fetch("http://import.meta.env.VITE_API_URL ?? "http://localhost:5000"/api/resend-otp", {
+        const response = await fetch(`${API_URL}/api/resend-otp`, {
             method: "POST",
             credentials: "include",
             headers: { "Content-Type": "application/json" },

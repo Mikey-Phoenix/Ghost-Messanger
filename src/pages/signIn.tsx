@@ -3,7 +3,7 @@ import {useState, useEffect, useRef} from 'react';
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import { GoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
-
+import { API_URL } from "../config";
 // import { primary, surfaceBg, surfaceBgHover, primaryText, main, mainHover, grey } from "../theme/themeVars";
 
 function signIn() {
@@ -16,7 +16,7 @@ function signIn() {
     e.preventDefault();
 
     try {
-        const response = await fetch("http://import.meta.env.VITE_API_URL ?? "http://localhost:5000"/api/login", {
+        const response = await fetch(`${API_URL}/api/login`, {
             method: "POST",
             credentials: "include",
             headers: { "Content-Type": "application/json" },
@@ -78,7 +78,7 @@ function signIn() {
                                 shape='rectangular'
                                 onSuccess={async (credentialResponse) => {
                                     try {
-                                        const res = await fetch("http://import.meta.env.VITE_API_URL ?? "http://localhost:5000"/api/google", {
+                                        const res = await fetch(`${API_URL}/api/google`, {
                                             method: "POST",
                                             credentials: "include",
                                             headers: { "Content-Type": "application/json" },

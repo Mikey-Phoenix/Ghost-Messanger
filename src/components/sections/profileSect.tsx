@@ -6,6 +6,7 @@ import { useGaze } from "@blobatar/react/gaze";
 import "blobatar/motion.css";
 import "blobatar/gaze.css";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../../config";
 
 
 
@@ -51,7 +52,7 @@ export default function profileSect({ isShowSect, setIsShowSect, popUp, setPopUp
 
         async function loadProfile() {
             try {
-                const res = await fetch("http://import.meta.env.VITE_API_URL ?? "http://localhost:5000"/api/messages", {
+                const res = await fetch(`${API_URL}/api/messages`, {
                     credentials: "include",
                 });
                 const data = await res.json();
@@ -74,7 +75,7 @@ export default function profileSect({ isShowSect, setIsShowSect, popUp, setPopUp
 
     async function handleLogout() {
         try {
-            await fetch("http://import.meta.env.VITE_API_URL ?? "http://localhost:5000"/api/logout", {
+            await fetch(`${API_URL}/api/logout`, {
                 method: "POST",
                 credentials: "include",
             });
@@ -95,7 +96,7 @@ export default function profileSect({ isShowSect, setIsShowSect, popUp, setPopUp
         if (!password) return;
 
         try {
-            const response = await fetch("http://import.meta.env.VITE_API_URL ?? "http://localhost:5000"/api/account", {
+            const response = await fetch(`${API_URL}/api/account`, {
                 method: "DELETE",
                 credentials: "include",
                 headers: { "Content-Type": "application/json" },

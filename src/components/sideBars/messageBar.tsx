@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { IoArchiveOutline, IoSearchOutline, IoPersonAddOutline  } from "react-icons/io5";
 import { Blobatar } from "@blobatar/react";
 import Preloader from "../preloader";
+import { API_URL } from "../../config";
 
 type Props = {
     changeSect: (sect: string) => void;
@@ -40,7 +41,7 @@ export default function messageBar({changeSect, currentSect, selectedId, onSelec
 
         async function loadContacts() {
             try {
-                const res = await fetch("http://import.meta.env.VITE_API_URL ?? "http://localhost:5000"/api/users", { credentials: "include" });
+                const res = await fetch(`${API_URL}/api/users`, { credentials: "include" });
                 const data = await res.json();
 
                 if (!res.ok) throw new Error(data.error || "Could not load users");
