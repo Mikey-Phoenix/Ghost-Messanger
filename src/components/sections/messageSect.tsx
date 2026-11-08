@@ -32,7 +32,7 @@ export default function messageSect({ isShowSect, setIsShowSect, otherId, otherN
 
     // Load old messages when the chat opens
     useEffect(() => {
-        fetch(`http://localhost:5000/api/messages/${otherId}`, { credentials: "include" })
+        fetch(`http://import.meta.env.VITE_API_URL ?? "http://localhost:5000"/api/messages/${otherId}`, { credentials: "include" })
             .then((res) => res.json())
             .then(setMessages);
     }, [otherId]);
@@ -75,7 +75,7 @@ export default function messageSect({ isShowSect, setIsShowSect, otherId, otherN
 
         let cancelled = false;
 
-        fetch(`http://localhost:5000/api/messages/${otherId}`, { credentials: "include" })
+        fetch(`http://import.meta.env.VITE_API_URL ?? "http://localhost:5000"/api/messages/${otherId}`, { credentials: "include" })
             .then((res) => res.json())
             .then((data) => {
                 if (!cancelled && Array.isArray(data)) setMessages(data);

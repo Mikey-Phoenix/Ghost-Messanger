@@ -51,7 +51,7 @@ export default function profileSect({ isShowSect, setIsShowSect, popUp, setPopUp
 
         async function loadProfile() {
             try {
-                const res = await fetch("http://localhost:5000/api/messages", {
+                const res = await fetch("http://import.meta.env.VITE_API_URL ?? "http://localhost:5000"/api/messages", {
                     credentials: "include",
                 });
                 const data = await res.json();
@@ -74,7 +74,7 @@ export default function profileSect({ isShowSect, setIsShowSect, popUp, setPopUp
 
     async function handleLogout() {
         try {
-            await fetch("http://localhost:5000/api/logout", {
+            await fetch("http://import.meta.env.VITE_API_URL ?? "http://localhost:5000"/api/logout", {
                 method: "POST",
                 credentials: "include",
             });
@@ -95,7 +95,7 @@ export default function profileSect({ isShowSect, setIsShowSect, popUp, setPopUp
         if (!password) return;
 
         try {
-            const response = await fetch("http://localhost:5000/api/account", {
+            const response = await fetch("http://import.meta.env.VITE_API_URL ?? "http://localhost:5000"/api/account", {
                 method: "DELETE",
                 credentials: "include",
                 headers: { "Content-Type": "application/json" },

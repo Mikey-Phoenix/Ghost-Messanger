@@ -61,7 +61,7 @@ function signUp() {
             return;
         }
 
-        const response = await fetch("http://localhost:5000/api/signup", {
+        const response = await fetch("http://import.meta.env.VITE_API_URL ?? "http://localhost:5000"/api/signup", {
             method: "POST",
             credentials: "include",
             headers: { "Content-Type": "application/json" },
@@ -137,7 +137,7 @@ function signUp() {
                                         shape='rectangular'
                                         onSuccess={async (credentialResponse) => {
                                             try {
-                                                const res = await fetch("http://localhost:5000/api/google", {
+                                                const res = await fetch("http://import.meta.env.VITE_API_URL ?? "http://localhost:5000"/api/google", {
                                                     method: "POST",
                                                     credentials: "include",
                                                     headers: { "Content-Type": "application/json" },
@@ -212,7 +212,7 @@ function OtpWindow({ email }:{ email: string }) {
             return;
         }
 
-        const response = await fetch("http://localhost:5000/api/verify-otp", {
+        const response = await fetch("http://import.meta.env.VITE_API_URL ?? "http://localhost:5000"/api/verify-otp", {
             method: "POST",
             credentials: "include",
             headers: { "Content-Type": "application/json" },
@@ -230,7 +230,7 @@ function OtpWindow({ email }:{ email: string }) {
     async function handleResend() {
         if (seconds > 0) return;
 
-        const response = await fetch("http://localhost:5000/api/resend-otp", {
+        const response = await fetch("http://import.meta.env.VITE_API_URL ?? "http://localhost:5000"/api/resend-otp", {
             method: "POST",
             credentials: "include",
             headers: { "Content-Type": "application/json" },

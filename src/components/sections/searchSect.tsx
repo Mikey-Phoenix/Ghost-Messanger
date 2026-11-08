@@ -57,7 +57,7 @@ export default function searchSearch({isShowSect, setIsShowSect, setSelected, ch
         const timer = setTimeout(async () => {
             try {
                 const data = await getJson(
-                    `http://localhost:5000/api/users/search?q=${encodeURIComponent(q)}`
+                    `http://import.meta.env.VITE_API_URL ?? "http://localhost:5000"/api/users/search?q=${encodeURIComponent(q)}`
                 );
                 if (!cancelled) setResults(data);
                 console.log(results);

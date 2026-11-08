@@ -20,7 +20,7 @@ export default function OnlineUsers({ onPick }: OnlineUsersProps) {
 
         async function load() {
             try {
-                const data = await getJson("http://localhost:5000/api/online");
+                const data = await getJson("http://import.meta.env.VITE_API_URL ?? "http://localhost:5000"/api/online");
                 if (!cancelled) setOnline(data);
             } catch {
                 if (!cancelled) setOnline([]);

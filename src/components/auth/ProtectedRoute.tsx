@@ -6,7 +6,7 @@ export default function ProtectedRoute() {
     const [status, setStatus] = useState<"loading" | "in" | "out">("loading");
 
     useEffect(() => {
-        fetch("http://localhost:5000/api/me", { credentials: "include" })
+        fetch("http://import.meta.env.VITE_API_URL ?? "http://localhost:5000"/api/me", { credentials: "include" })
             .then((res) => setStatus(res.ok ? "in" : "out"))
             .catch(() => setStatus("out"));
     }, []);

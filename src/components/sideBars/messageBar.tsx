@@ -40,7 +40,7 @@ export default function messageBar({changeSect, currentSect, selectedId, onSelec
 
         async function loadContacts() {
             try {
-                const res = await fetch("http://localhost:5000/api/users", { credentials: "include" });
+                const res = await fetch("http://import.meta.env.VITE_API_URL ?? "http://localhost:5000"/api/users", { credentials: "include" });
                 const data = await res.json();
 
                 if (!res.ok) throw new Error(data.error || "Could not load users");

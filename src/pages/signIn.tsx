@@ -16,7 +16,7 @@ function signIn() {
     e.preventDefault();
 
     try {
-        const response = await fetch("http://localhost:5000/api/login", {
+        const response = await fetch("http://import.meta.env.VITE_API_URL ?? "http://localhost:5000"/api/login", {
             method: "POST",
             credentials: "include",
             headers: { "Content-Type": "application/json" },
@@ -78,7 +78,7 @@ function signIn() {
                                 shape='rectangular'
                                 onSuccess={async (credentialResponse) => {
                                     try {
-                                        const res = await fetch("http://localhost:5000/api/google", {
+                                        const res = await fetch("http://import.meta.env.VITE_API_URL ?? "http://localhost:5000"/api/google", {
                                             method: "POST",
                                             credentials: "include",
                                             headers: { "Content-Type": "application/json" },
