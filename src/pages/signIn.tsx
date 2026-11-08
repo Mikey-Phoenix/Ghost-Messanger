@@ -11,29 +11,35 @@ function signIn() {
     const [showPassword, setShowPassword] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
 
     async function handleLogin(e: React.FormEvent) {
-    e.preventDefault();
+        e.preventDefault();
+        if (loading) return;
 
-    try {
-        const response = await fetch(`${API_URL}/api/login`, {
-            method: "POST",
-            credentials: "include",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, password }),
-        });
-        const data = await response.json();
+        setLoading(true);
 
-        if (response.ok) {
-            // Navigate("/messages");
-            window.location.replace("/messages")
-        } else {
-            alert(data.error);
+        try {
+            const response = await fetch(`${API_URL}/api/login`, {
+                method: "POST",
+                credentials: "include",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password }),
+            });
+            const data = await response.json();
+
+            if (response.ok) {
+                // Navigate("/messages");
+                window.location.replace("/messages")
+            } else {
+                alert(data.error);
+                setLoading(false);
+            }
+        } catch (error) {
+            alert("Could not reach the server. Is it running?");
+            setLoading(false);
         }
-    } catch (error) {
-        alert("Could not reach the server. Is it running?");
     }
-}
     
 
     useEffect(()=>{
@@ -60,14 +66,18 @@ function signIn() {
                     <form action="" className='mt-5' onSubmit={handleLogin}>
                         <input type="text" className={`w-full mt-3 p-3 bg-(--surface-bg-hover) rounded-md text-(--primary-text) text-sm md:text-base focus:outline-0 focus:ring-2 focus:ring-(--main)`} placeholder='Email or Username' onChange={(e) => setEmail(e.target.value)} required />
                         <span className='relative'>
-                            <input type={showPassword ? "text" : "password"} className={`w-full mt-3 p-3 bg-(--surface-bg-hover) rounded-md text-(--primary-text) text-sm md:text-base focus:outline-0 focus:ring-2 focus:ring-(--main)`} placeholder='Create a password' onChange={(e) => setPassword(e.target.value)} required />
+                            <input type={showPassword ? "text" : "password"} className={`w-full mt-3 p-3 bg-(--surface-bg-hover) rounded-md text-(--primary-text) text-sm md:text-base focus:outline-0 focus:ring-2 focus:ring-(--main)`} placeholder='Enter your password' onChange={(e) => setPassword(e.target.value)} required />
                             {showPassword ? (
                                 <IoEyeOffOutline className={`absolute top-[50%] right-5 -translate-y-1/2 text-(--primary-text) hover:text-(--main-hover) text-2xl md:text-3xl mx-auto cursor-pointer`} onClick={() => setShowPassword(false)}/>
                             ):(
                                 <IoEyeOutline className={`absolute top-[50%] right-5 -translate-y-1/2 text-(--primary-text) hover:text-(--main-hover) text-2xl md:text-3xl mx-auto cursor-pointer`} onClick={() => setShowPassword(true)}/>
                             )}
                         </span>
-                        <button className={`w-full mt-5 md:mt-7 py-2 px-4 bg-(--main) text-white text-sm md:text-base rounded-md cursor-pointer`}>Log in</button>
+                        {loading ? (
+                            <button className={`w-full mt-5 md:mt-7 py-2 px-4 bg-(--grey-400) flex items-center justify-center text-white text-sm md:text-base rounded-md`}><p className='w-6 h-6 border-2 border-t-transparent rounded-full animate-spin'></p></button>
+                        ):(
+                            <button className={`w-full mt-5 md:mt-7 py-2 px-4 bg-(--main) text-white text-sm md:text-base rounded-md cursor-pointer`}>Log in</button>
+                        )}
                     </form>
 
                     <div className={`relative w-full mt-10 border-t border-(--surface-bg-hover)`}>

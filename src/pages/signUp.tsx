@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import { Link, useNavigate } from'react-router-dom';
-import { IoRadioButtonOffOutline, IoRadioButtonOnOutline, IoEyeOffOutline, IoEyeOutline, IoCloseOutline, IoCheckmarkOutline } from "react-icons/io5";
+import { IoRadioButtonOffOutline, IoRadioButtonOnOutline, IoEyeOffOutline, IoEyeOutline, IoCloseOutline, IoCheckmarkOutline, IoCheckbox, IoSquareOutline } from "react-icons/io5";
 import { GoogleLogin } from "@react-oauth/google";
 import { API_URL } from "../config";
 // import { primary, surfaceBg, surfaceBgHover, primaryText, accent, accentHover, main, mainHover, grey } from "../theme/themeVars";
@@ -23,6 +23,7 @@ function signUp() {
     const [otp, setOtp] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const form = useRef<HTMLFormElement>(null);
 
@@ -56,11 +57,13 @@ function signUp() {
     
     async function handleSignup(e: React.FormEvent) {
         e.preventDefault();
-
+        
         if (!readTerms) {
             setForgotToCheckTerms(true);
             return;
         }
+        if (loading) return;
+        setLoading(true);
 
         const response = await fetch(`${API_URL}/api/signup`, {
             method: "POST",
@@ -74,6 +77,7 @@ function signUp() {
             setOtp(true); // popup opens only now
         } else {
             alert(data.error);
+            setLoading(false);
         }
     }
 
@@ -122,11 +126,15 @@ function signUp() {
                                         <p className='text-red-500 text-xs md:text-sm'><IoCloseOutline className='inline mr-1' /> Do not separate letters by space</p>
                                     )}
                                 </div>
-                                <p className='relative mt-2 text-xs md:text-sm flex items-center' onClick={() => {setReadTerms(prev => !prev), setForgotToCheckTerms(false)}}>{readTerms ? <IoRadioButtonOnOutline className={`inline mr-2 cursor-pointer hover:text-(--accent-hover)`} /> : <IoRadioButtonOffOutline className={`inline mr-2 cursor-pointer hover:text-(--accent-hover)`} />} I agree to the <span className={`ml-1 text-(--accent) underline cursor-pointer hover:text-(--accent-hover)`}> terms & conditions</span>
+                                <p className='relative mt-2 text-xs md:text-sm flex items-center' onClick={() => {setReadTerms(prev => !prev), setForgotToCheckTerms(false)}}>{readTerms ? <IoCheckbox className={`inline mr-2 cursor-pointer text-xl text-(--accent-hover)`} /> : <IoSquareOutline className={`inline mr-2 cursor-pointer text-xl hover:text-(--accent-hover)`} />} I agree to the <span className={`ml-1 text-(--accent) underline cursor-pointer hover:text-(--accent-hover)`}> terms & conditions</span>
                                 {forgotToCheckTerms && <span className='absolute top-full text-red-500'>You must agree to the terms and conditions</span>}
                                 </p>
 
-                                <button type='submit' className={`w-full mt-5 md:mt-7 py-2 px-4 bg-(--main) text-white text-sm md:text-base rounded-md cursor-pointer`} >Create Account</button>
+                                {loading ? (
+                                    <button className={`w-full mt-5 md:mt-7 py-2 px-4 bg-(--grey-400) flex items-center justify-center text-white text-sm md:text-base rounded-md`}><p className='w-6 h-6 border-2 border-t-transparent rounded-full animate-spin'></p></button>
+                                ):(
+                                    <button type='submit' className={`w-full mt-5 md:mt-7 py-2 px-4 bg-(--main) text-white text-sm md:text-base rounded-md cursor-pointer`} >Create Account</button>
+                                )}
                                 
                             </form>
         
@@ -182,13 +190,21 @@ function OtpWindow({ email }:{ email: string }) {
     const inputRef2 = useRef<HTMLInputElement>(null);
     const inputRef3 = useRef<HTMLInputElement>(null);
 
+    const formRef = useRef<HTMLFormElement>(null);
+
+    const [err, setErr] = useState(["(--surface-bg-hover)", ""])
+
     // const [showOtp, setShowOtp] = useState(false);
     // const [digits, setDigits] = useState(["", "", "", ""]);
     // const boxes = useRef<(HTMLInputElement | null)[]>([]);
 
     useEffect(()=>{
         setValue(value);
-    }, [value])
+        const code = [value, value1, value2, value3].join("");
+        if (code.length === 4) {
+            formRef.current?.requestSubmit();
+        }
+    }, [value, value1, value2, value3])
 
     const navigate = useNavigate();
     const [seconds, setSeconds] = useState(30);
@@ -225,6 +241,7 @@ function OtpWindow({ email }:{ email: string }) {
             navigate("/messages");
         } else {
             setError(data.error);
+            setErr(["red-500", "animate-[shake_0.35s_ease-in-out]" ]);
         }
     }
 
@@ -269,6 +286,7 @@ function OtpWindow({ email }:{ email: string }) {
     }
 
     function checkValue(value: string, index: number) {
+        setErr(["(--surface-bg-hover)", ""])
         if(!hasNumber(value)) {
             value = "";
         }
@@ -304,16 +322,16 @@ function OtpWindow({ email }:{ email: string }) {
 
     return (
         <main className={`absolute w-[70%] md:w-[50%] lg:w-[30%] lg:min-w-[400px] h-[70vh] md:min-h-[30vh] max-h-[300px] px-5 top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 flex items-center bg-(--surface-bg) rounded-2xl md:rounded-4xl text-white`}>
-            <form onSubmit={handleVerify} className='w-full'>
+            <form ref={formRef} onSubmit={handleVerify} className='w-full'>
                 {/* your four inputs, with onInput changed to onChange and the ) typo fixed */}
                 <div className='flex items-center justify-center space-x-2'>
-                    <input ref={inputRef} type='text' className={`w-[3rem] md:w-[4rem] p-3 md:p-5 bg-[var(--surface-bg-hover)] rounded-md text-lg md:text-2xl text-center font-bold text-(--primary-text) ring-2 ring-white focus:outline-0 focus:ring-2 focus:ring-(--main)`} value={value} onInput={(e) => checkValue(e.currentTarget.value, 0)} onKeyDown={(e) => backTick(e, e.currentTarget.value, 0)}/>
+                    <input ref={inputRef} type='text' className={`w-[3rem] md:w-[4rem] p-3 md:p-5 bg-${err[0]} ${err[1]} rounded-md text-lg md:text-2xl text-center font-bold text-(--primary-text) ring-2 ring-white focus:outline-0 focus:ring-2 focus:ring-(--main)`} value={value} onInput={(e) => checkValue(e.currentTarget.value, 0)} onKeyDown={(e) => backTick(e, e.currentTarget.value, 0)}/>
 
-                    <input ref={inputRef1} type='text' className={`w-[3rem] md:w-[4rem] p-3 md:p-5 bg-[var(--surface-bg-hover)] rounded-md text-lg md:text-2xl text-center font-bold text-(--primary-text) ring-2 ring-white focus:outline-0 focus:ring-2 focus:ring-(--main)`} value={value1} onInput={(e) => checkValue(e.currentTarget.value, 1)} onKeyDown={(e) => backTick(e, e.currentTarget.value, 1)}/>
+                    <input ref={inputRef1} type='text' className={`w-[3rem] md:w-[4rem] p-3 md:p-5 bg-${err[0]} ${err[1]} rounded-md text-lg md:text-2xl text-center font-bold text-(--primary-text) ring-2 ring-white focus:outline-0 focus:ring-2 focus:ring-(--main)`} value={value1} onInput={(e) => checkValue(e.currentTarget.value, 1)} onKeyDown={(e) => backTick(e, e.currentTarget.value, 1)}/>
 
-                    <input ref={inputRef2} type='text' className={`w-[3rem] md:w-[4rem] p-3 md:p-5 bg-[var(--surface-bg-hover)] rounded-md text-lg md:text-2xl text-center font-bold text-(--primary-text) ring-2 ring-white focus:outline-0 focus:ring-2 focus:ring-(--main)`} value={value2} onInput={(e) => checkValue(e.currentTarget.value, 2)} onKeyDown={(e) => backTick(e, e.currentTarget.value, 2)}/>
+                    <input ref={inputRef2} type='text' className={`w-[3rem] md:w-[4rem] p-3 md:p-5 bg-${err[0]} ${err[1]} rounded-md text-lg md:text-2xl text-center font-bold text-(--primary-text) ring-2 ring-white focus:outline-0 focus:ring-2 focus:ring-(--main)`} value={value2} onInput={(e) => checkValue(e.currentTarget.value, 2)} onKeyDown={(e) => backTick(e, e.currentTarget.value, 2)}/>
 
-                    <input ref={inputRef3} type='text' className={`w-[3rem] md:w-[4rem] p-3 md:p-5 bg-[var(--surface-bg-hover)] rounded-md text-lg md:text-2xl text-center font-bold text-(--primary-text) ring-2 ring-white focus:outline-0 focus:ring-2 focus:ring-(--main)`} value={value3} onInput={(e) => checkValue(e.currentTarget.value, 3)} onKeyDown={(e) => backTick(e, e.currentTarget.value, 3)}/>
+                    <input ref={inputRef3} type='text' className={`w-[3rem] md:w-[4rem] p-3 md:p-5 bg-${err[0]} ${err[1]} rounded-md text-lg md:text-2xl text-center font-bold text-(--primary-text) ring-2 ring-white focus:outline-0 focus:ring-2 focus:ring-(--main)`} value={value3} onInput={(e) => checkValue(e.currentTarget.value, 3)} onKeyDown={(e) => backTick(e, e.currentTarget.value, 3)}/>
 
                 </div>
 
