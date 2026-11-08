@@ -109,7 +109,7 @@ export default function messageSect({ isShowSect, setIsShowSect, otherId, otherN
     }
 
     function formatTime(iso: string) {
-        return new Date(iso).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+        return new Date(iso).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
     }
     function statusTicks( m: Message ) {
         if (m.readAt) return "read";
