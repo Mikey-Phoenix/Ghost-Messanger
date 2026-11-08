@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { socket } from "../../socket";
 import { Blobatar } from "@blobatar/react";
+import { API_URL } from "../../config";
 import { FaArrowDownLong } from "react-icons/fa6";
 import { IoMdMore } from "react-icons/io";
 import { IoCheckmarkDone, IoCheckmarkOutline, IoCallOutline, IoSendSharp, IoChevronBackOutline } from "react-icons/io5";
@@ -32,7 +33,7 @@ export default function messageSect({ isShowSect, setIsShowSect, otherId, otherN
 
     // Load old messages when the chat opens
     useEffect(() => {
-        fetch(`http://import.meta.env.VITE_API_URL ?? "http://localhost:5000"/api/messages/${otherId}`, { credentials: "include" })
+        fetch(`${API_URL}/api/messages/${otherId}`, { credentials: "include" })
             .then((res) => res.json())
             .then(setMessages);
     }, [otherId]);
@@ -75,7 +76,7 @@ export default function messageSect({ isShowSect, setIsShowSect, otherId, otherN
 
         let cancelled = false;
 
-        fetch(`http://import.meta.env.VITE_API_URL ?? "http://localhost:5000"/api/messages/${otherId}`, { credentials: "include" })
+        fetch(`${API_URL}/api/messages/${otherId}`, { credentials: "include" })
             .then((res) => res.json())
             .then((data) => {
                 if (!cancelled && Array.isArray(data)) setMessages(data);

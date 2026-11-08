@@ -3,6 +3,7 @@ import { getJson } from "../../api";
 import { Blobatar } from "@blobatar/react"
 import Preloader from "../preloader";
 import OnlineUsers from "../onlineUsers";
+import { API_URL } from "../../config";
 import { IoPersonAddOutline, IoChatbubbleOutline, IoSearchOutline, IoFilterOutline, IoChevronBackOutline } from "react-icons/io5";
 import { surfaceBg, surfaceBgHover, primaryText, accent, accentHover, main } from "../../theme/themeVars";
 
@@ -57,7 +58,7 @@ export default function searchSearch({isShowSect, setIsShowSect, setSelected, ch
         const timer = setTimeout(async () => {
             try {
                 const data = await getJson(
-                    `http://import.meta.env.VITE_API_URL ?? "http://localhost:5000"/api/users/search?q=${encodeURIComponent(q)}`
+                    `${API_URL}/api/users/search?q=${encodeURIComponent(q)}`
                 );
                 if (!cancelled) setResults(data);
                 console.log(results);
